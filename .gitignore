@@ -1,0 +1,28 @@
+# SECRETS
+
+.env
+shortconfig/
+
+# TESTS
+
+compile-environment/
+studentcode/
+website/
+*.rlib
+*.csv
+
+# PACKAGES
+
+node_modules
+
+# LOGS
+
+traces/
+
+# DEBUGGER
+
+.vscode/
+
+# DATABASE
+
+sqlite3/
