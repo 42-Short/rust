@@ -8,5 +8,7 @@ import (
 )
 
 func main() {
+	// short := Short.NewShort("Rust Piscine 1.0", modules, webhook.NewWebhookTestMode(modules["00"]))
+
 	shortinette.Init(map[string]Module.Module{"00": *R00.R00()})
 }
