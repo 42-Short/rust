@@ -19,7 +19,7 @@ func R06() *Module.Module {
 		"06": ex06(),
 		"07": ex07(),
 	}
-	r00, err := Module.NewModule("00", 70, exercises, "subject.md") // TODO: add actual subject
+	r00, err := Module.NewModule("06", 70, exercises, "subject.md") // TODO: add actual subject
 	if err != nil {
 		logger.Error.Printf("internal error: %v", err)
 		return nil
