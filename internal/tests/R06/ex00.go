@@ -72,7 +72,7 @@ func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
 		logger.Exercise.Printf("could not write to %s: %v", exercise.TurnInFiles[0], err)
 		return Exercise.InternalError(err.Error())
 	}
-	_, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test"})
+	_, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"valgrind", "test"})
 	if err != nil {
 		return Exercise.RuntimeError(err.Error())
 	}
