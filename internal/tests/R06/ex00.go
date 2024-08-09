@@ -8,7 +8,7 @@ import (
 	"github.com/42-Short/shortinette/pkg/testutils"
 )
 
-var Tests00 = `
+var tests00 = `
 #[cfg(test)]
 mod shortinette_tests_rust_0600 {
     use super::*;
@@ -68,7 +68,7 @@ mod shortinette_tests_rust_0600 {
 
 func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
 	workingDirectory := filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory)
-	if err := testutils.AppendStringToFile(Tests00, exercise.TurnInFiles[0]); err != nil {
+	if err := testutils.AppendStringToFile(tests00, exercise.TurnInFiles[0]); err != nil {
 		logger.Exercise.Printf("could not write to %s: %v", exercise.TurnInFiles[0], err)
 		return Exercise.InternalError(err.Error())
 	}
