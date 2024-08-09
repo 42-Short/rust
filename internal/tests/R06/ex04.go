@@ -10,7 +10,7 @@ import (
 
 var tests04 = `
 #[cfg(test)]
-mod tests {
+mod shortinette_tests_rust0604 {
     use super::*;
     use libc;
     use std::ffi::CString;
