@@ -144,7 +144,7 @@ func ex01Test(exercise *Exercise.Exercise) Exercise.Result {
 	}
 	_, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test"})
 	if err != nil {
-		return Exercise.InternalError(err.Error())
+		return Exercise.RuntimeError(err.Error())
 	}
 	return Exercise.Passed("OK")
 }

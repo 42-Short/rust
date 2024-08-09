@@ -3,7 +3,7 @@ package R06
 import Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
 
 func ex05Test(exercise *Exercise.Exercise) Exercise.Result {
-	return Exercise.Passed("OK")
+	return Exercise.Passed("NOT IMPLEMENTED")
 }
 
 func ex05() Exercise.Exercise {
