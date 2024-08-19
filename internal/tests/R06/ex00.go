@@ -2,6 +2,7 @@ package R06
 
 import (
 	"path/filepath"
+	"rust-piscine/internal/alloweditems"
 
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
 	"github.com/42-Short/shortinette/pkg/logger"
@@ -67,6 +68,9 @@ mod shortinette_tests_rust_0600 {
 `
 
 func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
+	if err := alloweditems.Execute(*exercise); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
 	workingDirectory := filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory)
 	if err := testutils.AppendStringToFile(tests00, exercise.TurnInFiles[0]); err != nil {
 		logger.Exercise.Printf("could not write to %s: %v", exercise.TurnInFiles[0], err)
