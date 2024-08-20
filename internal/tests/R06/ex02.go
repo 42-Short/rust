@@ -137,7 +137,7 @@ disallowed-methods = ["std::rc::Rc", "std::sync::Arc", "std::ptr::null", "std::p
 `
 
 func ex02Test(exercise *Exercise.Exercise) Exercise.Result {
-	if err := alloweditems.Check(*exercise, clippyTomlAsString02, []string{"#![allow(dead_code)]"}); err != nil {
+	if err := alloweditems.Check(*exercise, clippyTomlAsString02, []string{"#![allow(clippy::doc_lazy_continuation)]", "#![allow(dead_code)]"}); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
 	workingDirectory := filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory)

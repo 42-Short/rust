@@ -2,6 +2,7 @@ package R06
 
 import (
 	"path/filepath"
+	"rust-piscine/internal/alloweditems"
 
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
 	"github.com/42-Short/shortinette/pkg/logger"
@@ -116,7 +117,15 @@ mod shortinette_tests_rust_0603 {
 }
 `
 
+var clippyTomlAsString03 = `
+disallowed-types = ["std::cell::Cell", "std::cell::RefCell", "std::sync::Mutex", "std::mem::ManuallyDrop", "std::rc::Rc", "std::sync::Arc", "std::sync::RwLock"]
+disallowed-methods = ["std::ptr::null", "std::ptr::null_mut", "std::mem::transmute"]
+`
+
 func ex03Test(exercise *Exercise.Exercise) Exercise.Result {
+	if err := alloweditems.Check(*exercise, clippyTomlAsString03, []string{"#![allow(clippy::doc_lazy_continuation)]", "#![allow(dead_code)]"}); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
 	workingDirectory := filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory)
 	if err := testutils.AppendStringToFile(tests03, exercise.TurnInFiles[0]); err != nil {
 		logger.Exercise.Printf("could not write to %s: %v", exercise.TurnInFiles[0], err)
