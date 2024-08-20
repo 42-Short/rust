@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
-	"github.com/42-Short/shortinette/pkg/logger"
 	"github.com/42-Short/shortinette/pkg/testutils"
 )
 
@@ -31,8 +30,6 @@ func prependLintLevel(filePath string, lintLevelModifications []string) (err err
 	if err != nil {
 		return err
 	}
-
-	logger.Info.Printf("content of %s:\n%s", filePath, strings.Join(contentAsStringSlice, "\n"))
 
 	return nil
 }

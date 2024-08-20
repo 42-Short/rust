@@ -67,7 +67,10 @@ mod shortinette_tests_rust_0600 {
 }
 `
 
-var clippyTomlAsString00 = ``
+var clippyTomlAsString00 = `
+disallowed-macros = []
+disallowed-methods = ["std::mem::replace", "std::mem::take", "std::mem::swap", "std::ptr::swap_nonoverlapping", "std::mem::size_of", "std::mem::align_of", "std::ptr::copy", "std::ptr::copy_nonoverlapping", "core::mem::replace", "core::mem::take", "core::mem::swap", "core::ptr::swap_nonoverlapping", "core::mem::size_of", "core::mem::align_of", "core::ptr::copy", "core::ptr::copy_nonoverlapping"]
+`
 
 func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
 	if err := alloweditems.Check(*exercise, clippyTomlAsString00, []string{"#[allow(clippy::doc_lazy_continuation)]"}); err != nil {
