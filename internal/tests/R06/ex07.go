@@ -2,6 +2,7 @@ package R06
 
 import (
 	"fmt"
+	"os"
 	"path/filepath"
 	"strings"
 
@@ -9,9 +10,30 @@ import (
 	"github.com/42-Short/shortinette/pkg/testutils"
 )
 
-// TODO:
-// Add tests for the #[no_std] & #[no_main] requirements
+func checkGlobalAttributesUsage(exercise *Exercise.Exercise) (err error) {
+	fileAsBytes, err := os.ReadFile(filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory, "ft_putchar.rs"))
+	if err != nil {
+		return err
+	}
+	missingAttributes := map[string]bool{
+		"#![no_std]":  true,
+		"#![no_main]": true,
+	}
+	fileAsSlice := strings.Split(string(fileAsBytes), "\n")
+
+	for _, line := range fileAsSlice {
+		delete(missingAttributes, line)
+	}
+	if len(missingAttributes) != 0 {
+		return fmt.Errorf("missing global attributes: %v", missingAttributes)
+	}
+	return nil
+}
+
 func ex07Test(exercise *Exercise.Exercise) Exercise.Result {
+	if err := checkGlobalAttributesUsage(exercise); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
 	if output, err := testutils.RunCommandLine(filepath.Dir(exercise.TurnInFiles[0]), "rustc", []string{"-C", "panic=abort", "-C", "link-args=-nostartfiles", "-o", "ft_putchar", "ft_putchar.rs"}); err != nil {
 		return Exercise.CompilationError(fmt.Sprintf("%s: %s", err.Error(), output))
 	}
