@@ -5,13 +5,20 @@ import (
 	"path/filepath"
 
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
-	"github.com/42-Short/shortinette/pkg/logger"
+	"github.com/42-Short/shortinette/pkg/testutils"
 )
 
-func Execute(exercise Exercise.Exercise) (err error) {
-	if err = os.Remove(filepath.Join("compile-environment", exercise.TurnInDirectory, "Cargo.toml")); err != nil {
+func Execute(exercise Exercise.Exercise, clippyTomlAsString string) (err error) {
+	file, err := os.Create(filepath.Join("compile-environment", exercise.TurnInDirectory, ".clippy.toml"))
+	if err != nil {
 		return err
 	}
-	logger.Info.Printf("no forbidden items/keywords found in %s", exercise.TurnInDirectory+"/"+exercise.TurnInFiles[0])
+	if _, err = file.WriteString(clippyTomlAsString); err != nil {
+		return err
+	}
+	workingDirectory := filepath.Join("compile-environment", exercise.TurnInDirectory)
+	if output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"clippy", "--", "-D", "warnings"}); err != nil {
+		
+	}
 	return nil
 }

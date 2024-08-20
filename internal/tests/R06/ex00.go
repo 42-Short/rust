@@ -68,7 +68,7 @@ mod shortinette_tests_rust_0600 {
 `
 
 func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
-	if err := alloweditems.Execute(*exercise); err != nil {
+	if err := alloweditems.Execute(*exercise, ""); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
 	workingDirectory := filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory)
