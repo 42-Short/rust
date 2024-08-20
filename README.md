@@ -17,18 +17,19 @@ The idea is to only ban the items which would do the heavy lifting for them in o
 
 To achieve this, I can call call alloweditems.Check() like follows:
 
-	var clippyTomlAsString := `
-	disallowed-macros = ["std::println"]
-	disallowed-methods = ["std::ptr::read"]
-	`
-	lintLevelModifications := []string{"#[allow(clippy::doc_lazy_continuation)]"}
+```go
+var clippyTomlAsString := `
+disallowed-macros = ["std::println"]
+disallowed-methods = ["std::ptr::read"]
+`
+lintLevelModifications := []string{"#[allow(clippy::doc_lazy_continuation)]"}
 
-	if err := allowedItems.Check(exercise, clippyTomlAsString, lintLevelModifications); err != nil {
-		// err != nil -> linting failed, meaning the submission did not pass your static analysis.
-		// err.Error() will contain all necessary information for your trace, such as which line posed an issue,
-		// which disallowed item(s) was/were found, (...), you can simply handle this as follows:
-		return Exercise.CompilationError(err.Error())
-	}
-
+if err := allowedItems.Check(exercise, clippyTomlAsString, lintLevelModifications); err != nil {
+	// err != nil -> linting failed, meaning the submission did not pass your static analysis.
+	// err.Error() will contain all necessary information for your trace, such as which line posed an issue,
+	// which disallowed item(s) was/were found, (...), you can simply handle this as follows:
+	return Exercise.CompilationError(err.Error())
+}
+```
 See https://rust-lang.github.io/rust-clippy/master/index.html for details on .clippy.toml configuration.
 
