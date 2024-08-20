@@ -2,6 +2,7 @@ package R06
 
 import (
 	"path/filepath"
+	"rust-piscine/internal/alloweditems"
 
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
 	"github.com/42-Short/shortinette/pkg/logger"
@@ -149,7 +150,7 @@ mod shortinette_tests_rust_0605 {
         string_tableau.push("bar");
         assert_eq!(&*string_tableau, &["foo", "bar"]);
 
-        #[derive(Debug, PartialEq)]
+        #[derive(Debug, PartialEq, Clone)]
         struct Point {
             x: i32,
             y: i32,
@@ -187,7 +188,15 @@ mod shortinette_tests_rust_0605 {
 }
 `
 
+var clippyTomlAsString05 = `
+disallowed-types = ["std::collections::VecDeque", "std::collections::LinkedList", "Box<T>", "Rc<T>", "Arc<T>", "std::cell::RefCell", "std::sync::Mutex", "std::mem::ManuallyDrop"]
+disallowed-methods = ["std::slice::from_raw_parts", "std::slice::from_raw_parts_mut", "std::ptr::null", "std::ptr::null_mut"]
+`
+
 func ex05Test(exercise *Exercise.Exercise) Exercise.Result {
+	if err := alloweditems.Check(*exercise, clippyTomlAsString05); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
 	workingDirectory := filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory)
 	if err := testutils.AppendStringToFile(tests05, exercise.TurnInFiles[0]); err != nil {
 		logger.Exercise.Printf("could not write to %s: %v", exercise.TurnInFiles[0], err)
