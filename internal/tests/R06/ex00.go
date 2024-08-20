@@ -86,5 +86,5 @@ func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex00() Exercise.Exercise {
-	return Exercise.NewExercise("00", "studentcode", "ex00", []string{"src/lib.rs", "Cargo.toml"}, []string{"std::ptr::{write, read, add}"}, map[string]int{"unsafe": 100}, 10, ex00Test)
+	return Exercise.NewExercise("00", "studentcode", "ex00", []string{"src/lib.rs", "Cargo.toml"}, map[string]int{"unsafe": 100}, 10, ex00Test)
 }

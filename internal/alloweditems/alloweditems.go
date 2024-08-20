@@ -38,34 +38,34 @@ func prependLintLevel(filePath string, lintLevelModifications []string) (err err
 }
 
 // Checks for forbidden methods/macros using `cargo clippy`.
-//
+
 // Args:
 // exercise: `Exercise.Exercise` structure containing the exercise metadata
-//
+
 // clippyTomlAsString: string representation of the `.clippy.toml file which should dictate the lint rules`
-//
+
 // lintLevelModifications: slice of strings representing the lint level modifications you want to add
-//
+
 // Example Usage:
 //   - I want to ban `std::ptr::read` and `std::println`
 //   - I also want to remove the documentation linter, which would fail students
 //     for wrong indentation in comments (https://rust-lang.github.io/rust-clippy/master/index.html#doc_lazy_continuation)
-//
+
 // To achieve this, I can call call this function like follows:
-//
-//	var clippyTomlAsString := `
-//	disallowed-macros = ["std::println"]
-//	disallowed-methods = ["std::ptr::read"]
-//	`
-//	lintLevelModifications := []string{"#[allow(clippy::doc_lazy_continuation)]"}
-//
-//	if err := allowedItems.Check(exercise, clippyTomlAsString, lintLevelModifications); err != nil {
-//		// err != nil -> linting failed, meaning the submission did not pass your static analysis.
-//		// err.Error() will contain all necessary information for your trace, such as which line posed an issue,
-//		// which disallowed item(s) was/were found, (...), you can simply handle this as follows:
-//		return Exercise.CompilationError(err.Error())
-//	}
-//
+
+// 	var clippyTomlAsString := `
+// 	disallowed-macros = ["std::println"]
+// 	disallowed-methods = ["std::ptr::read"]
+// 	`
+// 	lintLevelModifications := []string{"#[allow(clippy::doc_lazy_continuation)]"}
+
+// 	if err := allowedItems.Check(exercise, clippyTomlAsString, lintLevelModifications); err != nil {
+// 		// err != nil -> linting failed, meaning the submission did not pass your static analysis.
+// 		// err.Error() will contain all necessary information for your trace, such as which line posed an issue,
+// 		// which disallowed item(s) was/were found, (...), you can simply handle this as follows:
+// 		return Exercise.CompilationError(err.Error())
+// 	}
+
 // See https://rust-lang.github.io/rust-clippy/master/index.html for details.
 func Check(exercise Exercise.Exercise, clippyTomlAsString string, lintLevelModifications []string) (err error) {
 	for _, filePath := range exercise.TurnInFiles {

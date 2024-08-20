@@ -130,5 +130,5 @@ func ex03Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex03() Exercise.Exercise {
-	return Exercise.NewExercise("03", "studentcode", "ex03", []string{"src/lib.rs", "Cargo.toml"}, []string{"std::clone::Clone  std::marker::Copy", "std::cell::UnsafeCell", "std::ptr::*", "std::mem::*"}, map[string]int{"unsafe": 100}, 10, ex03Test)
+	return Exercise.NewExercise("03", "studentcode", "ex03", []string{"src/lib.rs", "Cargo.toml"}, map[string]int{"unsafe": 100}, 10, ex03Test)
 }

@@ -150,5 +150,5 @@ func ex01Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex01() Exercise.Exercise {
-	return Exercise.NewExercise("01", "studentcode", "ex01", []string{"src/lib.rs", "Cargo.toml"}, []string{"std::mem::transmute", "std::slice::from_raw_parts"}, map[string]int{"unsafe": 101}, 10, ex01Test)
+	return Exercise.NewExercise("01", "studentcode", "ex01", []string{"src/lib.rs", "Cargo.toml"}, map[string]int{"unsafe": 101}, 10, ex01Test)
 }
