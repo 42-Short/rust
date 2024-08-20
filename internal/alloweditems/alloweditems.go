@@ -63,7 +63,7 @@ func prependLintLevel(filePath string, lintLevelModifications []string) (err err
 func Check(exercise Exercise.Exercise, clippyTomlAsString string, lintLevelModifications ...string) (err error) {
 	for _, filePath := range exercise.TurnInFiles {
 		if strings.Contains(filePath, ".rs") {
-			if err = prependLintLevel(filePath, []string{"#![allow(clippy::doc_lazy_continuation)]", "#![allow(dead_code)]"}); err != nil {
+			if err = prependLintLevel(filePath, []string{"#![allow(clippy::doc_lazy_continuation)]", "#![allow(dead_code)]", "#![allow(clippy::duplicated_attributes)]"}); err != nil {
 				return err
 			}
 			if err = prependLintLevel(filePath, lintLevelModifications); err != nil {

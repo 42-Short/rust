@@ -15,23 +15,142 @@ mod shortinette_tests_rust_0605 {
     use super::*;
 
     #[test]
-    fn test_new_tableau() {
-        let tableau: Tableau<i32> = Tableau::new();
-        assert_eq!(tableau.len(), 0);
+    fn test_independent_cloning() {
+        let mut tableau = Tableau::new();
+        tableau.push(String::from("Hello"));
+        tableau.push(String::from("Rust"));
+    
+        let mut tableau_clone = tableau.clone();
+        tableau_clone.push(String::from("World"));
+    
+        assert_eq!(tableau.len(), 2);
+        assert_eq!(tableau_clone.len(), 3);
+    
+        assert_eq!(tableau.pop(), Some(String::from("Rust")));
+        assert_eq!(tableau_clone.pop(), Some(String::from("World")));
+    }
+
+    #[test]
+    fn test_iteration_with_for_loop() {
+        let mut tableau = Tableau::new();
+        tableau.push(10);
+        tableau.push(20);
+        tableau.push(30);
+    
+        let mut sum = 0;
+        for value in &*tableau {
+            sum += value;
+        }
+    
+        assert_eq!(sum, 60);
+    }
+    
+    #[test]
+    fn test_deref_mut() {
+        let mut tableau = Tableau::new();
+        tableau.push(1);
+        tableau.push(2);
+        tableau.push(3);
+    
+        {
+            let tableau_mut: &mut [i32] = &mut *tableau;
+            tableau_mut[0] = 10;
+            tableau_mut[2] = 30;
+        }
+    
+        assert_eq!(tableau.pop(), Some(30));
+        assert_eq!(tableau.pop(), Some(2));
+        assert_eq!(tableau.pop(), Some(10));
+    }
+    
+    #[test]
+    fn test_with_tuples() {
+        let mut tableau = Tableau::new();
+        tableau.push((1, "one"));
+        tableau.push((2, "two"));
+        tableau.push((3, "three"));
+    
+        assert_eq!(tableau.len(), 3);
+    
+        let tuple = tableau.pop();
+        assert_eq!(tuple, Some((3, "three")));
+        assert_eq!(tableau.len(), 2);
+    }
+    
+    #[test]
+    fn test_non_copyable_types() {
+        let mut tableau = Tableau::new();
+        tableau.push(Box::new(10));
+        tableau.push(Box::new(20));
+    
+        assert_eq!(tableau.len(), 2);
+    
+        let value = tableau.pop().unwrap();
+        assert_eq!(*value, 20);
+    
+        let value = tableau.pop().unwrap();
+        assert_eq!(*value, 10);
+    }    
+
+    #[test]
+    fn test_large_push() {
+        let mut tableau = Tableau::new();
+    
+        for i in 0..1000 {
+            tableau.push(i);
+        }
+    
+        assert_eq!(tableau.len(), 1000);
+    
+        for i in (0..1000).rev() {
+            assert_eq!(tableau.pop(), Some(i));
+        }
+    
         assert!(tableau.is_empty());
     }
 
     #[test]
-    fn test_push() {
-        let mut tableau = Tableau::new();
-        tableau.push(10);
-        assert_eq!(tableau.len(), 1);
-        assert!(!tableau.is_empty());
-        assert_eq!(tableau[0], 10);
+    fn test_empty_tableau_behavior() {
+        let mut tableau: Tableau<i32> = Tableau::new();
+    
+        assert!(tableau.is_empty());
+        assert_eq!(tableau.len(), 0);
+        assert_eq!(tableau.pop(), None);
+    
+        tableau.clear();
+        assert_eq!(tableau.len(), 0);
+        assert!(tableau.is_empty());
+        assert_eq!(tableau.pop(), None);
+    }
 
-        tableau.push(20);
+    #[test]
+    fn test_push_and_pop_multiple() {
+        let mut tableau = Tableau::new();
+
+        tableau.push(1);
+        tableau.push(2);
+        tableau.push(3);
+        tableau.push(4);
+        tableau.push(5);
+
+        assert_eq!(tableau.len(), 5);
+
+        assert_eq!(tableau.pop(), Some(5));
+        assert_eq!(tableau.pop(), Some(4));
+        assert_eq!(tableau.pop(), Some(3));
         assert_eq!(tableau.len(), 2);
-        assert_eq!(tableau[1], 20);
+
+        tableau.push(6);
+        assert_eq!(tableau.len(), 3);
+        assert_eq!(tableau.pop(), Some(6));
+        assert_eq!(tableau.len(), 2);
+    }
+
+    #[test]
+    fn test_new_tableau() {
+        let tableau: Tableau<i32> = Tableau::new();
+        assert_eq!(tableau.len(), 0);
+        assert!(tableau.is_empty());
     }
 
     #[test]
@@ -70,21 +189,6 @@ mod shortinette_tests_rust_0605 {
     }
 
     #[test]
-    fn test_deref() {
-        let mut tableau = Tableau::new();
-        tableau.push(100);
-        tableau.push(200);
-        tableau.push(300);
-
-        let slice: &[i32] = &*tableau;
-        assert_eq!(slice, &[100, 200, 300]);
-
-        let slice_mut: &mut [i32] = &mut *tableau;
-        slice_mut[1] = 250;
-        assert_eq!(tableau[1], 250);
-    }
-
-    #[test]
     fn test_into_iterator() {
         let mut tableau = Tableau::new();
         tableau.push("a");
@@ -99,27 +203,6 @@ mod shortinette_tests_rust_0605 {
     }
 
     #[test]
-    fn test_iterate_over_references() {
-        let mut tableau = Tableau::new();
-        tableau.push(1);
-        tableau.push(2);
-        tableau.push(3);
-
-        for (i, val) in tableau.iter().enumerate() {
-            assert_eq!(*val, (i + 1) as i32);
-        }
-
-        for val in tableau.iter_mut() {
-            *val *= 2;
-        }
-
-        let expected = [2, 4, 6];
-        for (i, val) in tableau.iter().enumerate() {
-            assert_eq!(*val, expected[i]);
-        }
-    }
-
-    #[test]
     fn test_clone() {
         let mut tableau = Tableau::new();
         tableau.push(String::from("Hello"));
@@ -128,69 +211,31 @@ mod shortinette_tests_rust_0605 {
         let tableau_clone = tableau.clone();
         assert_eq!(tableau.len(), tableau_clone.len());
 
-        for (orig, clone) in tableau.iter().zip(tableau_clone.iter()) {
-            assert_eq!(orig, clone);
-        }
-
         tableau.push(String::from("!"));
         assert_eq!(tableau.len(), 3);
         assert_eq!(tableau_clone.len(), 2);
     }
 
     #[test]
-    fn test_with_different_types() {
-        let mut int_tableau = Tableau::new();
-        int_tableau.push(1);
-        int_tableau.push(2);
-        int_tableau.push(3);
-        assert_eq!(&*int_tableau, &[1, 2, 3]);
+    fn test_subject() {
+        let mut a = Tableau::new();
+        a.push(1);
+        a.push(2);
+        a.push(4);
+        let b = a.clone();
 
-        let mut string_tableau = Tableau::new();
-        string_tableau.push("foo");
-        string_tableau.push("bar");
-        assert_eq!(&*string_tableau, &["foo", "bar"]);
-
-        #[derive(Debug, PartialEq, Clone)]
-        struct Point {
-            x: i32,
-            y: i32,
+        for it in b {
+            println!("{it}");
         }
-
-        let mut point_tableau = Tableau::new();
-        point_tableau.push(Point { x: 1, y: 2 });
-        point_tableau.push(Point { x: 3, y: 4 });
-
-        let expected_points = [Point { x: 1, y: 2 }, Point { x: 3, y: 4 }];
-        assert_eq!(&*point_tableau, &expected_points);
-    }
-
-    #[test]
-    fn test_indexing() {
-        let mut tableau = Tableau::new();
-        tableau.push(10);
-        tableau.push(20);
-        tableau.push(30);
-
-        assert_eq!(tableau[0], 10);
-        assert_eq!(tableau[1], 20);
-        assert_eq!(tableau[2], 30);
-
-        tableau[1] = 25;
-        assert_eq!(tableau[1], 25);
-    }
-
-    #[test]
-    #[should_panic(expected = "index out of bounds")]
-    fn test_index_out_of_bounds() {
-        let tableau: Tableau<i32> = Tableau::new();
-        let _ = tableau[0];
+        let c: &[i32] = &*a;
+        assert_eq!(c, [1, 2, 4]);
     }
 }
 `
 
 var clippyTomlAsString05 = `
-disallowed-types = ["std::collections::VecDeque", "std::collections::LinkedList", "Box<T>", "Rc<T>", "Arc<T>", "std::cell::RefCell", "std::sync::Mutex", "std::mem::ManuallyDrop"]
-disallowed-methods = ["std::slice::from_raw_parts", "std::slice::from_raw_parts_mut", "std::ptr::null", "std::ptr::null_mut"]
+disallowed-types = ["std::collections::Vec", "std::collections::VecDeque", "std::collections::LinkedList", "Box<T>", "Rc<T>", "Arc<T>", "std::cell::RefCell", "std::sync::Mutex", "std::mem::ManuallyDrop"]
+disallowed-methods = ["std::slice::from_raw_parts", "std::slice::from_raw_parts_mut"]
 `
 
 func ex05Test(exercise *Exercise.Exercise) Exercise.Result {
