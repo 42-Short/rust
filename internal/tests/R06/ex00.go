@@ -67,9 +67,7 @@ mod shortinette_tests_rust_0600 {
 }
 `
 
-var clippyTomlAsString00 = `
-disallowed-methods = ["std::ptr::read"]
-`
+var clippyTomlAsString00 = ``
 
 func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
 	if err := alloweditems.Check(*exercise, clippyTomlAsString00, []string{"#[allow(clippy::doc_lazy_continuation)]"}); err != nil {
