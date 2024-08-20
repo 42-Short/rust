@@ -247,7 +247,7 @@ disallowed-methods = ["std::process::exit"]
 `
 
 func ex04Test(exercise *Exercise.Exercise) Exercise.Result {
-    if err := alloweditems.Check(*exercise, clippyTomlAsString04, []string{"#![allow(clippy::doc_lazy_continuation)]", "#![allow(dead_code)]"}); err != nil {
+    if err := alloweditems.Check(*exercise, clippyTomlAsString04); err != nil {
         return Exercise.CompilationError(err.Error())
     }
 	workingDirectory := filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory)
