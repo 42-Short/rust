@@ -14,27 +14,27 @@ import (
 
 const CargoTest = `
 #[cfg(test)]
-mod tests {
+mod shortinette_tests_rust_0001 {
     use super::*;
 
     #[test]
     fn test_0() {
-        assert_eq!(min(1, 2), 1);
+        assert_eq!(min(1i32, 2i32), 1i32);
     }
 
     #[test]
     fn test_1() {
-        assert_eq!(min(2, 1), 1);
+        assert_eq!(min(2i32, 1i32), 1i32);
     }
 
     #[test]
     fn test_2() {
-        assert_eq!(min(1, 1), 1);
+        assert_eq!(min(1i32, 1i32), 1i32);
     }
 
     #[test]
     fn test_3() {
-        assert_eq!(min(-1, 0), -1);
+        assert_eq!(min(-1i32, 0i32), -1i32);
     }
 }
 `
@@ -67,5 +67,5 @@ func ex01Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex01() Exercise.Exercise {
-	return Exercise.NewExercise("01", "ex01", []string{"min.rs"},  map[string]int{"unsafe": 0}, 10, ex01Test)
+	return Exercise.NewExercise("01", "ex01", []string{"min.rs"}, map[string]int{"unsafe": 0, "return": 0}, 10, ex01Test)
 }
