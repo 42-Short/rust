@@ -145,7 +145,7 @@ func ex01Test(exercise *Exercise.Exercise) Exercise.Result {
 	if err := alloweditems.Check(*exercise, clippyTomlAsString01); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
-	workingDirectory := filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory)
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 	if err := testutils.AppendStringToFile(tests01, exercise.TurnInFiles[0]); err != nil {
 		logger.Exercise.Printf("could not write to %s: %v", exercise.TurnInFiles[0], err)
 		return Exercise.InternalError(err.Error())
@@ -158,5 +158,5 @@ func ex01Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex01() Exercise.Exercise {
-	return Exercise.NewExercise("01", "studentcode", "ex01", []string{"src/lib.rs", "Cargo.toml"}, map[string]int{"unsafe": 101}, 10, ex01Test)
+	return Exercise.NewExercise("01", "ex01", []string{"src/lib.rs", "Cargo.toml"}, map[string]int{"unsafe": 101}, 10, ex01Test)
 }

@@ -67,5 +67,5 @@ func ex01Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex01() Exercise.Exercise {
-	return Exercise.NewExercise("01", "studentcode", "ex01", []string{"min.rs"}, map[string]int{"unsafe": 0, "return": 0}, 10, ex01Test)
+	return Exercise.NewExercise("01", "ex01", []string{"min.rs"}, map[string]int{"unsafe": 0, "return": 0}, 10, ex01Test)
 }

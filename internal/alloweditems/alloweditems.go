@@ -72,14 +72,14 @@ func Check(exercise Exercise.Exercise, clippyTomlAsString string, lintLevelModif
 		}
 	}
 
-	file, err := os.Create(filepath.Join("studentcode", exercise.TurnInDirectory, ".clippy.toml"))
+	file, err := os.Create(filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory, ".clippy.toml"))
 	if err != nil {
 		return err
 	}
 	if _, err = file.WriteString(clippyTomlAsString); err != nil {
 		return err
 	}
-	workingDirectory := filepath.Join("studentcode", exercise.TurnInDirectory)
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"clippy", "--", "-D", "warnings"}); err != nil {
 		return err
 	}

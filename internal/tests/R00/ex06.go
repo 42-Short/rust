@@ -12,7 +12,7 @@ import (
 )
 
 func ex06Test(exercise *Exercise.Exercise) Exercise.Result {
-	workingDirectory := filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory)
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"run"}, testutils.WithTimeout(5*time.Second))
 	if err != nil && !strings.Contains(err.Error(), "EOF reached") {
 		logger.Exercise.Printf("%v", err)
@@ -22,5 +22,5 @@ func ex06Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex06() Exercise.Exercise {
-	return Exercise.NewExercise("06", "studentcode", "ex06", []string{"src/main.rs", "Cargo.toml"}, nil, 25, ex06Test)
+	return Exercise.NewExercise("06", "ex06", []string{"src/main.rs", "Cargo.toml"}, nil, 25, ex06Test)
 }

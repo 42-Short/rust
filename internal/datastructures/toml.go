@@ -38,7 +38,7 @@ type Toml struct {
 }
 
 func CheckCargoTomlContent(exercise Exercise.Exercise, expectedContent map[string]string) Exercise.Result {
-	tomlPath := filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory, "Cargo.toml")
+	tomlPath := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory, "Cargo.toml")
 	fieldMap, err := ReadToml(tomlPath)
 	if err != nil {
 		logger.Error.Printf("internal error: %s", err)

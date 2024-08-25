@@ -110,7 +110,7 @@ func ex06Test(exercise *Exercise.Exercise) Exercise.Result {
 	if err := alloweditems.Check(*exercise, clippyTomlAsString06, "#![allow(clippy::needless_borrows_for_generic_args)]"); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
-	workingDirectory := filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory)
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 	if err := testutils.AppendStringToFile(tests06, exercise.TurnInFiles[0]); err != nil {
 		logger.Exercise.Printf("could not write to %s: %v", exercise.TurnInFiles[0], err)
 		return Exercise.InternalError(err.Error())
@@ -123,5 +123,5 @@ func ex06Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex06() Exercise.Exercise {
-	return Exercise.NewExercise("06", "studentcode", "ex06", []string{"src/lib.rs", "Cargo.toml", "awesome.c", "build.rs"}, map[string]int{"unsafe": 100}, 20, ex06Test)
+	return Exercise.NewExercise("06", "ex06", []string{"src/lib.rs", "Cargo.toml", "awesome.c", "build.rs"}, map[string]int{"unsafe": 100}, 20, ex06Test)
 }
