@@ -9,7 +9,7 @@ import (
 )
 
 func ex05Test(exercise *Exercise.Exercise) Exercise.Result {
-	workingDirectory := filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory)
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test"})
 	if err != nil {
 		logger.Exercise.Printf("%v", err)
@@ -19,5 +19,5 @@ func ex05Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex05() Exercise.Exercise {
-	return Exercise.NewExercise("05", "studentcode", "ex05", []string{"src/main.rs", "Cargo.toml"}, nil, 25, ex05Test)
+	return Exercise.NewExercise("05", "ex05", []string{"src/main.rs", "Cargo.toml"}, nil, 25, ex05Test)
 }

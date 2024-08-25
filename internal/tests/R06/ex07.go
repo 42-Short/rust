@@ -15,7 +15,7 @@ func ex07Test(exercise *Exercise.Exercise) Exercise.Result {
 		"#![no_std]":  true,
 		"#![no_main]": true,
 	}
-	if err := attributes.Check(filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory, "ft_putchar.rs"), requiredAttributes, map[string]bool{}); err != nil {
+	if err := attributes.Check(filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory, "ft_putchar.rs"), requiredAttributes, map[string]bool{}); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
 	if output, err := testutils.RunCommandLine(filepath.Dir(exercise.TurnInFiles[0]), "rustc", []string{"-C", "panic=abort", "-C", "link-args=-nostartfiles", "-o", "ft_putchar", "ft_putchar.rs"}); err != nil {
@@ -38,5 +38,5 @@ func ex07Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex07() Exercise.Exercise {
-	return Exercise.NewExercise("07", "studentcode", "ex07", []string{"ft_putchar.rs"}, map[string]int{"unsafe": 100}, 10, ex07Test)
+	return Exercise.NewExercise("07", "ex07", []string{"ft_putchar.rs"}, map[string]int{"unsafe": 100}, 10, ex07Test)
 }

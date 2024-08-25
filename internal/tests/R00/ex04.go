@@ -15,7 +15,7 @@ import (
 // }
 
 func testNmReleaseMode(exercise Exercise.Exercise) Exercise.Result {
-	workingDirectory := filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory)
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 	_, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"build", "--release"})
 	if err != nil {
 		return Exercise.Result{Passed: false, Output: fmt.Sprintf("compilation error: %v", err)}
@@ -31,7 +31,7 @@ func testNmReleaseMode(exercise Exercise.Exercise) Exercise.Result {
 }
 
 func testCargoRunBinOtherReleaseMode(exercise Exercise.Exercise) Exercise.Result {
-	workingDirectory := filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory)
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"run", "--release", "--bin", "other"})
 	if err != nil {
 		return Exercise.Result{Passed: false, Output: fmt.Sprintf("runtime error: cargo run: %s", err)}
@@ -43,7 +43,7 @@ func testCargoRunBinOtherReleaseMode(exercise Exercise.Exercise) Exercise.Result
 }
 
 func testCargoRunBinOther(exercise Exercise.Exercise) Exercise.Result {
-	workingDirectory := filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory)
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"run", "--bin", "other"})
 	if err != nil {
 		return Exercise.Result{Passed: false, Output: fmt.Sprintf("runtime error: %v", err)}
@@ -55,7 +55,7 @@ func testCargoRunBinOther(exercise Exercise.Exercise) Exercise.Result {
 }
 
 func testCargoRun(exercise Exercise.Exercise) Exercise.Result {
-	workingDirectory := filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory)
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"run"})
 	if err != nil {
 		return Exercise.Result{Passed: false, Output: fmt.Sprintf("runtime error: %v", err)}
@@ -80,5 +80,5 @@ func ex04Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex04() Exercise.Exercise {
-	return Exercise.NewExercise("04", "studentcode", "ex04", []string{"src/main.rs", "src/overflow.rs", "src/other.rs", "Cargo.toml"}, nil, 25, ex04Test)
+	return Exercise.NewExercise("04", "ex04", []string{"src/main.rs", "src/overflow.rs", "src/other.rs", "Cargo.toml"}, nil, 25, ex04Test)
 }

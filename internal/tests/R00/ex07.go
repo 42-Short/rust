@@ -57,7 +57,7 @@ mod test {
 `
 
 func ex07Test(exercise *Exercise.Exercise) Exercise.Result {
-	workingDirectory := filepath.Join(exercise.RepoDirectory, exercise.TurnInDirectory)
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 
 	if err := testutils.AppendStringToFile(TestMod, exercise.TurnInFiles[1]); err != nil {
 		logger.Exercise.Printf("internal error: %v", err)
@@ -72,5 +72,5 @@ func ex07Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex07() Exercise.Exercise {
-	return Exercise.NewExercise("07", "studentcode", "ex07", []string{"src/main.rs", "src/lib.rs", "Cargo.toml"}, nil, 25, ex07Test)
+	return Exercise.NewExercise("07", "ex07", []string{"src/main.rs", "src/lib.rs", "Cargo.toml"}, nil, 25, ex07Test)
 }
