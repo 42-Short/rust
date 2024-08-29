@@ -72,7 +72,7 @@ disallowed-methods = ["std::mem::replace", "std::mem::take", "std::mem::swap", "
 `
 
 func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
-	if err := alloweditems.Check(*exercise, clippyTomlAsString00); err != nil {
+	if err := alloweditems.Check(*exercise, clippyTomlAsString00, nil); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)

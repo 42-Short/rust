@@ -107,7 +107,7 @@ disallowed-methods = ["std::ptr::copy", "std::ptr::write", "std::ptr::replace", 
 `
 
 func ex06Test(exercise *Exercise.Exercise) Exercise.Result {
-	if err := alloweditems.Check(*exercise, clippyTomlAsString06, "#![allow(clippy::needless_borrows_for_generic_args)]"); err != nil {
+	if err := alloweditems.Check(*exercise, clippyTomlAsString06, nil, "#![allow(clippy::needless_borrows_for_generic_args)]"); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)

@@ -130,7 +130,7 @@ func getRustFiles(exercise Exercise.Exercise) []string {
 //
 //   - clippyTomlAsString: string representation of the `.clippy.toml` file which should dictate the lint rules
 //
-//   - allowedKeywords: key value pairs -> keyword: allowed amount
+//   - allowedKeywords: key value pairs -> keyword: allowed amount, nil for none
 //
 //   - lintLevelModifications (optional): arbitrary amount of lint modifications (#![allow(clippy::doc_lazy_continuation)] and #![allow(dead_code)] are added by default)
 //

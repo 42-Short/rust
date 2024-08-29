@@ -142,7 +142,7 @@ disallowed-methods = ["std::mem::transmute_copy", "std::ptr::read", "std::ptr::r
 `
 
 func ex01Test(exercise *Exercise.Exercise) Exercise.Result {
-	if err := alloweditems.Check(*exercise, clippyTomlAsString01); err != nil {
+	if err := alloweditems.Check(*exercise, clippyTomlAsString01, nil); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)

@@ -123,7 +123,7 @@ disallowed-methods = ["std::ptr::null", "std::ptr::null_mut", "std::mem::transmu
 `
 
 func ex03Test(exercise *Exercise.Exercise) Exercise.Result {
-	if err := alloweditems.Check(*exercise, clippyTomlAsString03); err != nil {
+	if err := alloweditems.Check(*exercise, clippyTomlAsString03, nil); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)

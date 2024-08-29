@@ -239,7 +239,7 @@ disallowed-methods = ["std::slice::from_raw_parts", "std::slice::from_raw_parts_
 `
 
 func ex05Test(exercise *Exercise.Exercise) Exercise.Result {
-	if err := alloweditems.Check(*exercise, clippyTomlAsString05); err != nil {
+	if err := alloweditems.Check(*exercise, clippyTomlAsString05, nil); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
