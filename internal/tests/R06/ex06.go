@@ -123,5 +123,5 @@ func ex06Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex06() Exercise.Exercise {
-	return Exercise.NewExercise("06", "ex06", []string{"src/lib.rs", "Cargo.toml", "awesome.c", "build.rs"}, map[string]int{"unsafe": 100}, 20, ex06Test)
+	return Exercise.NewExercise("06", "ex06", []string{"src/lib.rs", "Cargo.toml", "awesome.c", "build.rs"}, 20, ex06Test)
 }

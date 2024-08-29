@@ -22,5 +22,5 @@ func ex06Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex06() Exercise.Exercise {
-	return Exercise.NewExercise("06", "ex06", []string{"src/main.rs", "Cargo.toml"}, nil, 25, ex06Test)
+	return Exercise.NewExercise("06", "ex06", []string{"src/main.rs", "Cargo.toml"}, 25, ex06Test)
 }

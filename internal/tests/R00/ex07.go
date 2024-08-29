@@ -72,5 +72,5 @@ func ex07Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex07() Exercise.Exercise {
-	return Exercise.NewExercise("07", "ex07", []string{"src/main.rs", "src/lib.rs", "Cargo.toml"}, nil, 25, ex07Test)
+	return Exercise.NewExercise("07", "ex07", []string{"src/main.rs", "src/lib.rs", "Cargo.toml"}, 25, ex07Test)
 }
