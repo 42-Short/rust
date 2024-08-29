@@ -1,8 +1,10 @@
 package alloweditems
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"slices"
 	"strings"
 
@@ -34,44 +36,69 @@ func prependLintLevel(filePath string, lintLevelModifications []string) (err err
 	return nil
 }
 
-// Checks for forbidden methods/macros using `cargo clippy`.
-// Args:
-// exercise: `Exercise.Exercise` structure containing the exercise metadata
-//
-// clippyTomlAsString: string representation of the `.clippy.toml file which should dictate the lint rules`
-//
-// lintLevelModifications (optional): arbitrary amount of lint modifications (#![allow(clippy::doc_lazy_continuation)] and #![allow(dead_code)] are added by default)
-//
-// Example Usage:
-//   - I want to ban `std::ptr::read` and `std::println`
-//
-// To achieve this, I can call call this function like follows:
-//
-//	var clippyTomlAsString := `
-//	disallowed-macros = ["std::println"]
-//	disallowed-methods = ["std::ptr::read"]
-//	`
-//	lintLevelModifications := []string{"#[allow(clippy::doc_lazy_continuation)]"}
-//	if err := allowedItems.Check(exercise, clippyTomlAsString, lintLevelModifications); err != nil {
-//		// err != nil -> linting failed, meaning the submission did not pass your static analysis.
-//		// err.Error() will contain all necessary information for your trace, such as which line posed an issue,
-//		// which disallowed item(s) was/were found, (...), you can simply handle this as follows:
-//		return Exercise.CompilationError(err.Error())
-//	}
-//
-// See https://rust-lang.github.io/rust-clippy/master/index.html for details.
-func Check(exercise Exercise.Exercise, clippyTomlAsString string, lintLevelModifications ...string) (err error) {
-	for _, filePath := range exercise.TurnInFiles {
-		if strings.Contains(filePath, ".rs") {
-			if err = prependLintLevel(filePath, []string{"#![allow(clippy::doc_lazy_continuation)]", "#![allow(dead_code)]", "#![allow(clippy::duplicated_attributes)]"}); err != nil {
-				return err
-			}
-			if err = prependLintLevel(filePath, lintLevelModifications); err != nil {
-				return err
-			}
+func concatenateFilesIntoString(files []string) (fileContents string, err error) {
+	res := ""
+	for _, file := range files {
+		content, err := os.ReadFile(file)
+		if err != nil {
+			return "", err
+		}
+		res += string(content)
+	}
+	return res, nil
+}
+
+func getRegexResults(keywordsSlice []string, cleanFileBytes []byte, allowedKeywords map[string]int) (err error) {
+	keywordExpr, err := regexp.Compile(`\b(` + strings.Join(keywordsSlice, "|") + `)\b`)
+	if err != nil {
+		return err
+	}
+	if foundKeyWords := keywordExpr.FindAll(cleanFileBytes, -1); foundKeyWords != nil {
+		for _, keyword := range foundKeyWords {
+			allowedKeywords[string(keyword)] -= 1
 		}
 	}
+	badKeywords := []string{}
+	for keyword, amount := range allowedKeywords {
+		if amount < 0 {
+			badKeywords = append(badKeywords, fmt.Sprintf("%s: %d", keyword, amount*-1))
+		}
+	}
+	if len(badKeywords) != 0 {
+		return fmt.Errorf("forbidden/limited keywords found (keyword: amount): %s", strings.Join(badKeywords, ", "))
+	}
+	return nil
+}
 
+// Pattern Explanation:
+//
+//	`//.*?$`: Matches single-line comments starting with `//`.
+//	`///.*?$`: Matches documentation comments starting with `///`.
+//	`/\*.*?\*/`: Matches multi-line comments, including nested ones.
+//	`"(?:\\.|[^"\\])*"`: Matches single-line string literals enclosed in double quotes, allowing escaped characters.
+//	`r#*"(.|\n)*?"#*`: Matches raw string literals, accounting for varying numbers of `#` characters.
+//	`(?m)`: Multi-line mode to match single-line comments across lines.
+//	`(?s)`: Dot-all mode to match multi-line comments and raw strings spanning multiple lines.
+var ignorePatterns = `(?m)(?s)//.*?$|///.*?$|/\*.*?\*/|"(?:\\.|[^"\\])*"|r#*"(?:.|\n)*?"#*`
+
+func allowedKeywordsCheck(filesToCheck []string, allowedKeywords map[string]int) (err error) {
+	keywordsSlice := []string{}
+	for keyword := range allowedKeywords {
+		keywordsSlice = append(keywordsSlice, keyword)
+	}
+
+	filesAsString, err := concatenateFilesIntoString(filesToCheck)
+	if err != nil {
+		return err
+	}
+
+	ignoreExpr, _ := regexp.Compile(ignorePatterns)
+	cleanFileBytes := ignoreExpr.ReplaceAll([]byte(filesAsString), []byte(""))
+
+	return getRegexResults(keywordsSlice, cleanFileBytes, allowedKeywords)
+}
+
+func allowedItemsCheck(clippyTomlAsString string, exercise Exercise.Exercise) (err error) {
 	file, err := os.Create(filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory, ".clippy.toml"))
 	if err != nil {
 		return err
@@ -82,6 +109,69 @@ func Check(exercise Exercise.Exercise, clippyTomlAsString string, lintLevelModif
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"clippy", "--", "-D", "warnings"}); err != nil {
 		return err
+	}
+	return nil
+}
+
+func getRustFiles(exercise Exercise.Exercise) []string {
+	files := []string{}
+	for _, file := range exercise.TurnInFiles {
+		if strings.HasSuffix(file, ".rs") {
+			files = append(files, file)
+		}
+	}
+	return files
+}
+
+// Checks for forbidden methods/macros using `cargo clippy` and for keywords using regex.
+// Args:
+//
+//   - exercise: `Exercise.Exercise` structure containing the exercise metadata
+//
+//   - clippyTomlAsString: string representation of the `.clippy.toml` file which should dictate the lint rules
+//
+//   - allowedKeywords: key value pairs -> keyword: allowed amount
+//
+//   - lintLevelModifications (optional): arbitrary amount of lint modifications (#![allow(clippy::doc_lazy_continuation)] and #![allow(dead_code)] are added by default)
+//
+// Example Usage:
+//   - I want to ban `std::ptr::read` and `std::println`
+//   - I also want to allow the `match` keyword maximum once
+//
+// To achieve this, I can call call this function like follows:
+//
+//	clippyTomlAsString := `
+//	disallowed-macros = ["std::println"]
+//	disallowed-methods = ["std::ptr::read"]
+//	`
+//	lintLevelModifications := []string{"#[allow(clippy::doc_lazy_continuation)]"}
+//	allowedKeywords := map[string]int{"match": 1}
+//	if err := allowedItems.Check(exercise, clippyTomlAsString, allowedKeywords, lintLevelModifications); err != nil {
+//		// err != nil -> linting failed, meaning the submission did not pass your static analysis.
+//		// err.Error() will contain all necessary information for your trace, such as which line posed an issue,
+//		// which disallowed item/keyword(s) was/were found, (...), you can simply handle this as follows:
+//		return Exercise.CompilationError(err.Error())
+//	}
+//
+// See https://rust-lang.github.io/rust-clippy/master/index.html for details.
+func Check(exercise Exercise.Exercise, clippyTomlAsString string, allowedKeywords map[string]int, lintLevelModifications ...string) (err error) {
+	lintLevelModifications = append(lintLevelModifications, "#![allow(clippy::doc_lazy_continuation)]", "#![allow(dead_code)]", "#![allow(clippy::duplicated_attributes)]")
+	filesToCheck := getRustFiles(exercise)
+
+	for _, file := range filesToCheck {
+		if err = prependLintLevel(file, lintLevelModifications); err != nil {
+			return err
+		}
+	}
+
+	if err = allowedItemsCheck(clippyTomlAsString, exercise); err != nil {
+		return err
+	}
+
+	if allowedKeywords != nil {
+		if err = allowedKeywordsCheck(filesToCheck, allowedKeywords); err != nil {
+			return err
+		}
 	}
 	return nil
 }
