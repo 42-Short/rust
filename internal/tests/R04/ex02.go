@@ -1,7 +1,6 @@
 package R04
 
 import (
-	"fmt"
 	"os/exec"
 	"path/filepath"
 	"rust-piscine/internal/alloweditems"
@@ -20,19 +19,23 @@ func ex02Test(exercise *Exercise.Exercise) Exercise.Result {
 	var wg sync.WaitGroup
 	wg.Add(1)
 
+	type output struct {
+		out []byte
+		err error
+	}
+	ch := make(chan output)
 	go func() {
 		defer wg.Done()
 		cmd := exec.Command("cargo", "run", "..")
 		cmd.Dir = workingDirectory
 		out, err := cmd.CombinedOutput()
-		if err != nil {
-			fmt.Printf("Error: %s\n", err)
-		}
-		fmt.Printf("output: %s", string(out))
+		ch <- output{out, err}
 	}()
-
+	x := <-ch
 	wg.Wait()
-	fmt.Println("Command execution completed.")
+	if x.err != nil {
+		return Exercise.RuntimeError(x.err.Error())
+	}
 	return Exercise.Passed("OK")
 }
 
