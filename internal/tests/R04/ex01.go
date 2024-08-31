@@ -1,8 +1,10 @@
 package R04
 
 import (
+	"fmt"
 	"path/filepath"
 	"rust-piscine/internal/alloweditems"
+	"strings"
 
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
 	"github.com/42-Short/shortinette/pkg/testutils"
@@ -10,27 +12,49 @@ import (
 
 var clippyTomlAsString01 = `
 disallowed-macros = ["std::println"]
+disallowed-methods = ["std::io::copy", "std::fs::write"]
 `
 
-// cargo run > output.log 2>&1
-// grep -i "panicked" output.log
+func testRedirectionBadPermissionTargetFile(workingDirectory string) Exercise.Result {
+	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "chmod -R 777 target && touch foo.txt && chmod 000 foo.txt"}); err != nil {
+		return Exercise.InternalError(err.Error())
+	}
+	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "su -c 'echo donotpanic | cargo run -- foo.txt' student"}); err != nil {
+		if strings.Contains(err.Error(), "panicked") {
+			return Exercise.RuntimeError(fmt.Sprintf("i said don't panic :/\n%s", err.Error()), "touch foo.txt", "chmod 000 foo.txt", "echo donotpanic | cargo run -- foo.txt")
+		}
+	}
+	return Exercise.Passed("OK")
+}
 
-// func testMissingPermissions(exercise Exercise.Exercise, workingDirectory string) Exercise.Result {
-// 	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "mkdir ./foo && chmod 000 ./foo"}); err != nil {
-// 		return Exercise.InternalError(err.Error())
-// 	}
-// 	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "cargo run -- ./foo/hello < a"}); err != nil {
-// 		//
-// 	}
-// 	return Exercise.Passed("OK")
-// }
+func testRedirectionBadPermissionTargetDir(workingDirectory string) Exercise.Result {
+	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "chmod -R 777 target && mkdir foo && chmod 000 foo"}); err != nil {
+		return Exercise.InternalError(err.Error())
+	}
+	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "su -c 'echo donotpanic | cargo run -- foo/foo.txt' student"}); err != nil {
+		if strings.Contains(err.Error(), "panicked") {
+			return Exercise.RuntimeError(fmt.Sprintf("i said don't panic :/\n%s", err.Error()), "mkdir foo", "chmod 000 foo", "echo donotpanic | cargo run -- foo/foo.txt")
+		}
+	}
+	return Exercise.Passed("OK")
+}
+
+func testRedirectionMultipleFile(workingDirectory string) Exercise.Result {
+	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "echo 'Hello, World!' | cargo run -- a b c"}); err != nil {
+		return Exercise.RuntimeError(err.Error())
+	}
+	if output, _ := testutils.RunCommandLine(workingDirectory, "cat", []string{"a", "b", "c"}); output != "Hello, World!\nHello, World!\nHello, World!\n" {
+		return Exercise.AssertionError("Hello, World!\nHello, World!\nHello, World!\n", output, "echo 'Hello, World!' | cargo run -- a b c", "cat a b c")
+	}
+	return Exercise.Passed("OK")
+}
 
 func testRedirectionOneFile(workingDirectory string) Exercise.Result {
 	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "echo 'Hello, World!' | cargo run -- a"}); err != nil {
 		return Exercise.RuntimeError(err.Error())
 	}
 	if output, _ := testutils.RunCommandLine(workingDirectory, "cat", []string{"a"}); output != "Hello, World!\n" {
-		return Exercise.AssertionError("Hello, World!\n", output)
+		return Exercise.AssertionError("Hello, World!\n", output, "echo 'Hello, World!' | cargo run -- a", "cat a")
 	}
 	return Exercise.Passed("OK")
 }
@@ -56,6 +80,15 @@ func ex01Test(exercise *Exercise.Exercise) (result Exercise.Result) {
 		return result
 	}
 	if result = testRedirectionOneFile(workingDirectory); !result.Passed {
+		return result
+	}
+	if result = testRedirectionMultipleFile(workingDirectory); !result.Passed {
+		return result
+	}
+	if result = testRedirectionBadPermissionTargetDir(workingDirectory); !result.Passed {
+		return result
+	}
+	if result = testRedirectionBadPermissionTargetFile(workingDirectory); !result.Passed {
 		return result
 	}
 	return Exercise.Passed("OK")
