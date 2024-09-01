@@ -1,6 +1,7 @@
 package R04
 
 import (
+	"fmt"
 	"strings"
 
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
@@ -17,8 +18,8 @@ type outputChannel struct {
 func testNoInput(workingDirectory string) Exercise.Result {
 	commandLine := "cargo run"
 	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", commandLine}); err != nil {
-		if strings.Contains(err.Error(), "panicked") {
-			return Exercise.RuntimeError(err.Error(), commandLine)
+		if strings.Contains(err.Error(), "thread 'main' panicked") {
+			return Exercise.RuntimeError(fmt.Sprintf("i said don't panic :(\n%s", err.Error()), commandLine)
 		}
 	}
 	return Exercise.Passed("OK")

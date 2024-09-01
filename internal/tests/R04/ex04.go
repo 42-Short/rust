@@ -45,7 +45,6 @@ func testMoreCommands(workingDirectory string) Exercise.Result {
 	for _, line := range outputSlice {
 		delete(missingOutputs, line)
 	}
-	fmt.Println(missingOutputs)
 	if len(missingOutputs) > 0 {
 		return Exercise.AssertionError(fmt.Sprintf("*\nHello\n*\n%s\ntest\n*\n", pwd), strings.Join(outputSlice, "\n"), strings.Join(commandLine, " "))
 	}
@@ -104,8 +103,8 @@ func testInvalidCommand(workingDirectory string) Exercise.Result {
 	wg.Wait()
 
 	if out.err != nil {
-		if strings.Contains(string(out.out), "panicked") {
-			return Exercise.RuntimeError(out.err.Error(), strings.Join(commandLine, " "))
+		if strings.Contains(string(out.out), "thread 'main' panicked") {
+			return Exercise.RuntimeError(fmt.Sprintf("i said don't panic :(\n%s", out.err.Error()), strings.Join(commandLine, " "))
 		}
 	}
 
