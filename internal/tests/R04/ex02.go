@@ -80,11 +80,6 @@ total 980K
 ---------x 1 root root 977K Sep  1 08:12 69.txt
 `
 
-type outputChannel struct {
-	out []byte
-	err error
-}
-
 func removeANSICodes(input string) string {
 	re := regexp.MustCompile(`\x1b\[[0-9;]*[a-zA-Z]`)
 
@@ -229,6 +224,7 @@ func testDoNotPanic(workingDirectory string) Exercise.Result {
 }
 
 // Assumptions behind the hardcoded output indices and lengths in the tests:
+//
 // - When running `cargo run` for the first time, the output is preceded by 3 lines from the compiler:
 //
 //	Compiling ex02 v0.1.0 (/root/side/Short/rust-subjects/answers/module-04/ex02)

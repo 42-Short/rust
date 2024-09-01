@@ -8,6 +8,12 @@ import (
 	"github.com/42-Short/shortinette/pkg/testutils"
 )
 
+type outputChannel struct {
+	out []byte
+	err error
+}
+
+// Runs `cargo run` with no arguments and checks for panic.
 func testNoInput(workingDirectory string) Exercise.Result {
 	commandLine := "cargo run"
 	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", commandLine}); err != nil {
