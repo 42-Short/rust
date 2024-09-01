@@ -1,9 +1,33 @@
 package R04
 
 import (
+	"strings"
+
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
 	Module "github.com/42-Short/shortinette/pkg/interfaces/module"
+	"github.com/42-Short/shortinette/pkg/testutils"
 )
+
+func testNoInput(workingDirectory string) Exercise.Result {
+	commandLine := "cargo run"
+	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", commandLine}); err != nil {
+		if strings.Contains(err.Error(), "panicked") {
+			return Exercise.RuntimeError(err.Error(), commandLine)
+		}
+	}
+	return Exercise.Passed("OK")
+}
+
+func doTest(workingDirectory string, expectedOutput string, commandLine string) Exercise.Result {
+	output, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", commandLine})
+	if err != nil {
+		return Exercise.RuntimeError(err.Error(), commandLine)
+	}
+	if output != expectedOutput {
+		return Exercise.AssertionError(expectedOutput, output, commandLine)
+	}
+	return Exercise.Passed("OK")
+}
 
 func R04() *Module.Module {
 	exercises := map[string]Exercise.Exercise{

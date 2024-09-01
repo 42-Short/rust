@@ -69,6 +69,9 @@ func ex03Test(exercise *Exercise.Exercise) (result Exercise.Result) {
 
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 
+	if result = testNoInput(workingDirectory); !result.Passed {
+		return result
+	}
 	if result = testInputFileBadPermissions(workingDirectory); !result.Passed {
 		return result
 	}
@@ -82,17 +85,6 @@ func ex03Test(exercise *Exercise.Exercise) (result Exercise.Result) {
 		return result
 	}
 
-	return Exercise.Passed("OK")
-}
-
-func doTest(workingDirectory string, expectedOutput string, commandLine string) Exercise.Result {
-	output, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", commandLine})
-	if err != nil {
-		return Exercise.RuntimeError(err.Error(), commandLine)
-	}
-	if output != expectedOutput {
-		return Exercise.AssertionError(expectedOutput, output, commandLine)
-	}
 	return Exercise.Passed("OK")
 }
 
