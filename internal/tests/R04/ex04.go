@@ -87,6 +87,31 @@ func testTwoCommands(workingDirectory string) Exercise.Result {
 	return Exercise.Passed("OK")
 }
 
+func testInvalidCommand(workingDirectory string) Exercise.Result {
+	commandLine := []string{"cargo", "run", "--", "invalidcmd"}
+
+	var wg sync.WaitGroup
+	wg.Add(1)
+	ch := make(chan outputChannel)
+	go func() {
+		defer wg.Done()
+		cmd := exec.Command(commandLine[0], commandLine[1:]...)
+		cmd.Dir = workingDirectory
+		out, err := cmd.CombinedOutput()
+		ch <- outputChannel{out, err}
+	}()
+	out := <-ch
+	wg.Wait()
+
+	if out.err != nil {
+		if strings.Contains(string(out.out), "panicked") {
+			return Exercise.RuntimeError(out.err.Error(), strings.Join(commandLine, " "))
+		}
+	}
+
+	return Exercise.Passed("OK")
+}
+
 func ex04Test(exercise *Exercise.Exercise) (result Exercise.Result) {
 	if err := alloweditems.Check(*exercise, clippyTomlAsString04, nil); err != nil {
 		return Exercise.CompilationError(err.Error())
@@ -101,6 +126,9 @@ func ex04Test(exercise *Exercise.Exercise) (result Exercise.Result) {
 		return result
 	}
 	if result = testMoreCommands(workingDirectory); !result.Passed {
+		return result
+	}
+	if result = testInvalidCommand(workingDirectory); !result.Passed {
 		return result
 	}
 
