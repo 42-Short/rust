@@ -7,6 +7,7 @@ import (
 	"regexp"
 	"slices"
 	"strings"
+	"unicode"
 
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
 	"github.com/42-Short/shortinette/pkg/testutils"
@@ -48,10 +49,21 @@ func concatenateFilesIntoString(files []string) (fileContents string, err error)
 	return res, nil
 }
 
+func wordBoundaryCheck(character byte) bool {
+	return unicode.IsLetter(rune(character)) || unicode.IsDigit(rune(character)) || character == '_'
+}
+
 func getRegexResults(keywordsSlice []string, cleanFileBytes []byte, allowedKeywords map[string]int) (err error) {
 	escapedKeywords := make([]string, len(keywordsSlice))
 	for idx, keyword := range keywordsSlice {
 		escapedKeywords[idx] = regexp.QuoteMeta(keyword)
+		if wordBoundaryCheck(escapedKeywords[idx][0]) {
+			escapedKeywords[idx] = `\b` + escapedKeywords[idx]
+		}
+		length := len(escapedKeywords[idx])
+		if wordBoundaryCheck(escapedKeywords[idx][length-1]) {
+			escapedKeywords[idx] = escapedKeywords[idx] + `\b`
+		}
 	}
 
 	keywordExpr, err := regexp.Compile(`(` + strings.Join(escapedKeywords, "|") + `)`)
