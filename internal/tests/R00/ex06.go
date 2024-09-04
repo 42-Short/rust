@@ -80,7 +80,7 @@ func guessingGameTest(exercise *Exercise.Exercise) (Exercise.Result, int64) {
 }
 
 func ex06Test(exercise *Exercise.Exercise) Exercise.Result {
-	if err := alloweditems.Check(*exercise, "", map[string]int{"unsafe": 0}); err != nil {
+	if err := alloweditems.Check(*exercise, "", map[string]int{"unsafe": 0, "<": 0, ">": 0, "<=": 0, ">=": 0, "==": 0}); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
 	result, number := guessingGameTest(exercise)
