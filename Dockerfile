@@ -1,6 +1,7 @@
 FROM debian:latest
 
-RUN apt-get update && apt-get install -y curl build-essential sudo
+# All dependencies required to build the Rust modules
+RUN apt-get update && apt-get install -y curl build-essential sudo m4
 
 # Install Go
 RUN curl -OL https://go.dev/dl/go1.22.5.linux-amd64.tar.gz && \
