@@ -13,10 +13,20 @@ ENV PATH="/usr/local/go/bin:${PATH}"
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 
+# Ensure required Rust libraries are cached
+WORKDIR /app
+RUN cargo new dummy_project
+WORKDIR /app/dummy_project
+RUN echo 'rand = "*"' >> Cargo.toml
+RUN echo 'rug = "*"' >> Cargo.toml
+RUN cargo build --release
+RUN rm -rf /app/dummy_project
+WORKDIR /app
+
 # Add 'student' user for testing without permissions
 RUN useradd -m student
 RUN chmod 777 /root
-USER student 
+USER student
 RUN rustup default stable
 USER root
 
@@ -25,8 +35,6 @@ RUN echo 'export PATH=$PATH:/root/.cargo/bin' >> /etc/profile.d/rust_path.sh
 # Install 'cargo-valgrind' for testing leaks
 RUN apt-get install -y valgrind
 RUN /root/.cargo/bin/cargo install cargo-valgrind
-
-WORKDIR /app
 
 COPY ./internal /app/internal
 COPY ./go.mod /app/go.mod
