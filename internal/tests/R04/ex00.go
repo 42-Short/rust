@@ -9,7 +9,7 @@ import (
 )
 
 var clippyTomlAsString00 = `
-disallowed-macros = ["std::println"]
+disallowed-macros = ["std::println", "std::print"]
 `
 
 func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
