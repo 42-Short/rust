@@ -11,8 +11,7 @@ import (
 )
 
 var clippyTomlAsString01 = `
-disallowed-macros = ["std::println"]
-disallowed-methods = ["std::io::copy", "std::fs::write"]
+disallowed-methods = ["std::io::copy", "std::fs::write", "core::option::Option::unwrap_or_else", "core::result::Result::unwrap_or_else"]
 `
 
 func testRedirectionBadPermissionTargetFile(workingDirectory string) Exercise.Result {
