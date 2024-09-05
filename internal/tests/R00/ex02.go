@@ -96,8 +96,8 @@ func doCollatz(n int) string {
 	return strings.Join(results, "\n") + "\n"
 }
 
-func collatzAssertionTest(filename string) Exercise.Result {
-	main := fmt.Sprintf(CollatzMain, "42")
+func collatzAssertionTest(filename string, number int) Exercise.Result {
+	main := fmt.Sprintf(CollatzMain, fmt.Sprintf("%du32", number))
 	if err := testutils.AppendStringToFile(main, filename); err != nil {
 		logger.Exercise.Printf("internal error: %v", err)
 		return Exercise.InternalError(err.Error())
@@ -110,7 +110,7 @@ func collatzAssertionTest(filename string) Exercise.Result {
 	if err != nil {
 		return Exercise.RuntimeError(err.Error())
 	}
-	expectedOutput := doCollatz(42)
+	expectedOutput := doCollatz(number)
 
 	if output != expectedOutput {
 		return Exercise.AssertionError(expectedOutput, output)
@@ -126,8 +126,11 @@ func collatz(filename string) Exercise.Result {
 	if result := collatzInfiniteLoopTest(filename); !result.Passed {
 		return result
 	}
-	if result := collatzAssertionTest(filename); !result.Passed {
-		return result
+	testNumbers := []int{42, 1, 524287}
+	for _, number := range testNumbers {
+		if result := collatzAssertionTest(filename, number); !result.Passed {
+			return result
+		}
 	}
 	return Exercise.Passed("OK")
 }
@@ -141,27 +144,30 @@ func doPrintBytes(s string) string {
 }
 
 func printBytesAssertionTest(filename string) Exercise.Result {
-	main := fmt.Sprintf(PrintBytesMain, "Hello, World!")
-	if err := testutils.AppendStringToFile(main, filename); err != nil {
-		logger.Exercise.Printf("internal error: %v", err)
-		return Exercise.InternalError(err.Error())
-	}
-	if err := testutils.CompileWithRustc(filename); err != nil {
-		return Exercise.CompilationError(err.Error())
-	}
-	executablePath := testutils.ExecutablePath(filename, ".rs")
-	output, err := testutils.RunExecutable(executablePath, testutils.WithTimeout(500*time.Millisecond))
-	if err != nil {
-		return Exercise.RuntimeError(err.Error())
-	}
-	expectedOutput := doPrintBytes("Hello, World!")
+	testStrings := []string{"Hello, World", "", "Rust is awesome! 🦀"}
+	for _, testString := range testStrings {
+		main := fmt.Sprintf(PrintBytesMain, testString)
+		if err := testutils.AppendStringToFile(main, filename); err != nil {
+			logger.Exercise.Printf("internal error: %v", err)
+			return Exercise.InternalError(err.Error())
+		}
+		if err := testutils.CompileWithRustc(filename); err != nil {
+			return Exercise.CompilationError(err.Error())
+		}
+		executablePath := testutils.ExecutablePath(filename, ".rs")
+		output, err := testutils.RunExecutable(executablePath, testutils.WithTimeout(500*time.Millisecond))
+		if err != nil {
+			return Exercise.RuntimeError(err.Error())
+		}
+		expectedOutput := doPrintBytes(testString)
 
-	if output != expectedOutput {
-		return Exercise.AssertionError(expectedOutput, output)
-	}
-	if err := testutils.DeleteStringFromFile(main, filename); err != nil {
-		logger.Exercise.Printf("internal error: %v", err)
-		return Exercise.InternalError(err.Error())
+		if output != expectedOutput {
+			return Exercise.AssertionError(expectedOutput, output)
+		}
+		if err := testutils.DeleteStringFromFile(main, filename); err != nil {
+			logger.Exercise.Printf("internal error: %v", err)
+			return Exercise.InternalError(err.Error())
+		}
 	}
 	return Exercise.Passed("OK")
 }
