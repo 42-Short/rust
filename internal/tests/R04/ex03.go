@@ -11,7 +11,10 @@ import (
 	"github.com/42-Short/shortinette/pkg/testutils"
 )
 
-var clippyTomlAsString03 = ``
+var clippyTomlAsString03 = `
+disallowed-methods = ["std::process::Command::exec"]
+disallowed-types = ["std::process::Command"]
+`
 
 func testInputFileBadPermissions(workingDirectory string) Exercise.Result {
 	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "chmod -R 777 target && touch donotpanic && chmod 000 donotpanic"}); err != nil {
