@@ -107,9 +107,9 @@ func monthTestExistenceTest(content string) Exercise.Result {
 				invalidFound = true
 			} else {
 				if year%4 != 0 || (year%100 == 0 && year%400 != 0) {
-					leapYearsFound[month] = true
-				} else {
 					commonYearsFound[month] = true
+				} else {
+					leapYearsFound[month] = true
 				}
 			}
 		}
