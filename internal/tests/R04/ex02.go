@@ -15,7 +15,9 @@ import (
 	"github.com/42-Short/shortinette/pkg/testutils"
 )
 
-var clippyTomlAsString02 = ``
+var clippyTomlAsString02 = `
+disallowed-methods = ["std::env::args::nth"]
+`
 
 var lslhROutputRecursiveDepth1 = `
 ls -lhR bar
