@@ -6,9 +6,11 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"rust-piscine/internal/alloweditems"
 	"strings"
 
 	"github.com/42-Short/shortinette/pkg/logger"
+	"github.com/42-Short/shortinette/pkg/testutils"
 
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
 )
@@ -44,9 +46,31 @@ func runExecutable(executablePath string) (string, error) {
 	return stdout.String(), nil
 }
 
+func clippyCheck00(exercise *Exercise.Exercise) Exercise.Result {
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
+	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"init"}); err != nil {
+		return Exercise.InternalError("cargo init failed")
+	}
+	if _, err := testutils.RunCommandLine(workingDirectory, "cp", []string{"hello.rs", "src/main.rs"}); err != nil {
+		return Exercise.InternalError("unable to copy file to src/ folder")
+	}
+	tmp := Exercise.Exercise{
+		CloneDirectory:  exercise.CloneDirectory,
+		TurnInDirectory: exercise.TurnInDirectory,
+		TurnInFiles:     []string{filepath.Join(workingDirectory, "src/main.rs")},
+	}
+	if err := alloweditems.Check(tmp, "", map[string]int{"unsafe": 0}); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
+	return Exercise.Passed("")
+}
+
 func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
 	if err := ex00Compile(exercise); err != nil {
 		return Exercise.CompilationError(err.Error())
+	}
+	if result := clippyCheck00(exercise); !result.Passed {
+		return result
 	}
 	executablePath := strings.TrimSuffix(exercise.TurnInFiles[0], filepath.Ext(exercise.TurnInFiles[0]))
 	output, err := runExecutable(executablePath)

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os/exec"
 	"path/filepath"
+	"rust-piscine/internal/alloweditems"
 	"strings"
 
 	"github.com/42-Short/shortinette/pkg/logger"
@@ -52,10 +53,36 @@ func compileWithRustcTestOption(turnInFile string) error {
 	return nil
 }
 
+var clippyTomlAsString01 = `
+disallowed-methods = ["std::cmp::min"]
+`
+
+func clippyCheck01(exercise *Exercise.Exercise) Exercise.Result {
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
+	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"init", "--lib"}); err != nil {
+		return Exercise.InternalError("cargo init failed")
+	}
+	if _, err := testutils.RunCommandLine(workingDirectory, "cp", []string{"min.rs", "src/lib.rs"}); err != nil {
+		return Exercise.InternalError("unable to copy file to src/ folder")
+	}
+	tmp := Exercise.Exercise{
+		CloneDirectory:  exercise.CloneDirectory,
+		TurnInDirectory: exercise.TurnInDirectory,
+		TurnInFiles:     []string{filepath.Join(workingDirectory, "src/lib.rs")},
+	}
+	if err := alloweditems.Check(tmp, clippyTomlAsString01, map[string]int{"unsafe": 0, "return": 0}); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
+	return Exercise.Passed("")
+}
+
 func ex01Test(exercise *Exercise.Exercise) Exercise.Result {
 	if err := testutils.AppendStringToFile(CargoTest, exercise.TurnInFiles[0]); err != nil {
 		logger.Exercise.Printf("could not write to %s: %v", exercise.TurnInFiles[0], err)
 		return Exercise.InternalError(err.Error())
+	}
+	if result := clippyCheck01(exercise); !result.Passed {
+		return result
 	}
 	if err := compileWithRustcTestOption(exercise.TurnInFiles[0]); err != nil {
 		return Exercise.CompilationError(err.Error())

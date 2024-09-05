@@ -3,6 +3,7 @@ package R00
 import (
 	"fmt"
 	"path/filepath"
+	"rust-piscine/internal/alloweditems"
 	"strings"
 	"time"
 
@@ -48,7 +49,29 @@ func fizzBuzzOutputTest(exercise Exercise.Exercise) Exercise.Result {
 	return Exercise.Passed("OK")
 }
 
+func clippyCheck03(exercise *Exercise.Exercise) Exercise.Result {
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
+	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"init"}); err != nil {
+		return Exercise.InternalError("cargo init failed")
+	}
+	if _, err := testutils.RunCommandLine(workingDirectory, "cp", []string{"fizzbuzz.rs", "src/main.rs"}); err != nil {
+		return Exercise.InternalError("unable to copy file to src/ folder")
+	}
+	tmp := Exercise.Exercise{
+		CloneDirectory:  exercise.CloneDirectory,
+		TurnInDirectory: exercise.TurnInDirectory,
+		TurnInFiles:     []string{filepath.Join(workingDirectory, "src/main.rs")},
+	}
+	if err := alloweditems.Check(tmp, "", map[string]int{"unsafe": 0}); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
+	return Exercise.Passed("")
+}
+
 func ex03Test(exercise *Exercise.Exercise) Exercise.Result {
+	if result := clippyCheck03(exercise); !result.Passed {
+		return result
+	}
 	return fizzBuzzOutputTest(*exercise)
 }
 

@@ -3,6 +3,8 @@ package R00
 import (
 	"errors"
 	"fmt"
+	"path/filepath"
+	"rust-piscine/internal/alloweditems"
 	"strings"
 	"time"
 
@@ -168,7 +170,31 @@ func printBytes(filename string) Exercise.Result {
 	return printBytesAssertionTest(filename)
 }
 
+func clippyCheck02(exercise *Exercise.Exercise) Exercise.Result {
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
+	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"init", "--lib"}); err != nil {
+		return Exercise.InternalError("cargo init failed")
+	}
+	for _, file := range exercise.TurnInFiles {
+		if _, err := testutils.RunCommandLine(workingDirectory, "cp", []string{filepath.Base(file), "src/lib.rs"}); err != nil {
+			return Exercise.InternalError("unable to copy file to src/ folder")
+		}
+		tmp := Exercise.Exercise{
+			CloneDirectory:  exercise.CloneDirectory,
+			TurnInDirectory: exercise.TurnInDirectory,
+			TurnInFiles:     []string{filepath.Join(workingDirectory, "src/lib.rs")},
+		}
+		if err := alloweditems.Check(tmp, "", map[string]int{"unsafe": 0}); err != nil {
+			return Exercise.CompilationError(err.Error())
+		}
+	}
+	return Exercise.Passed("")
+}
+
 func ex02Test(exercise *Exercise.Exercise) Exercise.Result {
+	if result := clippyCheck02(exercise); !result.Passed {
+		return result
+	}
 	if result := yes(exercise.TurnInFiles[2]); !result.Passed {
 		return result
 	}
