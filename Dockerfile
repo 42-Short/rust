@@ -17,8 +17,12 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 WORKDIR /app
 RUN cargo new dummy_project
 WORKDIR /app/dummy_project
+
+# Add dependencies you need cached here
+# RUN echo 'your_lib = "version" >> Cargo.toml'
 RUN echo 'rand = "*"' >> Cargo.toml
 RUN echo 'rug = "*"' >> Cargo.toml
+
 RUN cargo build --release
 RUN rm -rf /app/dummy_project
 WORKDIR /app

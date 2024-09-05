@@ -7,6 +7,7 @@ import (
 	"regexp"
 	"slices"
 	"strings"
+	"unicode"
 
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
 	"github.com/42-Short/shortinette/pkg/testutils"
@@ -48,16 +49,37 @@ func concatenateFilesIntoString(files []string) (fileContents string, err error)
 	return res, nil
 }
 
+func wordBoundaryCheck(character byte) bool {
+	return unicode.IsLetter(rune(character)) || unicode.IsDigit(rune(character)) || character == '_'
+}
+
 func getRegexResults(keywordsSlice []string, cleanFileBytes []byte, allowedKeywords map[string]int) (err error) {
-	keywordExpr, err := regexp.Compile(`\b(` + strings.Join(keywordsSlice, "|") + `)\b`)
+	escapedKeywords := make([]string, len(keywordsSlice))
+	for idx, keyword := range keywordsSlice {
+		escapedKeywords[idx] = regexp.QuoteMeta(keyword)
+		if wordBoundaryCheck(escapedKeywords[idx][0]) {
+			escapedKeywords[idx] = `\b` + escapedKeywords[idx]
+		}
+		length := len(escapedKeywords[idx])
+		if wordBoundaryCheck(escapedKeywords[idx][length-1]) {
+			escapedKeywords[idx] = escapedKeywords[idx] + `\b`
+		}
+	}
+
+	keywordExpr, err := regexp.Compile(`(` + strings.Join(escapedKeywords, "|") + `)`)
 	if err != nil {
 		return err
 	}
-	if foundKeyWords := keywordExpr.FindAll(cleanFileBytes, -1); foundKeyWords != nil {
+
+	preprocessedBytes := []byte(strings.ReplaceAll(string(cleanFileBytes), "->", ""))
+	preprocessedBytes = []byte(strings.ReplaceAll(string(preprocessedBytes), "=>", ""))
+
+	if foundKeyWords := keywordExpr.FindAll(preprocessedBytes, -1); foundKeyWords != nil {
 		for _, keyword := range foundKeyWords {
 			allowedKeywords[string(keyword)] -= 1
 		}
 	}
+
 	badKeywords := []string{}
 	for keyword, amount := range allowedKeywords {
 		if amount < 0 {
@@ -70,15 +92,6 @@ func getRegexResults(keywordsSlice []string, cleanFileBytes []byte, allowedKeywo
 	return nil
 }
 
-// Pattern Explanation:
-//
-//	`//.*?$`: Matches single-line comments starting with `//`.
-//	`///.*?$`: Matches documentation comments starting with `///`.
-//	`/\*.*?\*/`: Matches multi-line comments, including nested ones.
-//	`"(?:\\.|[^"\\])*"`: Matches single-line string literals enclosed in double quotes, allowing escaped characters.
-//	`r#*"(.|\n)*?"#*`: Matches raw string literals, accounting for varying numbers of `#` characters.
-//	`(?m)`: Multi-line mode to match single-line comments across lines.
-//	`(?s)`: Dot-all mode to match multi-line comments and raw strings spanning multiple lines.
 var ignorePatterns = `(?m)(?s)//.*?$|///.*?$|/\*.*?\*/|"(?:\\.|[^"\\])*"|r#*"(?:.|\n)*?"#*`
 
 func allowedKeywordsCheck(filesToCheck []string, allowedKeywords map[string]int) (err error) {
