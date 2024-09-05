@@ -19,6 +19,7 @@ type PackageConfig struct {
 	Name        string
 	Edition     string
 	Description string
+	Authors     []string
 	Publish     *bool
 }
 
@@ -120,6 +121,9 @@ func cargoTomlTest(filename string) Exercise.Result {
 	}
 	if cargoToml.Package.Description != "my answer to the fifth exercise of the first module of 42's Rust Piscine" {
 		return Exercise.AssertionError("my answer to the fifth exercise of the first module of 42's Rust Piscine", cargoToml.Package.Description)
+	}
+	if len(cargoToml.Package.Authors) != 1 || cargoToml.Package.Authors[0] == "" {
+		return Exercise.Result{Passed: false, Output: "author check failed in cargo.toml"}
 	}
 	if cargoToml.Package.Publish == nil || *cargoToml.Package.Publish {
 		return Exercise.AssertionError("false", fmt.Sprintf("%v", cargoToml.Package.Publish))
