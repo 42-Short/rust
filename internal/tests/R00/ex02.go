@@ -144,7 +144,7 @@ func doPrintBytes(s string) string {
 }
 
 func printBytesAssertionTest(filename string) Exercise.Result {
-	testStrings := []string{"Hello, World", "", "Rust is awesome! 🦀"}
+	testStrings := []string{"Hello, World", "", "Rust is awesome! 🦀", string([]byte{0})}
 	for _, testString := range testStrings {
 		main := fmt.Sprintf(PrintBytesMain, testString)
 		if err := testutils.AppendStringToFile(main, filename); err != nil {
@@ -159,9 +159,7 @@ func printBytesAssertionTest(filename string) Exercise.Result {
 		if err != nil {
 			return Exercise.RuntimeError(err.Error())
 		}
-		expectedOutput := doPrintBytes(testString)
-
-		if output != expectedOutput {
+		if expectedOutput := doPrintBytes(testString); output != expectedOutput {
 			return Exercise.AssertionError(expectedOutput, output)
 		}
 		if err := testutils.DeleteStringFromFile(main, filename); err != nil {
