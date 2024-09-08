@@ -212,5 +212,5 @@ func ex02Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex02() Exercise.Exercise {
-	return Exercise.NewExercise("02", "ex02", []string{"collatz.rs", "print_bytes.rs", "yes.rs"}, 20, ex02Test)
+	return Exercise.NewExercise("02", "ex02", []string{"collatz.rs", "print_bytes.rs", "yes.rs"}, 10, ex02Test)
 }
