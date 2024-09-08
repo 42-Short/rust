@@ -10,8 +10,8 @@ func R01() *Module.Module {
 	exercises := map[string]Exercise.Exercise{
 		"00": ex00(),
 		"01": ex01(),
+		"02": ex02(),
 		/*
-			"02": ex02(),
 			"03": ex03(),
 			"04": ex04(),
 			"05": ex05(),
