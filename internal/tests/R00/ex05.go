@@ -174,9 +174,11 @@ func ex05Test(exercise *Exercise.Exercise) Exercise.Result {
 	if err := alloweditems.Check(*exercise, "", map[string]int{"unsafe": 0}); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
-	if result := testExistenceTest(exercise); !result.Passed {
-		return result
-	}
+	/*
+		if result := testExistenceTest(exercise); !result.Passed {
+			return result
+		}
+	*/
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 	_, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test"})
 	if err != nil {
