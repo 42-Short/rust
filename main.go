@@ -2,6 +2,7 @@ package main
 
 import (
 	"rust-piscine/internal/tests/R00"
+	"rust-piscine/internal/tests/R01"
 	"rust-piscine/internal/tests/R04"
 	"rust-piscine/internal/tests/R06"
 
@@ -13,7 +14,7 @@ import (
 func main() {
 	modules := map[string]Module.Module{
 		"00": *R00.R00(),
-		// TODO: "01": *R01.R01(), // TODO
+		"01": *R01.R01(),
 		// TODO: "02": *R02.R02(), // TODO
 		// TODO: "03": *R03.R03(), // TODO
 		"04": *R04.R04(),
