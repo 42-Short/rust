@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"rust-piscine/internal/alloweditems"
+	"time"
 
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
 	"github.com/42-Short/shortinette/pkg/logger"
@@ -87,7 +88,13 @@ func ex02Test(exercise *Exercise.Exercise) Exercise.Result {
 		return Exercise.InternalError(err.Error())
 	}
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
-	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test"}); err != nil {
+	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test", "--no-run"}); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
+	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test"}, testutils.WithTimeout(500*time.Millisecond)); err != nil {
+		return Exercise.RuntimeError(err.Error())
+	}
+	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"valgrind", "test"}); err != nil {
 		return Exercise.RuntimeError(err.Error())
 	}
 	return Exercise.Passed("OK")
