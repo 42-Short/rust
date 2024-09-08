@@ -52,7 +52,7 @@ func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
 	}
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test"}); err != nil {
-		return Exercise.AssertionError("", err.Error())
+		return Exercise.RuntimeError(err.Error())
 	}
 	return Exercise.Passed("OK")
 }
