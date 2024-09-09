@@ -21,5 +21,5 @@ func main() {
 		"06": *R06.R06(),
 	}
 	short := Short.NewShort("Rust Piscine 1.0", modules, webhook.NewWebhookTestMode(modules))
-	short.Start("04")
+	short.Start("02")
 }
