@@ -14,10 +14,8 @@ func R01() *Module.Module {
 		"03": ex03(),
 		"04": ex04(),
 		"05": ex05(),
-		/*
-			"06": ex06(),
-			"07": ex07(),
-		*/
+		"06": ex06(),
+		"07": ex07(),
 	}
 	r01 := Module.NewModule("01", 50, exercises, "subject.md") // TODO: add actual subject
 	return &r01
