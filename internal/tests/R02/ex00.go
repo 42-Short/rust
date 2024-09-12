@@ -1,18 +1,14 @@
 package R02
 
 import (
-	"path/filepath"
-
-	"github.com/42-Short/shortinette/pkg/logger"
-
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
-	"github.com/42-Short/shortinette/pkg/testutils"
 )
 
-var CargoTestModAsString00 = `
+var cargoTestModAsString00 = `
 
 #[cfg(test)]
 mod shortinette_tests_rust_0200 {
+
     use super::*;
 
     #[test]
@@ -50,25 +46,16 @@ mod shortinette_tests_rust_0200 {
         assert_eq!(minutes, 0.5083333333333333);
     }
 
-}`
+}
+
+`
 
 var clippyTomlAsString00 = ``
 
 func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
-	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
-
-	if err := testutils.AppendStringToFile(CargoTestModAsString00, exercise.TurnInFiles[0]); err != nil {
-		logger.Exercise.Printf("internal error: %v", err)
-		return Exercise.InternalError(err.Error())
-	}
-
-	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"valgrind test"})
-	if err != nil {
-		return Exercise.AssertionError("", output)
-	}
-	return Exercise.Passed("OK")
+    return runDefaultTest(exercise, cargoTestModAsString00, clippyTomlAsString00)
 }
 
 func ex00() Exercise.Exercise {
-	return Exercise.NewExercise("00", "ex00", []string{"src/main.rs", "src/lib.rs", "Cargo.toml"}, 25, ex00Test) //TODO: add actual grading points
+	return Exercise.NewExercise("00", "ex00", []string{"src/main.rs", "Cargo.toml"}, 25, ex00Test) //TODO: add actual grading points
 }
