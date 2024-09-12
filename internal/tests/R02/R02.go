@@ -10,6 +10,6 @@ func R02() *Module.Module {
 	exercises := map[string]Exercise.Exercise{
 		"00": ex00(),
 	}
-	r00 := Module.NewModule("00", 70, exercises, "subject.md") // TODO: add actual subject, add actual minimum grade
+	r00 := Module.NewModule("02", 70, exercises, "subject.md") // TODO: add actual subject, add actual minimum grade
 	return &r00
 }
