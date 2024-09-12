@@ -8,6 +8,7 @@ shortconfig/
 compile-environment/
 studentcode/
 website/
+subject.md
 *.rlib
 *.csv
 
