@@ -3,6 +3,7 @@ package R01
 import (
 	"rust-piscine/internal/alloweditems"
 	"rust-piscine/internal/cargo"
+	"time"
 
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
 	"github.com/42-Short/shortinette/pkg/testutils"
@@ -99,7 +100,7 @@ func ex04Test(exercise *Exercise.Exercise) Exercise.Result {
 	if err := testutils.AppendStringToFile(cargoTest04, exercise.TurnInFiles[0]); err != nil {
 		return Exercise.InternalError(err.Error())
 	}
-	return cargo.CargoTest(exercise, []string{})
+	return cargo.CargoTest(exercise, 500*time.Millisecond, []string{})
 }
 
 func ex04() Exercise.Exercise {

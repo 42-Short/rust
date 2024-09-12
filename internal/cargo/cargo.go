@@ -8,13 +8,12 @@ import (
 	"github.com/42-Short/shortinette/pkg/testutils"
 )
 
-func CargoTest(exercise *Exercise.Exercise, flags []string) Exercise.Result {
+func CargoTest(exercise *Exercise.Exercise, timeout time.Duration, flags []string) Exercise.Result {
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", append([]string{"test", "--no-run"}, flags...)); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
-	timeout := testutils.WithTimeout(500 * time.Millisecond)
-	_, err := testutils.RunCommandLine(workingDirectory, "cargo", append([]string{"test"}, flags...), timeout)
+	_, err := testutils.RunCommandLine(workingDirectory, "cargo", append([]string{"test"}, flags...), testutils.WithTimeout(timeout))
 	if err != nil {
 		return Exercise.RuntimeError(err.Error())
 	}

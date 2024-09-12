@@ -6,6 +6,7 @@ import (
 	"regexp"
 	"rust-piscine/internal/alloweditems"
 	"rust-piscine/internal/cargo"
+	"time"
 
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
 	"github.com/42-Short/shortinette/pkg/logger"
@@ -86,7 +87,7 @@ func ex02Test(exercise *Exercise.Exercise) Exercise.Result {
 		logger.Exercise.Printf("internal error: %v", err)
 		return Exercise.InternalError(err.Error())
 	}
-	return cargo.CargoTest(exercise, []string{})
+	return cargo.CargoTest(exercise, 500*time.Millisecond, []string{})
 }
 
 func ex02() Exercise.Exercise {
