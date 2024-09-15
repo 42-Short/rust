@@ -1,11 +1,10 @@
 package R00
 
 import (
-	"fmt"
-	"os/exec"
 	"path/filepath"
 	"rust-piscine/internal/alloweditems"
 	"strings"
+	"time"
 
 	"github.com/42-Short/shortinette/pkg/logger"
 
@@ -40,19 +39,6 @@ mod shortinette_tests_rust_0001 {
 }
 `
 
-func compileWithRustcTestOption(turnInFile string) error {
-	cmd := exec.Command("rustc", "--test", filepath.Base(turnInFile))
-	cmd.Dir = filepath.Dir(turnInFile)
-
-	output, err := cmd.CombinedOutput()
-	if err != nil {
-		logger.Exercise.Println(err)
-		return fmt.Errorf("could not compile: %s", output)
-	}
-	logger.Exercise.Printf("%s/%s compiled with rustc --test\n", cmd.Dir, turnInFile)
-	return nil
-}
-
 var clippyTomlAsString01 = `
 disallowed-methods = ["std::cmp::min"]
 `
@@ -77,6 +63,11 @@ func clippyCheck01(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex01Test(exercise *Exercise.Exercise) Exercise.Result {
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
+	fileName := filepath.Base(exercise.TurnInFiles[0])
+	if _, err := testutils.RunCommandLine(workingDirectory, "rustc", []string{fileName}); err == nil {
+		return Exercise.CompilationError("main function found")
+	}
 	if err := testutils.AppendStringToFile(CargoTest, exercise.TurnInFiles[0]); err != nil {
 		logger.Exercise.Printf("could not write to %s: %v", exercise.TurnInFiles[0], err)
 		return Exercise.InternalError(err.Error())
@@ -84,11 +75,11 @@ func ex01Test(exercise *Exercise.Exercise) Exercise.Result {
 	if result := clippyCheck01(exercise); !result.Passed {
 		return result
 	}
-	if err := compileWithRustcTestOption(exercise.TurnInFiles[0]); err != nil {
+	if _, err := testutils.RunCommandLine(workingDirectory, "rustc", []string{"--test", fileName}); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
-	if output, err := testutils.RunExecutable(strings.TrimSuffix(exercise.TurnInFiles[0], ".rs")); err != nil {
-		return Exercise.AssertionError("", err.Error()+output)
+	if output, err := testutils.RunExecutable(strings.TrimSuffix(exercise.TurnInFiles[0], ".rs"), testutils.WithTimeout(500*time.Millisecond)); err != nil {
+		return Exercise.RuntimeError(output)
 	}
 	return Exercise.Passed("OK")
 }
