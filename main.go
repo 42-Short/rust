@@ -20,6 +20,6 @@ func main() {
 		// TODO: "05": *R05.R05(), // TODO
 		"06": *R06.R06(),
 	}
-	short := Short.NewShort("Rust Piscine 1.0", modules, webhook.NewWebhookTestMode(modules))
+	short := Short.NewShort("Rust Piscine 1.0", modules, webhook.NewWebhookTestMode(modules, "/webhook", "8080"))
 	short.Start("04")
 }
