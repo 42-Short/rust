@@ -71,7 +71,7 @@ func constKeywordCheck(exercise *Exercise.Exercise) Exercise.Result {
 		return Exercise.InternalError(err.Error())
 	}
 	if matches := regex.FindAll(content, -1); len(matches) == 0 {
-		return Exercise.CompilationError("test_color function must be declared as const")
+		return Exercise.CompilationError("color_name function must be declared as const")
 	}
 	return Exercise.Passed("")
 }
