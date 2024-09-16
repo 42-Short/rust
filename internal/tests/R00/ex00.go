@@ -3,7 +3,6 @@ package R00
 import (
 	"path/filepath"
 	"rust-piscine/internal/alloweditems"
-	"strings"
 	"time"
 
 	"github.com/42-Short/shortinette/pkg/testutils"
@@ -39,7 +38,7 @@ func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
 	if result := clippyCheck00(exercise); !result.Passed {
 		return result
 	}
-	executablePath := strings.TrimSuffix(exercise.TurnInFiles[0], filepath.Ext(exercise.TurnInFiles[0]))
+	executablePath := testutils.ExecutablePath(exercise.TurnInFiles[0], ".rs")
 	output, err := testutils.RunExecutable(executablePath, testutils.WithTimeout(500*time.Millisecond))
 	if err != nil {
 		return Exercise.RuntimeError(output)
