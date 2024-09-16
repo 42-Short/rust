@@ -187,7 +187,7 @@ func ex07Test(exercise *Exercise.Exercise) Exercise.Result {
 		return Exercise.InternalError(err.Error())
 	}
 
-	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test"})
+	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test", "--release", "shortinette_rust_test_module03_ex07_0001"})
 	if err != nil {
 		return Exercise.AssertionError("", output)
 	}
