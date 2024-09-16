@@ -32,8 +32,8 @@ func doFizzBuzz() string {
 	return result.String()
 }
 
-func fizzBuzzOutputTest(exercise Exercise.Exercise) Exercise.Result {
-	if err := testutils.CompileWithRustc(exercise.TurnInFiles[0]); err != nil {
+func fizzBuzzOutputTest(exercise *Exercise.Exercise) Exercise.Result {
+	if err := CompileWithRustc(exercise.TurnInFiles[0]); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
 	executablePath := testutils.ExecutablePath(exercise.TurnInFiles[0], filepath.Ext(exercise.TurnInFiles[0]))
@@ -65,14 +65,14 @@ func clippyCheck03(exercise *Exercise.Exercise) Exercise.Result {
 	if err := alloweditems.Check(tmp, "", map[string]int{"unsafe": 0}); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
-	return Exercise.Passed("")
+	return Exercise.Passed("OK")
 }
 
 func ex03Test(exercise *Exercise.Exercise) Exercise.Result {
 	if result := clippyCheck03(exercise); !result.Passed {
 		return result
 	}
-	return fizzBuzzOutputTest(*exercise)
+	return fizzBuzzOutputTest(exercise)
 }
 
 func ex03() Exercise.Exercise {

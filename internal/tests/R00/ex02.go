@@ -37,7 +37,7 @@ func yes(filename string) Exercise.Result {
 		logger.Exercise.Printf("internal error: %v", err)
 		return Exercise.InternalError(err.Error())
 	}
-	if err := testutils.CompileWithRustc(filename); err != nil {
+	if err := CompileWithRustc(filename); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
 	executablePath := testutils.ExecutablePath(filename, ".rs")
@@ -51,10 +51,6 @@ func yes(filename string) Exercise.Result {
 			return Exercise.AssertionError("y", line)
 		}
 	}
-	if err := testutils.DeleteStringFromFile(YesMain, filename); err != nil {
-		logger.Exercise.Printf("internal error: %v", err)
-		return Exercise.InternalError(err.Error())
-	}
 	return Exercise.Passed("OK")
 }
 
@@ -64,7 +60,7 @@ func collatzInfiniteLoopTest(filename string) Exercise.Result {
 		logger.Exercise.Printf("internal error: %v", err)
 		return Exercise.InternalError(err.Error())
 	}
-	if err := testutils.CompileWithRustc(filename); err != nil {
+	if err := CompileWithRustc(filename); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
 	executablePath := testutils.ExecutablePath(filename, ".rs")
@@ -76,7 +72,7 @@ func collatzInfiniteLoopTest(filename string) Exercise.Result {
 		logger.Exercise.Printf("internal error: %v", err)
 		return Exercise.InternalError(err.Error())
 	}
-	return Exercise.Result{Passed: true}
+	return Exercise.Passed("OK")
 }
 
 func doCollatz(n int) string {
@@ -102,7 +98,7 @@ func collatzAssertionTest(filename string, number int) Exercise.Result {
 		logger.Exercise.Printf("internal error: %v", err)
 		return Exercise.InternalError(err.Error())
 	}
-	if err := testutils.CompileWithRustc(filename); err != nil {
+	if err := CompileWithRustc(filename); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
 	executablePath := testutils.ExecutablePath(filename, ".rs")
@@ -151,7 +147,7 @@ func printBytesAssertionTest(filename string) Exercise.Result {
 			logger.Exercise.Printf("internal error: %v", err)
 			return Exercise.InternalError(err.Error())
 		}
-		if err := testutils.CompileWithRustc(filename); err != nil {
+		if err := CompileWithRustc(filename); err != nil {
 			return Exercise.CompilationError(err.Error())
 		}
 		executablePath := testutils.ExecutablePath(filename, ".rs")
@@ -192,7 +188,7 @@ func clippyCheck02(exercise *Exercise.Exercise) Exercise.Result {
 			return Exercise.CompilationError(err.Error())
 		}
 	}
-	return Exercise.Passed("")
+	return Exercise.Passed("OK")
 }
 
 func ex02Test(exercise *Exercise.Exercise) Exercise.Result {

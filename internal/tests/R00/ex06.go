@@ -76,7 +76,7 @@ func guessingGameTest(exercise *Exercise.Exercise) (Exercise.Result, int64) {
 	if err = cmd.Wait(); err != nil {
 		return Exercise.InternalError(err.Error()), 0
 	}
-	return Exercise.Passed(""), number
+	return Exercise.Passed("OK"), number
 }
 
 func ex06Test(exercise *Exercise.Exercise) Exercise.Result {

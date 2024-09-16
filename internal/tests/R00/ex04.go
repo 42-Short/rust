@@ -40,21 +40,21 @@ func testNmReleaseMode(exercise *Exercise.Exercise, binary string, releaseMode R
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 	output, err := testutils.RunCommandLine(workingDirectory, "nm", []string{binary})
 	if err != nil {
-		return Exercise.Result{Passed: false, Output: fmt.Sprintf("runtime error: nm did not execute as expected: %v", err)}
+		return Exercise.InternalError(fmt.Sprintf("error executing nm: %v", err.Error()))
 	}
 	if releaseMode == Release && output != "" {
 		return Exercise.AssertionError("", output)
 	} else if releaseMode == Debug && output == "" {
 		return Exercise.AssertionError("<non_empty>", output)
 	}
-	return Exercise.Passed("")
+	return Exercise.Passed("OK")
 }
 
 func testCargoRunBinOtherReleaseMode(exercise *Exercise.Exercise) Exercise.Result {
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"run", "--release", "--bin", "other"})
 	if err != nil {
-		return Exercise.Result{Passed: false, Output: fmt.Sprintf("runtime error: cargo run: %s", err)}
+		return Exercise.RuntimeError(err.Error())
 	}
 	if output != "Hey! I'm the other bin target!\nI'm in release mode!\n" {
 		return Exercise.AssertionError("Hey! I'm the other bin target!\nI'm in release mode!\n", output)
@@ -66,7 +66,7 @@ func testCargoRunBinOther(exercise *Exercise.Exercise) Exercise.Result {
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"run", "--bin", "other"})
 	if err != nil {
-		return Exercise.Result{Passed: false, Output: fmt.Sprintf("runtime error: %v", err)}
+		return Exercise.RuntimeError(err.Error())
 	}
 	if output != "Hey! I'm the other bin target!\n" {
 		return Exercise.AssertionError("Hey! I'm the other bin target!\n", output)
@@ -78,7 +78,7 @@ func testCargoRun(exercise *Exercise.Exercise) Exercise.Result {
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"run"})
 	if err != nil {
-		return Exercise.Result{Passed: false, Output: fmt.Sprintf("runtime error: %v", err)}
+		return Exercise.RuntimeError(err.Error())
 	}
 	if output != "Hello, Cargo!\n" {
 		return Exercise.AssertionError("Hello, Cargo!\n", output)
@@ -94,7 +94,7 @@ func testOverflow(exercise *Exercise.Exercise) Exercise.Result {
 	}
 	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"run", "--profile", "no-overflows", "--bin", "test-overflows"})
 	if err != nil {
-		return Exercise.Result{Passed: false, Output: "execution error with 'no-overflows' profile"}
+		return Exercise.RuntimeError(err.Error())
 	}
 	if output != "255u8 + 1u8 == 0\n" {
 		return Exercise.AssertionError("255u8 + 1u8 == 0\n", output)
@@ -109,8 +109,7 @@ func cargoTomlTest(filename string) Exercise.Result {
 	if err != nil {
 		return Exercise.InternalError(fmt.Sprintf("error reading cargo.toml: %v", err))
 	}
-	err = toml.Unmarshal(content, &cargoToml)
-	if err != nil {
+	if err := toml.Unmarshal(content, &cargoToml); err != nil {
 		return Exercise.InternalError(fmt.Sprintf("error parsing cargo.toml: %v", err))
 	}
 	if cargoToml.Package.Name != "module00-ex04" {
@@ -128,7 +127,7 @@ func cargoTomlTest(filename string) Exercise.Result {
 	if cargoToml.Package.Publish == nil || *cargoToml.Package.Publish {
 		return Exercise.AssertionError("false", fmt.Sprintf("%v", cargoToml.Package.Publish))
 	}
-	return Exercise.Passed("")
+	return Exercise.Passed("OK")
 }
 
 func ex04Test(exercise *Exercise.Exercise) Exercise.Result {

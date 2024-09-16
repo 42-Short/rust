@@ -3,7 +3,6 @@ package R00
 import (
 	"path/filepath"
 	"rust-piscine/internal/alloweditems"
-	"strings"
 	"time"
 
 	"github.com/42-Short/shortinette/pkg/logger"
@@ -63,11 +62,6 @@ func clippyCheck01(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex01Test(exercise *Exercise.Exercise) Exercise.Result {
-	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
-	fileName := filepath.Base(exercise.TurnInFiles[0])
-	if _, err := testutils.RunCommandLine(workingDirectory, "rustc", []string{fileName}); err == nil {
-		return Exercise.CompilationError("main function found")
-	}
 	if err := testutils.AppendStringToFile(CargoTest, exercise.TurnInFiles[0]); err != nil {
 		logger.Exercise.Printf("could not write to %s: %v", exercise.TurnInFiles[0], err)
 		return Exercise.InternalError(err.Error())
@@ -75,10 +69,14 @@ func ex01Test(exercise *Exercise.Exercise) Exercise.Result {
 	if result := clippyCheck01(exercise); !result.Passed {
 		return result
 	}
-	if _, err := testutils.RunCommandLine(workingDirectory, "rustc", []string{"--test", fileName}); err != nil {
+	if err := CompileWithRustcTest(exercise.TurnInFiles[0]); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
-	if output, err := testutils.RunExecutable(strings.TrimSuffix(exercise.TurnInFiles[0], ".rs"), testutils.WithTimeout(500*time.Millisecond)); err != nil {
+	if err := CompileWithRustc(exercise.TurnInFiles[0]); err == nil {
+		return Exercise.CompilationError("main function found")
+	}
+	executablePath := testutils.ExecutablePath(exercise.TurnInFiles[0], ".rs")
+	if output, err := testutils.RunExecutable(executablePath, testutils.WithTimeout(500*time.Millisecond)); err != nil {
 		return Exercise.RuntimeError(output)
 	}
 	return Exercise.Passed("OK")
