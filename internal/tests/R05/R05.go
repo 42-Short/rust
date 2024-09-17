@@ -17,6 +17,6 @@ func R03() *Module.Module {
 		"06": ex06(),
 		"07": ex07(),
 	}
-	r05 := Module.NewModule("05", 70, exercises, "subject.md", "dockerImageName") // TODO: add actual subject
+	r05 := Module.NewModule("05", 70, exercises, "subject.md", "shortinette-testenv") // TODO: add actual subject
 	return &r05
 }
