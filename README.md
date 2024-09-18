@@ -17,7 +17,7 @@ Required variables:
 This configuration is in `json` format and contains a list of participants. Each participant has two fields:
 * `github_username`: GitHub user, will be given write permissions to the created repo.
 * `intra_login`: Unique identifier, will be used for naming the repos:
-*     `repo_name = fmt.Sprintf("%s-%s", participant.IntraLogin, module.Name`)).
+    * `repo_name = fmt.Sprintf("%s-%s", participant.IntraLogin, module.Name))`
 ```json
 {
     "participants": [
