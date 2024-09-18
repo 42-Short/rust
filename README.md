@@ -21,8 +21,8 @@ This configuration is in `json` format and contains a list of participants. Each
 {
     "participants": [
         {
-            "github_username": "shortinette-test",
-            "intra_login": "1"
+            "github_username": "winstonallo",
+            "intra_login": "abied-ch"
         }
     ]
 }
