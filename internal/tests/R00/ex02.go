@@ -37,9 +37,6 @@ func yes() Exercise.Result {
 		logger.Exercise.Printf("internal error: %v", err)
 		return Exercise.InternalError(err.Error())
 	}
-	if err := testutils.CompileWithRustc(exercise.TurnInFiles[0]); err != nil {
-		return Exercise.CompilationError(err.Error())
-	}
 	executablePath := testutils.ExecutablePath(exercise.TurnInFiles[0], ".rs")
 	output, err := testutils.RunExecutable(executablePath, testutils.WithTimeout(500*time.Millisecond))
 	if err != nil && !errors.Is(err, testutils.ErrTimeout) {
@@ -59,9 +56,6 @@ func collatzInfiniteLoopTest(exercise Exercise.Exercise) Exercise.Result {
 	if err := testutils.AppendStringToFile(main, exercise.TurnInFiles[0]); err != nil {
 		logger.Exercise.Printf("internal error: %v", err)
 		return Exercise.InternalError(err.Error())
-	}
-	if err := testutils.CompileWithRustc(exercise.TurnInFiles[0]); err != nil {
-		return Exercise.CompilationError(err.Error())
 	}
 	executablePath := testutils.ExecutablePath(exercise.TurnInFiles[0], ".rs")
 
@@ -97,9 +91,6 @@ func collatzAssertionTest(exercise Exercise.Exercise) Exercise.Result {
 	if err := testutils.AppendStringToFile(main, exercise.TurnInFiles[0]); err != nil {
 		logger.Exercise.Printf("internal error: %v", err)
 		return Exercise.InternalError(err.Error())
-	}
-	if err := testutils.CompileWithRustc(exercise.TurnInFiles[0]); err != nil {
-		return Exercise.CompilationError(err.Error())
 	}
 	executablePath := testutils.ExecutablePath(exercise.TurnInFiles[0], ".rs")
 	output, err := testutils.RunExecutable(executablePath, testutils.WithTimeout(500*time.Millisecond))
@@ -139,9 +130,6 @@ func printBytesAssertionTest(exercise Exercise.Exercise) Exercise.Result {
 	if err := testutils.AppendStringToFile(main, exercise.TurnInFiles[0]); err != nil {
 		logger.Exercise.Printf("internal error: %v", err)
 		return Exercise.InternalError(err.Error())
-	}
-	if err := testutils.CompileWithRustc(exercise.TurnInFiles[0]); err != nil {
-		return Exercise.CompilationError(err.Error())
 	}
 	executablePath := testutils.ExecutablePath(exercise.TurnInFiles[0], ".rs")
 	output, err := testutils.RunExecutable(executablePath, testutils.WithTimeout(500*time.Millisecond))

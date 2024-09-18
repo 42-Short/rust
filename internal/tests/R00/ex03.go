@@ -32,9 +32,6 @@ func doFizzBuzz() string {
 }
 
 func fizzBuzzOutputTest(exercise Exercise.Exercise) Exercise.Result {
-	if err := testutils.CompileWithRustc(exercise.TurnInFiles[0]); err != nil {
-		return Exercise.CompilationError(err.Error())
-	}
 	executablePath := testutils.ExecutablePath(exercise.TurnInFiles[0], filepath.Ext(exercise.TurnInFiles[0]))
 	output, err := testutils.RunExecutable(executablePath, testutils.WithTimeout(500*time.Millisecond))
 	if err != nil {
