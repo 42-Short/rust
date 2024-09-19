@@ -8,7 +8,6 @@ var cargoTestModAsString00 = `
 
 #[cfg(test)]
 mod shortinette_tests_rust_0200 {
-
     use super::*;
 
     #[test]
@@ -53,7 +52,7 @@ mod shortinette_tests_rust_0200 {
 var clippyTomlAsString00 = ``
 
 func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
-    return runDefaultTest(exercise, cargoTestModAsString00, clippyTomlAsString00)
+    return runDefaultTest(exercise, cargoTestModAsString00, clippyTomlAsString00, nil)
 }
 
 func ex00() Exercise.Exercise {

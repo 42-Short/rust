@@ -12,8 +12,8 @@ import (
 	"time"
 )
 
-func runDefaultTest(exercise *Exercise.Exercise, cargoTestModAsString string, clippyTomlAsString string) Exercise.Result {
-	if err := alloweditems.Check(*exercise, clippyTomlAsString, nil); err != nil {
+func runDefaultTest(exercise *Exercise.Exercise, cargoTestModAsString string, clippyTomlAsString string, allowedKeywords map[string]int) Exercise.Result {
+	if err := alloweditems.Check(*exercise, clippyTomlAsString, allowedKeywords); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)

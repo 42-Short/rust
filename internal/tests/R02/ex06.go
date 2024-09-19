@@ -75,6 +75,7 @@ mod shortinette_tests_rust_0206 {
 `
 
 var cargoFuzzAsSting = `
+
 #![no_main]
 use libfuzzer_sys::fuzz_target;
 use ex06::*;
@@ -126,9 +127,10 @@ fuzz_target!(|data: &[u8]| {
         if token.is_none() && correct_token.is_none() {
             break;
         }
-        assert_eq!(input_str, input_str_copy, "Input strings do not match after token extraction");
+        assert_eq!(input_str, input_str_copy, "Input strings do not match");
     }
 });
+
 `
 
 var clippyTomlAsString06 = ``
@@ -146,7 +148,6 @@ func writeStringToFile(source string, destFilePath string) error {
     return nil
 }
 
-//TODO assertion output not correct
 func evaluateFuzzingResult(dirPath string) Exercise.Result {
     entries, err := os.ReadDir(dirPath)
     if err != nil {
@@ -156,12 +157,7 @@ func evaluateFuzzingResult(dirPath string) Exercise.Result {
     if len(entries) == 0 {
         return Exercise.Passed("OK")
     }
-    contentBytes, err := os.ReadFile(filepath.Join(dirPath, entries[0].Name()))
-    if err != nil {
-        logger.Exercise.Printf("could not read from fuzz crash file: %v", err)
-        return Exercise.InternalError(err.Error())
-    }
-   return Exercise.AssertionError("", string(contentBytes))
+   return Exercise.RuntimeError("assertion failed during fuzzing", "")
 }
 
 func runCargoFuzz(exercise *Exercise.Exercise) Exercise.Result {
@@ -190,7 +186,7 @@ func runCargoFuzz(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex06Test(exercise *Exercise.Exercise) Exercise.Result {
-    if result := runDefaultTest(exercise, cargoTestModAsString06, clippyTomlAsString06); result.Passed != true {
+    if result := runDefaultTest(exercise, cargoTestModAsString06, clippyTomlAsString06, nil); result.Passed != true {
         return result
     }
     return runCargoFuzz(exercise)

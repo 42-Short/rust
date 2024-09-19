@@ -87,7 +87,7 @@ mod shortinette_tests_rust_0201 {
 var clippyTomlAsString01 = `` //TODO
 
 func ex01Test(exercise *Exercise.Exercise) Exercise.Result {
-    return runDefaultTest(exercise, cargoTestModAsString01, clippyTomlAsString01)
+    return runDefaultTest(exercise, cargoTestModAsString01, clippyTomlAsString01, nil)
 }
 
 func ex01() Exercise.Exercise {

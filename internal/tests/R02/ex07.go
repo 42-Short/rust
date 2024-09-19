@@ -6,7 +6,6 @@ import (
 
 var cargoTestModAsString07 = `
 
-
 #[cfg(test)]
 mod shortinette_tests_rust_0207 {
     use super::*;
@@ -148,7 +147,7 @@ mod shortinette_tests_rust_0207 {
 var clippyTomlAsString07 = ``
 
 func ex07Test(exercise *Exercise.Exercise) Exercise.Result {
-    return runDefaultTest(exercise, cargoTestModAsString07, clippyTomlAsString07)
+    return runDefaultTest(exercise, cargoTestModAsString07, clippyTomlAsString07, nil)
 }
 
 func ex07() Exercise.Exercise {

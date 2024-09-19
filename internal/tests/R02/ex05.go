@@ -61,21 +61,9 @@ mod shortinette_tests_rust_0205 {
         let expected = Color::new(159, 95, 63);
         let result = target.closest_mix(palette, 3);
 
-        assert_eq!(
-            result.red, expected.red,
-            "Red component mismatch. Expected: {}, Got: {}",
-            expected.red, result.red
-        );
-        assert_eq!(
-            result.green, expected.green,
-            "Green component mismatch. Expected: {}, Got: {}",
-            expected.green, result.green
-        );
-        assert_eq!(
-            result.blue, expected.blue,
-            "Blue component mismatch. Expected: {}, Got: {}",
-            expected.blue, result.blue
-        );
+        assert_eq!(result.red, expected.red);
+        assert_eq!(result.green, expected.green);
+        assert_eq!(result.blue, expected.blue);
     }
 }
 
@@ -84,7 +72,7 @@ mod shortinette_tests_rust_0205 {
 var clippyTomlAsString05 = ``
 
 func ex05Test(exercise *Exercise.Exercise) Exercise.Result {
-    return runDefaultTest(exercise, cargoTestModAsString05, clippyTomlAsString05)
+    return runDefaultTest(exercise, cargoTestModAsString05, clippyTomlAsString05, nil)
 }
 
 func ex05() Exercise.Exercise {
