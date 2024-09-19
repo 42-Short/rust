@@ -29,6 +29,7 @@ _ITM_registerTMCloneTable
 __cxa_finalize@GLIBC_2.2.5
 `
 
+// TODO: use strings command instead of hardcoding output
 func testNonExisting(workingDirectory string) Exercise.Result {
 	commandLine := "cargo run do_not_panic_but_this_file_does_not_exist"
 	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", commandLine}); err != nil {
