@@ -155,13 +155,14 @@ func addHelperToFunction(exercise *Exercise.Exercise, function string, helper st
 	if err != nil {
 		return err
 	}
-	re, err := regexp.Compile(`fn\s` + function + `\b`)
+	pattern := `fn\s+` + function + `\s*\(\s*(\w+)\s*:\s*\w+\s*(?:,\s*(\w+)\s*:\s*\w+\s*)?\)`
+	re, err := regexp.Compile(pattern)
 	if err != nil {
 		return err
 	}
 	total := 0
 	for {
-		result := re.FindAllIndex(content, -1)
+		result := re.FindAllSubmatchIndex(content, -1)
 		if len(result) == total {
 			if total == 0 {
 				return nil
@@ -169,10 +170,19 @@ func addHelperToFunction(exercise *Exercise.Exercise, function string, helper st
 			return os.WriteFile(exercise.TurnInFiles[0], content, 0644)
 		}
 		match := result[total]
+		var arguments []string
+		for i := 2; i < len(match); i += 2 {
+			start := match[i]
+			end := match[i+1]
+			if start != -1 && end != -1 {
+				arguments = append(arguments, string(content[start:end]))
+			}
+		}
 		for pos := match[1]; pos < len(content); pos++ {
 			if content[pos] == '{' {
 				pos++
-				content = append(content[:pos], append([]byte(helper), content[pos:]...)...)
+				argumentsString := strings.Join(arguments, ", ")
+				content = append(content[:pos], append([]byte(fmt.Sprintf(helper, argumentsString)), content[pos:]...)...)
 				total++
 				break
 			}
@@ -181,10 +191,10 @@ func addHelperToFunction(exercise *Exercise.Exercise, function string, helper st
 }
 
 func appendHelperFunctions(exercise *Exercise.Exercise) error {
-	if err := addHelperToFunction(exercise, "is_leap_year", `is_leap_year_helper(year);`); err != nil {
+	if err := addHelperToFunction(exercise, "is_leap_year", `is_leap_year_helper(%s);`); err != nil {
 		return err
 	}
-	if err := addHelperToFunction(exercise, "num_days_in_month", `num_days_in_month_helper(year, month);`); err != nil {
+	if err := addHelperToFunction(exercise, "num_days_in_month", `num_days_in_month_helper(%s);`); err != nil {
 		return err
 	}
 	if err := testutils.AppendStringToFile(TestExistenceHelper, exercise.TurnInFiles[0]); err != nil {
