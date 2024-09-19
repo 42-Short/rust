@@ -14,27 +14,27 @@ import (
 const CargoTest = `
 #[cfg(test)]
 mod shortinette_tests_rust_0001 {
-    use super::*;
+	use super::*;
 
-    #[test]
-    fn test_0() {
-        assert_eq!(min(1i32, 2i32), 1i32);
-    }
+	#[test]
+	fn test_0() {
+		assert_eq!(min(1i32, 2i32), 1i32);
+	}
 
-    #[test]
-    fn test_1() {
-        assert_eq!(min(2i32, 1i32), 1i32);
-    }
+	#[test]
+	fn test_1() {
+		assert_eq!(min(2i32, 1i32), 1i32);
+	}
 
-    #[test]
-    fn test_2() {
-        assert_eq!(min(1i32, 1i32), 1i32);
-    }
+	#[test]
+	fn test_2() {
+		assert_eq!(min(1i32, 1i32), 1i32);
+	}
 
-    #[test]
-    fn test_3() {
-        assert_eq!(min(-1i32, 0i32), -1i32);
-    }
+	#[test]
+	fn test_3() {
+		assert_eq!(min(-1i32, 0i32), -1i32);
+	}
 }
 `
 

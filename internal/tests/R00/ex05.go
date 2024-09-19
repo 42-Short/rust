@@ -40,23 +40,23 @@ fn num_days_in_month_helper(year: u32, month: u32) {
 const CargoTestEx05 = `
 #[cfg(test)]
 mod shortinette_tests_rust_0005 {
-    use super::*;
+	use super::*;
 
-    #[test]
-    fn test_is_leap_year() {
-        assert!(is_leap_year(1600));
-        assert!(!is_leap_year(1500));
-        assert!(is_leap_year(2004));
-        assert!(!is_leap_year(2003));
-    }
+	#[test]
+	fn test_is_leap_year() {
+		assert!(is_leap_year(1600));
+		assert!(!is_leap_year(1500));
+		assert!(is_leap_year(2004));
+		assert!(!is_leap_year(2003));
+	}
 
-    #[test]
-    fn test_num_days_in_month() {
+	#[test]
+	fn test_num_days_in_month() {
 		assert_eq!(num_days_in_month(2001, 1), 31);
 		assert_eq!(num_days_in_month(2000, 1), 31);
-        assert_eq!(num_days_in_month(2000, 2), 29);
-        assert_eq!(num_days_in_month(2001, 2), 28);
-        assert_eq!(num_days_in_month(2004, 2), 29);
+		assert_eq!(num_days_in_month(2000, 2), 29);
+		assert_eq!(num_days_in_month(2001, 2), 28);
+		assert_eq!(num_days_in_month(2004, 2), 29);
 		assert_eq!(num_days_in_month(2100, 2), 28);
 		assert_eq!(num_days_in_month(2001, 3), 31);
 		assert_eq!(num_days_in_month(2000, 3), 31);
@@ -78,31 +78,31 @@ mod shortinette_tests_rust_0005 {
 		assert_eq!(num_days_in_month(2000, 11), 30);
 		assert_eq!(num_days_in_month(2001, 12), 31);
 		assert_eq!(num_days_in_month(2000, 12), 31);
-    }
-
-    #[test]
-    #[should_panic]
-    fn test_invalid_year() {
-        is_leap_year(0);
-    }
-
-    #[test]
-    #[should_panic]
-    fn test_invalid_month() {
-        num_days_in_month(2000, 13);
-    }
+	}
 
 	#[test]
-    #[should_panic]
-    fn test_invalid_month_2() {
-        num_days_in_month(2001, 13);
-    }
+	#[should_panic]
+	fn test_invalid_year() {
+		is_leap_year(0);
+	}
 
 	#[test]
-    #[should_panic]
-    fn test_invalid_month_3() {
-        num_days_in_month(0, 2);
-    }
+	#[should_panic]
+	fn test_invalid_month() {
+		num_days_in_month(2000, 13);
+	}
+
+	#[test]
+	#[should_panic]
+	fn test_invalid_month_2() {
+		num_days_in_month(2001, 13);
+	}
+
+	#[test]
+	#[should_panic]
+	fn test_invalid_month_3() {
+		num_days_in_month(0, 2);
+	}
 }
 `
 
