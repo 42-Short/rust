@@ -180,5 +180,5 @@ func ex06Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex06() Exercise.Exercise {
-	return Exercise.NewExercise("06", "ex06", []string{"src/main.rs", "src/lib.rs", "Cargo.toml"}, 20, ex06Test) //TODO: add actual grading points
+	return Exercise.NewExercise("06", "ex06", []string{"src/main.rs", "src/lib.rs", "Cargo.toml"}, 20, ex06Test)
 }

@@ -39,6 +39,6 @@ func R02() *Module.Module {
 		"06": ex06(),
 		"07": ex07(),
 	}
-	r02 := Module.NewModule("02", 40, exercises, "subject.md") // TODO: add actual subject, add actual minimum grade
+	r02 := Module.NewModule("02", 40, exercises, "subject.md") // TODO: add actual subject
 	return &r02
 }

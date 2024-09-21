@@ -41,12 +41,12 @@ mod shortinette_tests_rust_0203 {
 
 `
 
-var clippyTomlAsString03 = ``
+var clippyTomlAsString03 = `` //TODO
 
 func ex03Test(exercise *Exercise.Exercise) Exercise.Result {
     return runDefaultTest(exercise, cargoTestModAsString03, clippyTomlAsString03, map[string]int{"impl": 0})
 }
 
 func ex03() Exercise.Exercise {
-	return Exercise.NewExercise("03", "ex03", []string{"src/main.rs", "Cargo.toml"}, 10, ex03Test) //TODO: add actual grading points
+	return Exercise.NewExercise("03", "ex03", []string{"src/main.rs", "Cargo.toml"}, 10, ex03Test)
 }
