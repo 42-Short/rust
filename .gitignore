@@ -27,3 +27,7 @@ traces/
 # DATABASE
 
 sqlite3/
+
+# CONFIG
+
+config/participants.json

@@ -13,7 +13,6 @@ import (
 
 var clippyTomlAsString03 = `
 disallowed-methods = ["std::process::Command::exec"]
-disallowed-types = ["std::process::Command"]
 `
 
 func testInputFileBadPermissions(workingDirectory string) Exercise.Result {

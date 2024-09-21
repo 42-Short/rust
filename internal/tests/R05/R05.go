@@ -1,4 +1,4 @@
-package R06
+package R05
 
 import (
 	Module "github.com/42-Short/shortinette/pkg/interfaces/module"
@@ -6,7 +6,7 @@ import (
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
 )
 
-func R06() *Module.Module {
+func R03() *Module.Module {
 	exercises := map[string]Exercise.Exercise{
 		"00": ex00(),
 		"01": ex01(),
@@ -17,6 +17,6 @@ func R06() *Module.Module {
 		"06": ex06(),
 		"07": ex07(),
 	}
-	r00 := Module.NewModule("06", 70, exercises, "subjects/module-06.md", "shortinette-testenv")
-	return &r00
+	r05 := Module.NewModule("05", 70, exercises, "subjects/module-05.md", "shortinette-testenv")
+	return &r05
 }

@@ -12,6 +12,7 @@ var clippyTomlAsString00 = `
 disallowed-macros = ["std::println", "std::print"]
 `
 
+// TODO: check for output
 func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
 	if err := alloweditems.Check(*exercise, clippyTomlAsString00, nil); err != nil {
 		return Exercise.CompilationError(err.Error())
