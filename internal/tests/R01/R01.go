@@ -17,6 +17,6 @@ func R01() *Module.Module {
 		"06": ex06(),
 		"07": ex07(),
 	}
-	r01 := Module.NewModule("01", 50, exercises, "subject.md", "shortinette-testenv") // TODO: add actual subject
+	r01 := Module.NewModule("01", 50, exercises, "subjects/module-01.md", "shortinette-testenv")
 	return &r01
 }
