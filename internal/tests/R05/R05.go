@@ -6,7 +6,7 @@ import (
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
 )
 
-func R03() *Module.Module {
+func R05() *Module.Module {
 	exercises := map[string]Exercise.Exercise{
 		"00": ex00(),
 		"01": ex01(),
