@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"rust-piscine/internal/scheduler"
 	"rust-piscine/internal/tests/R00"
+	"rust-piscine/internal/tests/R02"
+	"rust-piscine/internal/tests/R04"
+	"rust-piscine/internal/tests/R06"
 	"rust-piscine/internal/tests/R01"
 	"rust-piscine/internal/tests/R03"
 	"time"
@@ -16,6 +19,8 @@ import (
 func main() {
 	modules := map[string]Module.Module{
 		"00": *R00.R00(),
+		// TODO: "01": *R01.R01(), // TODO
+		"02": *R02.R02(),
 		"01": *R01.R01(),
 		"02": *R02.R02(), // TODO
 		"03": *R03.R03(), // TODO
