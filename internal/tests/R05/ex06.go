@@ -1,6 +1,7 @@
 package R05
 
 import (
+	"os"
 	"path/filepath"
 
 	"github.com/42-Short/shortinette/pkg/logger"
@@ -9,16 +10,13 @@ import (
 	"github.com/42-Short/shortinette/pkg/testutils"
 )
 
-var Ex06TestMod = `
-[cfg(test)]
-mod shortinette_rust_test_module05_ex06_0001 {}
-`
-
-// TODO: this needs to test with different mains
 func ex06Test(exercise *Exercise.Exercise) Exercise.Result {
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
-
-	if err := testutils.AppendStringToFile(Ex06TestMod, exercise.TurnInFiles[1]); err != nil {
+	Ex06TestMod, err := os.ReadFile("internal/tests/R05/ex06.rs")
+	if err != nil {
+		return Exercise.InternalError(err.Error())
+	}
+	if err := testutils.AppendStringToFile(string(Ex06TestMod), exercise.TurnInFiles[1]); err != nil {
 		logger.Exercise.Printf("internal error: %v", err)
 		return Exercise.InternalError(err.Error())
 	}

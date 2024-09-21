@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"rust-piscine/internal/scheduler"
-	"rust-piscine/internal/tests/R06"
+	"rust-piscine/internal/tests/R05"
 	"time"
 
 	Module "github.com/42-Short/shortinette/pkg/interfaces/module"
@@ -18,8 +18,8 @@ func main() {
 		// "02": *R02.R02(),
 		// "03": *R03.R03(),
 		// "04": *R04.R04(),
-		// "05": *R05.R05(),
-		"06": *R06.R06(),
+		"05": *R05.R05(),
+		// "06": *R06.R06(),
 	}
 	short := Short.NewShort("Rust Piscine 1.0", modules, webhook.NewWebhookTestMode(modules, "/webhook", "8080"))
 	short.Start()
