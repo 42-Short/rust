@@ -1,57 +1,47 @@
 package R00
 
 import (
-	"bytes"
-	"fmt"
-	"os"
-	"os/exec"
 	"path/filepath"
-	"strings"
+	"rust-piscine/internal/alloweditems"
+	"time"
 
-	"github.com/42-Short/shortinette/pkg/logger"
+	"github.com/42-Short/shortinette/pkg/testutils"
 
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
 )
 
-func ex00Compile(exercise *Exercise.Exercise) error {
-	cmd := exec.Command("rustc", filepath.Base(exercise.TurnInFiles[0]))
-	dirPath := filepath.Dir(exercise.TurnInFiles[0])
-	if _, err := os.Stat(dirPath); os.IsNotExist(err) {
-		return err
+func clippyCheck00(exercise *Exercise.Exercise) Exercise.Result {
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
+	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"init"}); err != nil {
+		return Exercise.InternalError("cargo init failed")
 	}
-	cmd.Dir = filepath.Dir(exercise.TurnInFiles[0])
-
-	output, err := cmd.CombinedOutput()
-	if err != nil {
-		logger.Exercise.Println(err)
-		return fmt.Errorf("could not compile: %s", output)
+	if _, err := testutils.RunCommandLine(workingDirectory, "cp", []string{"hello.rs", "src/main.rs"}); err != nil {
+		return Exercise.InternalError("unable to copy file to src/ folder")
 	}
-	logger.Exercise.Printf("%s compiled with rustc\n", exercise.TurnInFiles[0])
-	return nil
-}
-
-func runExecutable(executablePath string) (string, error) {
-	cmd := exec.Command("./" + filepath.Base(executablePath))
-	cmd.Dir = filepath.Dir(executablePath)
-	var stdout bytes.Buffer
-	var stderr bytes.Buffer
-	cmd.Stdout = &stdout
-	cmd.Stderr = &stderr
-
-	if err := cmd.Run(); err != nil {
-		return stderr.String(), err
+	tmp := Exercise.Exercise{
+		CloneDirectory:  exercise.CloneDirectory,
+		TurnInDirectory: exercise.TurnInDirectory,
+		TurnInFiles:     []string{filepath.Join(workingDirectory, "src/main.rs")},
 	}
-	return stdout.String(), nil
+	if err := alloweditems.Check(tmp, "", map[string]int{"unsafe": 0}); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
+	return Exercise.Passed("")
 }
 
 func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
-	if err := ex00Compile(exercise); err != nil {
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
+	fileName := filepath.Base(exercise.TurnInFiles[0])
+	if _, err := testutils.RunCommandLine(workingDirectory, "rustc", []string{fileName}); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
-	executablePath := strings.TrimSuffix(exercise.TurnInFiles[0], filepath.Ext(exercise.TurnInFiles[0]))
-	output, err := runExecutable(executablePath)
+	if result := clippyCheck00(exercise); !result.Passed {
+		return result
+	}
+	executablePath := testutils.ExecutablePath(exercise.TurnInFiles[0], ".rs")
+	output, err := testutils.RunExecutable(executablePath, testutils.WithTimeout(500*time.Millisecond))
 	if err != nil {
-		return Exercise.RuntimeError(err.Error())
+		return Exercise.RuntimeError(output)
 	}
 	if output != "Hello, World!\n" {
 		return Exercise.AssertionError("Hello, World!\n", output)

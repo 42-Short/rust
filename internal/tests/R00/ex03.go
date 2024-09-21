@@ -3,6 +3,7 @@ package R00
 import (
 	"fmt"
 	"path/filepath"
+	"rust-piscine/internal/alloweditems"
 	"strings"
 	"time"
 
@@ -31,7 +32,10 @@ func doFizzBuzz() string {
 	return result.String()
 }
 
-func fizzBuzzOutputTest(exercise Exercise.Exercise) Exercise.Result {
+func fizzBuzzOutputTest(exercise *Exercise.Exercise) Exercise.Result {
+	if err := CompileWithRustc(exercise.TurnInFiles[0]); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
 	executablePath := testutils.ExecutablePath(exercise.TurnInFiles[0], filepath.Ext(exercise.TurnInFiles[0]))
 	output, err := testutils.RunExecutable(executablePath, testutils.WithTimeout(500*time.Millisecond))
 	if err != nil {
@@ -45,8 +49,30 @@ func fizzBuzzOutputTest(exercise Exercise.Exercise) Exercise.Result {
 	return Exercise.Passed("OK")
 }
 
+func clippyCheck03(exercise *Exercise.Exercise) Exercise.Result {
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
+	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"init"}); err != nil {
+		return Exercise.InternalError("cargo init failed")
+	}
+	if _, err := testutils.RunCommandLine(workingDirectory, "cp", []string{"fizzbuzz.rs", "src/main.rs"}); err != nil {
+		return Exercise.InternalError("unable to copy file to src/ folder")
+	}
+	tmp := Exercise.Exercise{
+		CloneDirectory:  exercise.CloneDirectory,
+		TurnInDirectory: exercise.TurnInDirectory,
+		TurnInFiles:     []string{filepath.Join(workingDirectory, "src/main.rs")},
+	}
+	if err := alloweditems.Check(tmp, "", map[string]int{"unsafe": 0}); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
+	return Exercise.Passed("OK")
+}
+
 func ex03Test(exercise *Exercise.Exercise) Exercise.Result {
-	return fizzBuzzOutputTest(*exercise)
+	if result := clippyCheck03(exercise); !result.Passed {
+		return result
+	}
+	return fizzBuzzOutputTest(exercise)
 }
 
 func ex03() Exercise.Exercise {
