@@ -48,5 +48,5 @@ func ex03Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex03() Exercise.Exercise {
-	return Exercise.NewExercise("03", "ex03", []string{"src/main.rs", "Cargo.toml"}, 25, ex03Test) //TODO: add actual grading points
+	return Exercise.NewExercise("03", "ex03", []string{"src/main.rs", "Cargo.toml"}, 10, ex03Test) //TODO: add actual grading points
 }

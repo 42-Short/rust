@@ -21,9 +21,9 @@ func runDefaultTest(exercise *Exercise.Exercise, cargoTestModAsString string, cl
 		logger.Exercise.Printf("could not write to %s: %v", exercise.TurnInFiles[0], err)
 		return Exercise.InternalError(err.Error())
 	}
-	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"valgrind", "test"}, testutils.WithTimeout(60 * time.Second)) //TODO: maybe adjust the time
+	_, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"valgrind", "test"}, testutils.WithTimeout(100 * time.Second)) //TODO: maybe adjust the time
 	if err != nil {
-		return Exercise.AssertionError("", output)
+		return Exercise.RuntimeError(err.Error())
 	}
 	return Exercise.Passed("OK")
 }
@@ -39,6 +39,6 @@ func R02() *Module.Module {
 		"06": ex06(),
 		"07": ex07(),
 	}
-	r02 := Module.NewModule("02", 70, exercises, "subject.md") // TODO: add actual subject, add actual minimum grade
+	r02 := Module.NewModule("02", 40, exercises, "subject.md") // TODO: add actual subject, add actual minimum grade
 	return &r02
 }

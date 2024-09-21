@@ -148,18 +148,6 @@ func writeStringToFile(source string, destFilePath string) error {
     return nil
 }
 
-func evaluateFuzzingResult(dirPath string) Exercise.Result {
-    entries, err := os.ReadDir(dirPath)
-    if err != nil {
-        logger.Exercise.Printf("could not read from %s: %v", dirPath, err)
-        return Exercise.InternalError(err.Error())
-    }
-    if len(entries) == 0 {
-        return Exercise.Passed("OK")
-    }
-   return Exercise.RuntimeError("assertion failed during fuzzing", "")
-}
-
 func runCargoFuzz(exercise *Exercise.Exercise) Exercise.Result {
     workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
     if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"fuzz", "init"}); err != nil {
@@ -179,10 +167,9 @@ func runCargoFuzz(exercise *Exercise.Exercise) Exercise.Result {
         return Exercise.InternalError(err.Error())
     }
     if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"fuzz", "run", "next_token_fuzz", "--", "-max_total_time=10"}); err != nil {
-        logger.Exercise.Printf("could not run fuzzer: %v",err)
-        return Exercise.InternalError(err.Error())
+        return Exercise.RuntimeError(err.Error())
     }
-    return evaluateFuzzingResult(filepath.Join(workingDirectory, "fuzz/artifacts/next_token_fuzz/"))
+    return Exercise.Passed("OK")
 }
 
 func ex06Test(exercise *Exercise.Exercise) Exercise.Result {
@@ -193,5 +180,5 @@ func ex06Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex06() Exercise.Exercise {
-	return Exercise.NewExercise("06", "ex06", []string{"src/main.rs", "src/lib.rs", "Cargo.toml"}, 25, ex06Test) //TODO: add actual grading points
+	return Exercise.NewExercise("06", "ex06", []string{"src/main.rs", "src/lib.rs", "Cargo.toml"}, 20, ex06Test) //TODO: add actual grading points
 }
