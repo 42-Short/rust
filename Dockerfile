@@ -13,6 +13,9 @@ ENV PATH="/usr/local/go/bin:${PATH}"
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 
+# Install Cargo fuzz
+RUN cargo install cargo-fuzz
+
 # Ensure required Rust libraries are cached
 WORKDIR /app
 RUN cargo new dummy_project
