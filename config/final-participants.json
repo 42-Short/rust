@@ -153,10 +153,6 @@
             "intra_login": "tbatis"
         },
         {
-            "github_username": "drucilla",
-            "intra_login": "Drucilla"
-        },
-        {
             "github_username": "DavidPoetsch",
             "intra_login": "dpotsch"
         },
@@ -183,6 +179,14 @@
         {
             "github_username": "zhakhand",
             "intra_login": "dzakhan"
+        },
+        {
+            "github_username": "HeiMichael",
+            "intra_login": "miheider"
+        },
+        {
+            "github_username": "mtjmusic",
+            "intra_login": "mmusic"
         }
     ]
 }
