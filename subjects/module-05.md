@@ -1,4 +1,19 @@
 # Module 05: Concurrence
+## Foreword
+
+```txt
+error: pineapple doesn't go on pizza
+ --> main.rs:6:18
+  |
+ 6|     let _: Pizza<Pineapple>;
+  |            ----- ^^^^^^^^^
+  |            |
+  |            this is the pizza you ruined
+  |
+  = note: `#[forbid(bad_taste)]` on by default
+  = note: you're a monster
+```
+
 ## General Rules
 
 * Any code you turn in must compile *without warnings* using the `rustc` compiler available on the school's machines without additional options. If not specified differently in the subject, you are **not** allowed to use the `unsafe` keyword anywhere in your code.
@@ -20,22 +35,6 @@ fn my_unused_function() {}
 
 * You are *strongly* encouraged to write extensive tests for the functions and systems you turn in. However, for function/library submissions (_anything which is not a program_), do **not** submit a main. Tests can use the symbols you want, even if they are not specified in the `allowed symbols` section.
 
-## Foreword
-
-```txt
-error: pineapple doesn't go on pizza
- --> main.rs:6:18
-  |
- 6|     let _: Pizza<Pineapple>;
-  |            ----- ^^^^^^^^^
-  |            |
-  |            this is the pizza you ruined
-  |
-  = note: `#[forbid(bad_taste)]` on by default
-  = note: you're a monster
-```
-
-Before getting started, read the [rules](https://github.com/42-Short/rust/tree/main/RULES.md)!
 
 ## Exercise 00: Cellular
 
