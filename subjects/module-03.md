@@ -1,6 +1,6 @@
 # Module 03: Polymorphine
 
-## Forword
+## Foreword
 
 ```rust
 // Bastion of the Turbofish
