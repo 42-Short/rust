@@ -63,6 +63,7 @@ func main() {
 	}
 
 	for _, participant := range shortConfig.Participants {
-		deleteRepo(fmt.Sprintf("%s-00", participant.IntraLogin))
+		deleteRepo(fmt.Sprintf("%s-05", participant.IntraLogin))
 	}
+	deleteRepo("sqlite3")
 }
