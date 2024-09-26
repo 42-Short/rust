@@ -1,4 +1,24 @@
 # Module 01: Indirections
+
+## Foreword
+
+```rust
+fn punch_card() {
+    let rust = (
+        ..=..=.. ..    .. .. .. ..    .. .. .. ..    .. ..=.. ..
+        ..=.. ..=..    .. .. .. ..    .. .. .. ..    ..=..=..=..
+        ..=.. ..=..    ..=.. ..=..    .. ..=..=..    .. ..=.. ..
+        ..=..=.. ..    ..=.. ..=..    ..=.. .. ..    .. ..=.. ..
+        ..=.. ..=..    ..=.. ..=..    .. ..=.. ..    .. ..=.. ..
+        ..=.. ..=..    ..=.. ..=..    .. .. ..=..    .. ..=.. ..
+        ..=.. ..=..    .. ..=..=..    ..=..=.. ..    .. ..=.. ..
+    );
+    println!("{rust:?}");
+}
+```
+
+*Extracted from `rustc`'s [unit tests](https://github.com/rust-lang/rust/blob/131f0c6df6777800aa884963bdba0739299cd31f/tests/ui/weird-exprs.rs#L126-L134).*
+
 ## General Rules
 
 * Any code you turn in must compile *without warnings* using the `rustc` compiler available on the school's machines without additional options. If not specified differently in the subject, you are **not** allowed to use the `unsafe` keyword anywhere in your code.
@@ -20,26 +40,6 @@ fn my_unused_function() {}
 
 * You are *strongly* encouraged to write extensive tests for the functions and systems you turn in. However, for function/library submissions (_anything which is not a program_), do **not** submit a main. Tests can use the symbols you want, even if they are not specified in the `allowed symbols` section.
 
-## Foreword
-
-```rust
-fn punch_card() {
-    let rust = (
-        ..=..=.. ..    .. .. .. ..    .. .. .. ..    .. ..=.. ..
-        ..=.. ..=..    .. .. .. ..    .. .. .. ..    ..=..=..=..
-        ..=.. ..=..    ..=.. ..=..    .. ..=..=..    .. ..=.. ..
-        ..=..=.. ..    ..=.. ..=..    ..=.. .. ..    .. ..=.. ..
-        ..=.. ..=..    ..=.. ..=..    .. ..=.. ..    .. ..=.. ..
-        ..=.. ..=..    ..=.. ..=..    .. .. ..=..    .. ..=.. ..
-        ..=.. ..=..    .. ..=..=..    ..=..=.. ..    .. ..=.. ..
-    );
-    println!("{rust:?}");
-}
-```
-
-*Extracted from `rustc`'s [unit tests](https://github.com/rust-lang/rust/blob/131f0c6df6777800aa884963bdba0739299cd31f/tests/ui/weird-exprs.rs#L126-L134).*
-
-Before getting started, read the [rules](https://github.com/42-Short/rust/tree/main/RULES.md)!
 
 ## Exercise 00: Reference me daddy
 
