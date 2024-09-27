@@ -333,7 +333,7 @@ impl TodoList {
 * `done` must mark an item as being done. Invalid indices should do nothing.
 * `purge` must purge any "done" task.
 
-Write a `main` function, respondible for using both `TodoList` and `Command`. The content of the
+Write a `main` function, responsible for using both `TodoList` and `Command`. The content of the
 todolist must be displayed to the user before each prompt.
 
 You may design the interface you want to this exercise. Here is an example.
