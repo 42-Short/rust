@@ -1,6 +1,5 @@
 # Module 06: Feeling Unsafe
-
-## Forword
+## Foreword
 
 For the eighth day in a row, Neophyte Col found himself standing before the Two Great Guards of the
 temple. They stood before the large entrance of the temple, clad in simple robes. Nevertheless, they
@@ -89,7 +88,28 @@ The monk, rubbing her face, walked back and sat down on one of the benches, mutt
 
 _The [first Rust Koan](https://users.rust-lang.org/t/rust-koans/2408)._
 
-Before getting started, read the [rules](https://github.com/42-Short/rust/tree/main/RULES.md)!
+## General Rules
+
+* Any code you turn in must compile *without warnings* using the `rustc` compiler available on the school's machines without additional options. If not specified differently in the subject, you are **not** allowed to use the `unsafe` keyword anywhere in your code.
+
+* For exercises using the `cargo` package manager, the same rule applies. In that case, only the crates specified in the `allowed dependencies` section are allowed. Any other dependency is forbidden. More generally, only the symbols specified in `allowed symbols` are authorized within an exercise.
+
+* You are generally *not* authorized to modify lint levels - either using `#[attributes]`, `#![global_attributes]` or with command-line arguments. You may optionally allow the `dead_code` lint to silence warnings about unused variables, functions, etc.
+
+```rust
+// Either globally:
+#![allow(dead_code)] 
+
+// Or locally, for a simple item:
+#[allow(dead_code)]
+fn my_unused_function() {}
+```
+
+* For exercises managed with cargo, the command `cargo clippy -- -D warnings` must run **with no errors**!
+
+* You are *strongly* encouraged to write extensive tests for the functions and systems you turn in. However, for function/library submissions (_anything which is not a program_), do **not** submit a main. Tests can use the symbols you want, even if they are not specified in the `allowed symbols` section.
+
+## Module Rules
 
 You _are_ allowed to use `unsafe` code in this module! However, some rules must be followed.
 
@@ -159,7 +179,7 @@ let val = unsafe { get_unchecked(slice, 2) };
 unsafe impl Zeroable for u64 {}
 ```
 
-To summarise:
+To summarize:
 
 - `unsafe fn` means "know what you are doing before calling this function".
 - `unsafe trait` means "know what you are doing before implementing this trait".

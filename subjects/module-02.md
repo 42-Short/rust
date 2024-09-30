@@ -1,6 +1,6 @@
 # Module 02: Structure
 
-## Forword
+## Foreword
 
 Upon a warm autumn day, Brother Farbold was walking through the Gardens of Abstraction near the
 recently opened Temple of Rust. He passed many curious and elaborate displays of complex
@@ -95,7 +95,27 @@ At that moment, Maran was enlightened.
 
 *The [second Rust Koan](https://users.rust-lang.org/t/rust-koans/2408/2).*
 
-Before getting started, read the [rules](https://github.com/42-Short/rust/tree/main/RULES.md)!
+## General Rules
+
+* Any code you turn in must compile *without warnings* using the `rustc` compiler available on the school's machines without additional options. If not specified differently in the subject, you are **not** allowed to use the `unsafe` keyword anywhere in your code.
+
+* For exercises using the `cargo` package manager, the same rule applies. In that case, only the crates specified in the `allowed dependencies` section are allowed. Any other dependency is forbidden. More generally, only the symbols specified in `allowed symbols` are authorized within an exercise.
+
+* You are generally *not* authorized to modify lint levels - either using `#[attributes]`, `#![global_attributes]` or with command-line arguments. You may optionally allow the `dead_code` lint to silence warnings about unused variables, functions, etc.
+
+```rust
+// Either globally:
+#![allow(dead_code)] 
+
+// Or locally, for a simple item:
+#[allow(dead_code)]
+fn my_unused_function() {}
+```
+
+* For exercises managed with cargo, the command `cargo clippy -- -D warnings` must run **with no errors**!
+
+* You are *strongly* encouraged to write extensive tests for the functions and systems you turn in. However, for function/library submissions (_anything which is not a program_), do **not** submit a main. Tests can use the symbols you want, even if they are not specified in the `allowed symbols` section.
+
 
 ## Exercise 00: Dimensional Analysis
 
@@ -313,7 +333,7 @@ impl TodoList {
 * `done` must mark an item as being done. Invalid indices should do nothing.
 * `purge` must purge any "done" task.
 
-Write a `main` function, respondible for using both `TodoList` and `Command`. The content of the
+Write a `main` function, responsible for using both `TodoList` and `Command`. The content of the
 todolist must be displayed to the user before each prompt.
 
 You may design the interface you want to this exercise. Here is an example.
