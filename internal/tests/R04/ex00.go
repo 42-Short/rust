@@ -2,6 +2,7 @@ package R04
 
 import (
 	"path/filepath"
+
 	"rust-piscine/internal/alloweditems"
 
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
@@ -12,13 +13,17 @@ var clippyTomlAsString00 = `
 disallowed-macros = ["std::println", "std::print"]
 `
 
-// TODO: check for output
 func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
 	if err := alloweditems.Check(*exercise, clippyTomlAsString00, nil); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
-	_, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "cargo run | true"})
+
+	_, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "cargo run"})
+	if err != nil {
+		return Exercise.RuntimeError(err.Error())
+	}
+	_, err = testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "cargo run | true"})
 	if err != nil {
 		return Exercise.RuntimeError(err.Error())
 	}
