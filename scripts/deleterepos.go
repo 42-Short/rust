@@ -62,8 +62,12 @@ func main() {
 		log.Fatalf("Error parsing shortconfig.json: %v", err)
 	}
 
-	for _, participant := range shortConfig.Participants {
-		deleteRepo(fmt.Sprintf("%s-05", participant.IntraLogin))
+	moduleNames := []string{"00", "01", "02", "03", "04", "05", "06"}
+	for _, moduleName := range moduleNames {
+		for _, participant := range shortConfig.Participants {
+			deleteRepo(fmt.Sprintf("%s-%s", participant.IntraLogin, moduleName))
+		}
+
 	}
 	deleteRepo("sqlite3")
 }
