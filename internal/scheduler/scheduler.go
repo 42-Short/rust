@@ -1,6 +1,7 @@
 package scheduler
 
 import (
+	"sort"
 	"time"
 
 	Module "github.com/42-Short/shortinette/pkg/interfaces/module"
@@ -27,6 +28,7 @@ func Schedule(short Short.Short, startTime time.Time, moduleDuration time.Durati
 	for key := range short.Modules {
 		moduleList = append(moduleList, key)
 	}
+	sort.Strings(moduleList)
 	config, err := Short.GetConfig()
 	if err != nil {
 		return err
