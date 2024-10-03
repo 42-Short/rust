@@ -240,7 +240,7 @@ allowed symbols:
     std::default::Default  std::fmt::Debug
 ```
 
-Create a type, may it be a `struct` or an `enum`. You simply have to name it `MyType`.
+Create a empty `struct`. You simply have to name it `MyType`.
 
 ```rust
 fn main() {
