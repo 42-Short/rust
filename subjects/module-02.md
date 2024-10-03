@@ -447,7 +447,7 @@ turn-in directory:
     ex06/
 
 files to turn in:
-    src/lib.rs  Cargo.toml
+    src/main.rs src/lib.rs  Cargo.toml
 
 allowed dependencies:
     ftkit
