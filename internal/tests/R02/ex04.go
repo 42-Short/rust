@@ -65,7 +65,7 @@ mod shortinette_tests_rust_0204 {
 
 `
 
-var clippyTomlAsString04 = `#![allow(clippy::needless_range_loop)]`
+var clippyTomlAsString04 = ``
 
 func ex04Test(exercise *Exercise.Exercise) Exercise.Result {
     return runDefaultTest(exercise, cargoTestModAsString04, clippyTomlAsString04, map[string]int{"unsafe": 0})
