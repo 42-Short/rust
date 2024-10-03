@@ -52,7 +52,7 @@ mod shortinette_tests_rust_0200 {
 var clippyTomlAsString00 = ``
 
 func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
-    return runDefaultTest(exercise, cargoTestModAsString00, clippyTomlAsString00, nil)
+    return runDefaultTest(exercise, cargoTestModAsString00, clippyTomlAsString00, map[string]int{"unsafe": 0})
 }
 
 func ex00() Exercise.Exercise {

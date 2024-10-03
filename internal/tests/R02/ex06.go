@@ -173,7 +173,7 @@ func runCargoFuzz(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex06Test(exercise *Exercise.Exercise) Exercise.Result {
-    if result := runDefaultTest(exercise, cargoTestModAsString06, clippyTomlAsString06, nil); result.Passed != true {
+    if result := runDefaultTest(exercise, cargoTestModAsString06, clippyTomlAsString06, map[string]int{"unsafe": 0}); result.Passed != true {
         return result
     }
     return runCargoFuzz(exercise)
