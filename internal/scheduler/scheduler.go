@@ -1,6 +1,7 @@
 package scheduler
 
 import (
+	"fmt"
 	"sort"
 	"time"
 
@@ -27,7 +28,10 @@ func Schedule(short Short.Short, startTime time.Time, moduleDuration time.Durati
 		}
 
 		logger.Info.Printf("Starting module %s", moduleName)
-		short.StartModule(moduleName)
+		
+		if err = short.StartModule(moduleName); err != nil {
+			return fmt.Errorf("error starting module %s: %v", moduleName, err)
+		}
 
 		endTime := startTime.Add(moduleDuration)
 		if now.Before(endTime) {
@@ -35,7 +39,10 @@ func Schedule(short Short.Short, startTime time.Time, moduleDuration time.Durati
 		}
 
 		logger.Info.Printf("Grading module %s", moduleName)
-		Short.EndModule(module, *config)
+		
+		if err = Short.EndModule(module, *config); err != nil {
+			return fmt.Errorf("error ending module %s: %v", moduleName, err)
+		}
 
 		startTime = endTime
 	}
