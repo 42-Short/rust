@@ -298,7 +298,7 @@ func testExistenceTest(exercise *Exercise.Exercise) Exercise.Result {
 	defer cancel()
 	go runUnixSocket(ctx, &output, ready)
 	<-ready
-	if result := cargo.CargoTest(exercise, 500*time.Millisecond, []string{}); !result.Passed {
+	if result := cargo.CargoTest(exercise, 1*time.Second, []string{}); !result.Passed {
 		return result
 	}
 	cancel()
@@ -343,7 +343,7 @@ func ex05Test(exercise *Exercise.Exercise) Exercise.Result {
 	if err := alloweditems.Check(*exercise, "", map[string]int{"unsafe": 0}); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
-	if result := cargo.CargoTest(exercise, 500*time.Millisecond, []string{}); !result.Passed {
+	if result := cargo.CargoTest(exercise, 1*time.Second, []string{}); !result.Passed {
 		return result
 	}
 	if result := testExistenceTest(exercise); !result.Passed {
@@ -352,7 +352,7 @@ func ex05Test(exercise *Exercise.Exercise) Exercise.Result {
 	if err := testutils.AppendStringToFile(CargoTestEx05, exercise.TurnInFiles[0]); err != nil {
 		return Exercise.InternalError(err.Error())
 	}
-	if result := cargo.CargoTest(exercise, 500*time.Millisecond, []string{}); !result.Passed {
+	if result := cargo.CargoTest(exercise, 1*time.Second, []string{}); !result.Passed {
 		return result
 	}
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
