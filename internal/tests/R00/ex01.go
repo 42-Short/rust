@@ -72,10 +72,13 @@ func ex01Test(exercise *Exercise.Exercise) Exercise.Result {
 	if err := CompileWithRustcTest(exercise.TurnInFiles[0]); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
-	if err := CompileWithRustc(exercise.TurnInFiles[0]); err == nil {
-		return Exercise.CompilationError("main function found")
-	}
 	executablePath := testutils.ExecutablePath(exercise.TurnInFiles[0], ".rs")
+	if output, err := testutils.RunExecutable(executablePath, testutils.WithTimeout(500*time.Millisecond)); err != nil {
+		return Exercise.RuntimeError(output)
+	}
+	if err := CompileWithRustc(exercise.TurnInFiles[0]); err != nil {
+		return Exercise.CompilationError("main function missing")
+	}
 	if output, err := testutils.RunExecutable(executablePath, testutils.WithTimeout(500*time.Millisecond)); err != nil {
 		return Exercise.RuntimeError(output)
 	}
