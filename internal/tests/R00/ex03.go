@@ -62,8 +62,13 @@ func clippyCheck03(exercise *Exercise.Exercise) Exercise.Result {
 		TurnInDirectory: exercise.TurnInDirectory,
 		TurnInFiles:     []string{filepath.Join(workingDirectory, "src/main.rs")},
 	}
-	if err := alloweditems.Check(tmp, "", map[string]int{"unsafe": 0}); err != nil {
+	if err := alloweditems.Check(tmp, "", map[string]int{"unsafe": 0, "match": 1, "for": 1, "if": 0, "while": 0}); err != nil {
 		return Exercise.CompilationError(err.Error())
+	}
+	for _, keyword := range []string{"match", "for"} {
+		if err := alloweditems.Check(tmp, "", map[string]int{keyword: 0}); err == nil {
+			return Exercise.CompilationError(fmt.Sprintf("Keyword %s not used exactly once", keyword))
+		}
 	}
 	return Exercise.Passed("OK")
 }
