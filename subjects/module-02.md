@@ -240,7 +240,7 @@ allowed symbols:
     std::default::Default  std::fmt::Debug
 ```
 
-Create a empty `struct`. You simply have to name it `MyType`.
+Create a type, may it be a `struct` or an `enum`. You simply have to name it `MyType`.
 
 ```rust
 fn main() {
@@ -250,11 +250,6 @@ fn main() {
 
     println!("the default value of MyType is {instance:?}");
     println!("the clone of `instance` is {other_instance:#?}");
-    assert_eq!(
-        instance,
-        MyType::default(),
-        "the default value isn't always the same :/"
-    );
     assert_eq!(
         instance,
         other_instance,
