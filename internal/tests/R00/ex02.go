@@ -46,11 +46,23 @@ func yes(filename string) Exercise.Result {
 	if err != nil && !errors.Is(err, testutils.ErrTimeout) {
 		return Exercise.RuntimeError(err.Error())
 	}
+	count := 0
 	lines := strings.Split(output, "\n")
+	nl_found := false // Just to avoid empty lines being graded as correct, except at EOF
 	for _, line := range lines {
+		if nl_found {
+			return Exercise.AssertionError("y", "")
+		}
 		if line != "y" && line != "" {
 			return Exercise.AssertionError("y", line)
 		}
+		if line == "" {
+			nl_found = true
+		}
+		count++
+	}
+	if count < 1000 {
+		return Exercise.RuntimeError("Expected 'y' to be printed more often")
 	}
 	return Exercise.Passed("OK")
 }
