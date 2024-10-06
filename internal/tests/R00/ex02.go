@@ -3,6 +3,7 @@ package R00
 import (
 	"errors"
 	"fmt"
+	"os"
 	"path/filepath"
 	"rust-piscine/internal/alloweditems"
 	"strings"
@@ -45,11 +46,23 @@ func yes(filename string) Exercise.Result {
 	if err != nil && !errors.Is(err, testutils.ErrTimeout) {
 		return Exercise.RuntimeError(err.Error())
 	}
+	count := 0
 	lines := strings.Split(output, "\n")
+	nl_found := false // Just to avoid empty lines being graded as correct, except at EOF
 	for _, line := range lines {
+		if nl_found {
+			return Exercise.AssertionError("y", "")
+		}
 		if line != "y" && line != "" {
 			return Exercise.AssertionError("y", line)
 		}
+		if line == "" {
+			nl_found = true
+		}
+		count++
+	}
+	if count < 1000 {
+		return Exercise.RuntimeError("Expected 'y' to be printed more often")
 	}
 	return Exercise.Passed("OK")
 }
@@ -175,17 +188,28 @@ func clippyCheck02(exercise *Exercise.Exercise) Exercise.Result {
 	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"init", "--lib"}); err != nil {
 		return Exercise.InternalError("cargo init failed")
 	}
+	concat := ""
 	for _, file := range exercise.TurnInFiles {
-		if _, err := testutils.RunCommandLine(workingDirectory, "cp", []string{filepath.Base(file), "src/lib.rs"}); err != nil {
-			return Exercise.InternalError("unable to copy file to src/ folder")
+		content, err := os.ReadFile(file)
+		if err != nil {
+			return Exercise.InternalError(fmt.Sprintf("Error copying %s to src/ folder: %v", file, err))
 		}
-		tmp := Exercise.Exercise{
-			CloneDirectory:  exercise.CloneDirectory,
-			TurnInDirectory: exercise.TurnInDirectory,
-			TurnInFiles:     []string{filepath.Join(workingDirectory, "src/lib.rs")},
-		}
-		if err := alloweditems.Check(tmp, "", map[string]int{"unsafe": 0}); err != nil {
-			return Exercise.CompilationError(err.Error())
+		concat += string(content)
+	}
+	if err := os.WriteFile(filepath.Join(workingDirectory, "src/lib.rs"), []byte(concat), 0644); err != nil {
+		return Exercise.InternalError(fmt.Sprintf("Error writing content to src/lib.rs: %v", err))
+	}
+	tmp := Exercise.Exercise{
+		CloneDirectory:  exercise.CloneDirectory,
+		TurnInDirectory: exercise.TurnInDirectory,
+		TurnInFiles:     []string{filepath.Join(workingDirectory, "src/lib.rs")},
+	}
+	if err := alloweditems.Check(tmp, "", map[string]int{"unsafe": 0, "for": 1, "loop": 1, "while": 1}); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
+	for _, loopKind := range []string{"for", "loop", "while"} {
+		if err := alloweditems.Check(tmp, "", map[string]int{loopKind: 0}); err == nil {
+			return Exercise.CompilationError(fmt.Sprintf("Loop kind '%s' not used", loopKind))
 		}
 	}
 	return Exercise.Passed("OK")

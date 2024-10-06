@@ -3,6 +3,8 @@ package R00
 import (
 	"path/filepath"
 	"rust-piscine/internal/alloweditems"
+	"rust-piscine/internal/cargo"
+	"time"
 
 	"github.com/42-Short/shortinette/pkg/logger"
 
@@ -88,20 +90,22 @@ func ex07Test(exercise *Exercise.Exercise) Exercise.Result {
 		return Exercise.InternalError(err.Error())
 	}
 
-	_, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test"})
-	if err != nil {
-		return Exercise.AssertionError("", err.Error())
+	if result := cargo.CargoTest(exercise, 1*time.Second, []string{}); !result.Passed {
+		return result
 	}
-	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"run", "--", "abcde", "ab*"})
+	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"build"}); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
+	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"run", "--", "abcde", "ab*"}, testutils.WithTimeout(1*time.Second))
 	if err != nil {
-		return Exercise.AssertionError("", err.Error())
+		return Exercise.RuntimeError(err.Error())
 	}
 	if output != "yes\n" {
 		return Exercise.AssertionError("yes\n", output)
 	}
-	output, err = testutils.RunCommandLine(workingDirectory, "cargo", []string{"run", "--", "abcde", "ab*ef"})
+	output, err = testutils.RunCommandLine(workingDirectory, "cargo", []string{"run", "--", "abcde", "ab*ef"}, testutils.WithTimeout(1*time.Second))
 	if err != nil {
-		return Exercise.AssertionError("", err.Error())
+		return Exercise.RuntimeError(err.Error())
 	}
 	if output != "no\n" {
 		return Exercise.AssertionError("no\n", output)

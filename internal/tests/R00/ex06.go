@@ -2,13 +2,16 @@ package R00
 
 import (
 	"bufio"
+	"context"
 	"fmt"
 	"math"
 	"os/exec"
 	"path/filepath"
 	"rust-piscine/internal/alloweditems"
+	"time"
 
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
+	"github.com/42-Short/shortinette/pkg/testutils"
 )
 
 const (
@@ -24,7 +27,9 @@ func guessingGameTest(exercise *Exercise.Exercise) (Exercise.Result, int64) {
 	min := int64(math.MinInt32)
 	max := int64(math.MaxInt32)
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
-	cmd := exec.Command("cargo", "run")
+	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
+	defer cancel()
+	cmd := exec.CommandContext(ctx, "cargo", "run")
 	cmd.Dir = workingDirectory
 	stdin, err := cmd.StdinPipe()
 	if err != nil {
@@ -35,12 +40,15 @@ func guessingGameTest(exercise *Exercise.Exercise) (Exercise.Result, int64) {
 		return Exercise.InternalError(fmt.Sprintf("error creating stdout pipe: %v", err.Error())), 0
 	}
 	if err := cmd.Start(); err != nil {
-		return Exercise.InternalError(fmt.Sprintf("error runnig command: %v", err.Error())), 0
+		return Exercise.InternalError(fmt.Sprintf("error running command: %v", err.Error())), 0
 	}
 	reader := bufio.NewReader(stdout)
 	writer := bufio.NewWriter(stdin)
 	line, err := reader.ReadString('\n')
 	if err != nil {
+		if ctx.Err() == context.DeadlineExceeded {
+			return Exercise.RuntimeError("Timeout"), 0
+		}
 		return Exercise.InternalError(fmt.Sprintf("error reading line: %v", err.Error())), 0
 	}
 	if line != FirstMsg {
@@ -49,11 +57,17 @@ func guessingGameTest(exercise *Exercise.Exercise) (Exercise.Result, int64) {
 	for {
 		number = (min + max) / 2
 		if _, err := writer.WriteString(fmt.Sprintf("%d\n", number)); err != nil {
+			if ctx.Err() == context.DeadlineExceeded {
+				return Exercise.RuntimeError("Timeout"), 0
+			}
 			return Exercise.InternalError(fmt.Sprintf("error writing to stdin: %v", err.Error())), 0
 		}
 		writer.Flush()
 		line, err := reader.ReadString('\n')
 		if err != nil {
+			if ctx.Err() == context.DeadlineExceeded {
+				return Exercise.RuntimeError("Timeout"), 0
+			}
 			return Exercise.InternalError(fmt.Sprintf("error reading line: %v", err.Error())), 0
 		}
 		if line == fmt.Sprintf(Equal, number) {
@@ -74,6 +88,9 @@ func guessingGameTest(exercise *Exercise.Exercise) (Exercise.Result, int64) {
 	}
 	stdin.Close()
 	if err = cmd.Wait(); err != nil {
+		if ctx.Err() == context.DeadlineExceeded {
+			return Exercise.RuntimeError("Timeout"), 0
+		}
 		return Exercise.InternalError(err.Error()), 0
 	}
 	return Exercise.Passed("OK"), number
@@ -81,6 +98,10 @@ func guessingGameTest(exercise *Exercise.Exercise) (Exercise.Result, int64) {
 
 func ex06Test(exercise *Exercise.Exercise) Exercise.Result {
 	if err := alloweditems.Check(*exercise, "", map[string]int{"unsafe": 0, "<": 0, ">": 0, "<=": 0, ">=": 0, "==": 0}); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
+	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"build"}); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
 	result, number := guessingGameTest(exercise)
