@@ -261,7 +261,7 @@ fn main() {
         "the clone isn't the same :/"
     );
     assert!(
-        instance >= other_instance && instance <= other_instance,
+        instance == other_instance,
         "why would the clone be less or greater than the original?",
     );
 }
