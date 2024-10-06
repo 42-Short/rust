@@ -394,8 +394,8 @@ fn cloned_list_are_equal() {
 
     let cloned = list.clone();
     assert_eq!(cloned.count(), list.count());
-    assert_eq!(&cloned[0], &cloned[0]);
-    assert_eq!(&cloned[1], &cloned[1]);
+    assert_eq!(&cloned[0], &list[0]);
+    assert_eq!(&cloned[1], &list[1]);
 }
 
 #[cfg(test)]
