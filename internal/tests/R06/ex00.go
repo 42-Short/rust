@@ -18,10 +18,10 @@ func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
 	if err := alloweditems.Check(*exercise, clippyTomlAsString00, nil); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
-    tests00, err := os.ReadFile("internal/tests/R06/ex00.rs")
-    if err != nil {
-        return Exercise.InternalError(err.Error())
-    }
+	tests00, err := os.ReadFile("internal/tests/R06/ex00.rs")
+	if err != nil {
+		return Exercise.InternalError(err.Error())
+	}
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 	if err := testutils.AppendStringToFile(string(tests00), exercise.TurnInFiles[0]); err != nil {
 		logger.Exercise.Printf("could not write to %s: %v", exercise.TurnInFiles[0], err)
@@ -35,5 +35,5 @@ func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex00() Exercise.Exercise {
-	return Exercise.NewExercise("00", "ex00", []string{"src/lib.rs", "Cargo.toml"}, 10, ex00Test)
+	return Exercise.NewExercise("00", "ex00", []string{"src/lib.rs", "Cargo.toml"}, 69, ex00Test)
 }

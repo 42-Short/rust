@@ -136,7 +136,7 @@ fuzz_target!(|data: &[u8]| {
 var clippyTomlAsString06 = ``
 
 func writeStringToFile(source string, destFilePath string) error {
-    destFile, err := os.OpenFile(destFilePath, os.O_WRONLY, 0666)
+	destFile, err := os.OpenFile(destFilePath, os.O_WRONLY, 0666)
 	if err != nil {
 		return err
 	}
@@ -145,38 +145,38 @@ func writeStringToFile(source string, destFilePath string) error {
 	if _, err = destFile.WriteString(source); err != nil {
 		return err
 	}
-    return nil
+	return nil
 }
 
 func runCargoFuzz(exercise *Exercise.Exercise) Exercise.Result {
-    workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
-    if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"fuzz", "init"}); err != nil {
-        logger.Exercise.Printf("could not initialize cargo fuzz: %v",err)
+	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
+	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"fuzz", "init"}); err != nil {
+		logger.Exercise.Printf("could not initialize cargo fuzz: %v", err)
 		return Exercise.InternalError(err.Error())
 	}
-    if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"fuzz", "add", "next_token_fuzz"}); err != nil {
-        logger.Exercise.Printf("could not add target to fuzz targets: %v",err)
-        return Exercise.InternalError(err.Error())
-    }
-    if err := writeStringToFile(cargoFuzzAsSting, filepath.Join(workingDirectory, "fuzz/fuzz_targets/next_token_fuzz.rs")); err != nil {
-        logger.Exercise.Printf("could not write to fuzz file: %v",err)
-        return Exercise.InternalError(err.Error())
-    }
-    if _, err := testutils.RunCommandLine(workingDirectory, "rustup", []string{"override", "set", "nightly"}); err != nil {
-        logger.Exercise.Printf("cant configure nightly toolchain: %v",err)
-        return Exercise.InternalError(err.Error())
-    }
-    if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"fuzz", "run", "next_token_fuzz", "--", "-max_total_time=10"}); err != nil {
-        return Exercise.RuntimeError(err.Error())
-    }
-    return Exercise.Passed("OK")
+	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"fuzz", "add", "next_token_fuzz"}); err != nil {
+		logger.Exercise.Printf("could not add target to fuzz targets: %v", err)
+		return Exercise.InternalError(err.Error())
+	}
+	if err := writeStringToFile(cargoFuzzAsSting, filepath.Join(workingDirectory, "fuzz/fuzz_targets/next_token_fuzz.rs")); err != nil {
+		logger.Exercise.Printf("could not write to fuzz file: %v", err)
+		return Exercise.InternalError(err.Error())
+	}
+	if _, err := testutils.RunCommandLine(workingDirectory, "rustup", []string{"override", "set", "nightly"}); err != nil {
+		logger.Exercise.Printf("cant configure nightly toolchain: %v", err)
+		return Exercise.InternalError(err.Error())
+	}
+	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"fuzz", "run", "next_token_fuzz", "--", "-max_total_time=10"}); err != nil {
+		return Exercise.RuntimeError(err.Error())
+	}
+	return Exercise.Passed("OK")
 }
 
 func ex06Test(exercise *Exercise.Exercise) Exercise.Result {
-    if result := runDefaultTest(exercise, cargoTestModAsString06, clippyTomlAsString06, map[string]int{"unsafe": 0}); result.Passed != true {
-        return result
-    }
-    return runCargoFuzz(exercise)
+	if result := runDefaultTest(exercise, cargoTestModAsString06, clippyTomlAsString06, map[string]int{"unsafe": 0}); result.Passed {
+		return result
+	}
+	return runCargoFuzz(exercise)
 }
 
 func ex06() Exercise.Exercise {

@@ -38,5 +38,5 @@ func ex07Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex07() Exercise.Exercise {
-	return Exercise.NewExercise("07", "ex07", []string{"ft_putchar.rs"}, 10, ex07Test)
+	return Exercise.NewExercise("07", "ex07", []string{"ft_putchar.rs"}, 20, ex07Test)
 }

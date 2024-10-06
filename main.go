@@ -18,7 +18,6 @@ import (
 	"github.com/42-Short/shortinette/pkg/short/testmodes/webhook"
 )
 
-
 func main() {
 	modules := map[string]Module.Module{
 		"00": *R00.R00(),
@@ -29,9 +28,9 @@ func main() {
 		"05": *R05.R05(),
 		"06": *R06.R06(),
 	}
-	short := Short.NewShort("Rust Piscine 1.0", modules, webhook.NewWebhookTestMode(modules, "/webhook", "6969"))
+	short := Short.NewShort("Rust Piscine 1.0", modules, webhook.NewWebhookTestMode(modules, "/webhook", "8080"))
 	short.Start()
-	if err := scheduler.Schedule(short, time.Now(), time.Second*30); err != nil {
+	if err := scheduler.Schedule(short, time.Now(), time.Hour*24); err != nil {
 		fmt.Println(err)
 	}
 }

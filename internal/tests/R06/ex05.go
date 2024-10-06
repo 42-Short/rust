@@ -36,5 +36,5 @@ func ex05Test(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex05() Exercise.Exercise {
-	return Exercise.NewExercise("05", "ex05", []string{"src/lib.rs", "Cargo.toml"}, 10, ex05Test)
+	return Exercise.NewExercise("05", "ex05", []string{"src/lib.rs", "Cargo.toml"}, 15, ex05Test)
 }
