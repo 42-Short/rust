@@ -2,6 +2,9 @@ package R02
 
 import (
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
+    "github.com/42-Short/shortinette/pkg/testutils"
+    "path/filepath"
+    "time"
 )
 
 var cargoTestModAsString00 = `
@@ -51,8 +54,18 @@ mod shortinette_tests_rust_0200 {
 
 var clippyTomlAsString00 = ``
 
+
+
 func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
-    return runDefaultTest(exercise, cargoTestModAsString00, clippyTomlAsString00, nil)
+    workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
+    output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"valgrind", "run"}, testutils.WithTimeout(100 * time.Second))
+	if err != nil {
+		return Exercise.RuntimeError(err.Error())
+	}
+    if output != "120 seconds is 2 minutes\n" {
+		return Exercise.AssertionError("120 seconds is 2 minutes\n", output)
+	}
+    return runDefaultTest(exercise, cargoTestModAsString00, clippyTomlAsString00, map[string]int{"unsafe": 0})
 }
 
 func ex00() Exercise.Exercise {

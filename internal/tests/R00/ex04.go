@@ -1,10 +1,12 @@
 package R00
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
 	"rust-piscine/internal/alloweditems"
+	"time"
 
 	Exercise "github.com/42-Short/shortinette/pkg/interfaces/exercise"
 	"github.com/42-Short/shortinette/pkg/testutils"
@@ -50,54 +52,68 @@ func testNmReleaseMode(exercise *Exercise.Exercise, binary string, releaseMode R
 	return Exercise.Passed("OK")
 }
 
-func testCargoRunBinOtherReleaseMode(exercise *Exercise.Exercise) Exercise.Result {
+func cargoRunWithTimeout(exercise *Exercise.Exercise, arguments []string, validator func(string, error) Exercise.Result) Exercise.Result {
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
-	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"run", "--release", "--bin", "other"})
-	if err != nil {
+	if _, err := testutils.RunCommandLine(workingDirectory, "cargo", append([]string{"build"}, arguments...)); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
+	output, err := testutils.RunCommandLine(workingDirectory, "cargo", append([]string{"run"}, arguments...), testutils.WithTimeout(1*time.Second))
+	if err != nil && errors.Is(err, testutils.ErrTimeout) {
 		return Exercise.RuntimeError(err.Error())
 	}
-	if output != "Hey! I'm the other bin target!\nI'm in release mode!\n" {
-		return Exercise.AssertionError("Hey! I'm the other bin target!\nI'm in release mode!\n", output)
+	return validator(output, err)
+}
+
+func runAssertionValidator(exercise *Exercise.Exercise, arguments []string, expected string) Exercise.Result {
+	validator := func(output string, err error) Exercise.Result {
+		if err != nil {
+			return Exercise.RuntimeError(err.Error())
+		}
+		if output != expected {
+			return Exercise.AssertionError(expected, output)
+		}
+		return Exercise.Passed("")
+	}
+	return cargoRunWithTimeout(exercise, arguments, validator)
+}
+
+func testCargoRunBinOtherReleaseMode(exercise *Exercise.Exercise) Exercise.Result {
+	expected := "Hey! I'm the other bin target!\nI'm in release mode!\n"
+	if result := runAssertionValidator(exercise, []string{"--release", "--bin", "other"}, expected); !result.Passed {
+		return result
 	}
 	return testNmReleaseMode(exercise, "target/release/other", Release)
 }
 
 func testCargoRunBinOther(exercise *Exercise.Exercise) Exercise.Result {
-	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
-	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"run", "--bin", "other"})
-	if err != nil {
-		return Exercise.RuntimeError(err.Error())
-	}
-	if output != "Hey! I'm the other bin target!\n" {
-		return Exercise.AssertionError("Hey! I'm the other bin target!\n", output)
+	expected := "Hey! I'm the other bin target!\n"
+	if result := runAssertionValidator(exercise, []string{"--bin", "other"}, expected); !result.Passed {
+		return result
 	}
 	return testNmReleaseMode(exercise, "target/debug/other", Debug)
 }
 
 func testCargoRun(exercise *Exercise.Exercise) Exercise.Result {
-	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
-	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"run"})
-	if err != nil {
-		return Exercise.RuntimeError(err.Error())
-	}
-	if output != "Hello, Cargo!\n" {
-		return Exercise.AssertionError("Hello, Cargo!\n", output)
+	expected := "Hello, Cargo!\n"
+	if result := runAssertionValidator(exercise, []string{}, expected); !result.Passed {
+		return result
 	}
 	return testNmReleaseMode(exercise, "target/debug/module00-ex04", Debug)
 }
 
 func testOverflow(exercise *Exercise.Exercise) Exercise.Result {
-	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
-	_, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"run", "--bin", "test-overflows"})
-	if err == nil {
-		return Exercise.Result{Passed: false, Output: "test-overflows should panic in debug mode"}
+	expected := "255u8 + 1u8 == 0\n"
+	shouldPanic := func(output string, err error) Exercise.Result {
+		if err == nil {
+			return Exercise.RuntimeError("test-overflows should panic in debug mode")
+		}
+		return Exercise.Passed("")
 	}
-	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"run", "--profile", "no-overflows", "--bin", "test-overflows"})
-	if err != nil {
-		return Exercise.RuntimeError(err.Error())
+	if result := cargoRunWithTimeout(exercise, []string{"--bin", "test-overflows"}, shouldPanic); !result.Passed {
+		return result
 	}
-	if output != "255u8 + 1u8 == 0\n" {
-		return Exercise.AssertionError("255u8 + 1u8 == 0\n", output)
+	if result := runAssertionValidator(exercise, []string{"--profile", "no-overflows", "--bin", "test-overflows"}, expected); !result.Passed {
+		return result
 	}
 	return testNmReleaseMode(exercise, "target/no-overflows/test-overflows", Debug)
 }

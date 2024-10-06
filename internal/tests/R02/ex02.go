@@ -21,8 +21,8 @@ mod shortinette_tests_rust_0202 {
         test_from_delivery_time(0, 2, PizzaStatus::Ordered);
         test_from_delivery_time(2, 7, PizzaStatus::Cooking);
         test_from_delivery_time(7, 10, PizzaStatus::Cooked);
-        test_from_delivery_time(10, 18, PizzaStatus::Delivering);
-        test_from_delivery_time(18, 31, PizzaStatus::Delivered);
+        test_from_delivery_time(10, 17, PizzaStatus::Delivering);
+        test_from_delivery_time(17, 31, PizzaStatus::Delivered);
     }
 
     #[test]
@@ -45,7 +45,7 @@ mod shortinette_tests_rust_0202 {
 var clippyTomlAsString02 = `` //TODO
 
 func ex02Test(exercise *Exercise.Exercise) Exercise.Result {
-    return runDefaultTest(exercise, cargoTestModAsString02, clippyTomlAsString02, nil)
+    return runDefaultTest(exercise, cargoTestModAsString02, clippyTomlAsString02, map[string]int{"unsafe": 0})
 }
 
 func ex02() Exercise.Exercise {

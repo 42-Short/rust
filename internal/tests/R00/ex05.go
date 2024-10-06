@@ -206,11 +206,40 @@ func appendHelperFunctions(exercise *Exercise.Exercise) error {
 func missingTests(message string) Exercise.Result {
 	return Exercise.Result{
 		Passed: false,
-		Output: fmt.Sprintf("missing test: %s", message),
+		Output: fmt.Sprintf("Missing tests\n%s", message),
 	}
 }
 
-func monthTestExistenceTest(content string) Exercise.Result {
+func isLeapYearTest(content string, result *strings.Builder) error {
+	isLeapYearFound := make(map[uint32]bool)
+	for _, year := range []uint32{1600, 1500, 2004, 2003, 0} {
+		isLeapYearFound[year] = false
+	}
+	pattern := `is_leap_year\((\d+)\)`
+	regex := regexp.MustCompile(pattern)
+	matches := regex.FindAllStringSubmatch(content, -1)
+	for _, match := range matches {
+		if len(match) == 2 {
+			year, err := strconv.ParseUint(match[1], 10, 32)
+			if err != nil {
+				return err
+			}
+			for expectedYear := range isLeapYearFound {
+				if uint32(year) == expectedYear {
+					isLeapYearFound[uint32(year)] = true
+				}
+			}
+		}
+	}
+	for year, found := range isLeapYearFound {
+		if !found {
+			result.WriteString(fmt.Sprintf("Missing test for is_leap_year() with year: %d\n", year))
+		}
+	}
+	return nil
+}
+
+func numDaysInMonthTest(content string, result *strings.Builder) error {
 	leapYearsFound := make(map[uint32]bool)
 	commonYearsFound := make(map[uint32]bool)
 	invalidMonthFound := false
@@ -226,11 +255,11 @@ func monthTestExistenceTest(content string) Exercise.Result {
 		if len(match) == 3 {
 			year, err := strconv.ParseUint(match[1], 10, 32)
 			if err != nil {
-				return Exercise.InternalError(err.Error())
+				return err
 			}
 			month, err := strconv.ParseUint(match[2], 10, 32)
 			if err != nil {
-				return Exercise.InternalError(err.Error())
+				return err
 			}
 			if month < 1 || month > 12 {
 				invalidMonthFound = true
@@ -244,19 +273,19 @@ func monthTestExistenceTest(content string) Exercise.Result {
 		}
 	}
 	if !invalidMonthFound {
-		return missingTests("no test for invalid month")
+		result.WriteString("Missing test for num_days_in_month() with invalid month\n")
 	}
-	for _, found := range leapYearsFound {
+	for month, found := range leapYearsFound {
 		if !found {
-			return missingTests("missing test(s) for num_days_in_month function (leap years)")
+			result.WriteString(fmt.Sprintf("Missing test for num_days_in_month() with a leap year and month: %d\n", month))
 		}
 	}
-	for _, found := range commonYearsFound {
+	for month, found := range commonYearsFound {
 		if !found {
-			return missingTests("missing test(s) for num_days_in_month function (common years)")
+			result.WriteString(fmt.Sprintf("Missing test for num_days_in_month() with a common year and month: %d\n", month))
 		}
 	}
-	return Exercise.Passed("")
+	return nil
 }
 
 func testExistenceTest(exercise *Exercise.Exercise) Exercise.Result {
@@ -269,21 +298,22 @@ func testExistenceTest(exercise *Exercise.Exercise) Exercise.Result {
 	defer cancel()
 	go runUnixSocket(ctx, &output, ready)
 	<-ready
-	if result := cargo.CargoTest(exercise, 500*time.Millisecond, []string{}); !result.Passed {
+	if result := cargo.CargoTest(exercise, 1*time.Second, []string{}); !result.Passed {
 		return result
 	}
 	cancel()
 	content := output.String()
-	if !strings.Contains(string(content), "is_leap_year(1600)") || !strings.Contains(string(content), "is_leap_year(1500)") {
-		return missingTests("missing test(s) for is_leap_year function")
+	var result strings.Builder
+	if err := isLeapYearTest(content, &result); err != nil {
+		return Exercise.InternalError(err.Error())
 	}
-	if !strings.Contains(string(content), "is_leap_year(2004)") || !strings.Contains(string(content), "is_leap_year(2003)") {
-		return missingTests("missing test(s) for is_leap_year function")
+	if err := numDaysInMonthTest(content, &result); err != nil {
+		return Exercise.InternalError(err.Error())
 	}
-	if !strings.Contains(string(content), "is_leap_year(0)") {
-		return missingTests("missing test(s) for is_leap_year function")
+	if result.String() != "" {
+		return missingTests(result.String())
 	}
-	return monthTestExistenceTest(string(content))
+	return Exercise.Passed("")
 }
 
 func expectedMainOutput() string {
@@ -313,7 +343,7 @@ func ex05Test(exercise *Exercise.Exercise) Exercise.Result {
 	if err := alloweditems.Check(*exercise, "", map[string]int{"unsafe": 0}); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
-	if result := cargo.CargoTest(exercise, 500*time.Millisecond, []string{}); !result.Passed {
+	if result := cargo.CargoTest(exercise, 1*time.Second, []string{}); !result.Passed {
 		return result
 	}
 	if result := testExistenceTest(exercise); !result.Passed {
@@ -322,7 +352,7 @@ func ex05Test(exercise *Exercise.Exercise) Exercise.Result {
 	if err := testutils.AppendStringToFile(CargoTestEx05, exercise.TurnInFiles[0]); err != nil {
 		return Exercise.InternalError(err.Error())
 	}
-	if result := cargo.CargoTest(exercise, 500*time.Millisecond, []string{}); !result.Passed {
+	if result := cargo.CargoTest(exercise, 1*time.Second, []string{}); !result.Passed {
 		return result
 	}
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
