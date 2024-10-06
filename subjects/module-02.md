@@ -240,7 +240,7 @@ allowed symbols:
     std::default::Default  std::fmt::Debug
 ```
 
-Create a type, may it be a `struct` or an `enum`. You simply have to name it `MyType`.
+Create a empty `struct`. You simply have to name it `MyType`.
 
 ```rust
 fn main() {
@@ -447,7 +447,7 @@ turn-in directory:
     ex06/
 
 files to turn in:
-    src/lib.rs  Cargo.toml
+    src/main.rs src/lib.rs  Cargo.toml
 
 allowed dependencies:
     ftkit

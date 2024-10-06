@@ -72,9 +72,9 @@ mod shortinette_tests_rust_0205 {
 var clippyTomlAsString05 = ``
 
 func ex05Test(exercise *Exercise.Exercise) Exercise.Result {
-    return runDefaultTest(exercise, cargoTestModAsString05, clippyTomlAsString05, nil)
+    return runDefaultTest(exercise, cargoTestModAsString05, clippyTomlAsString05, map[string]int{"unsafe": 0})
 }
 
 func ex05() Exercise.Exercise {
-	return Exercise.NewExercise("05", "ex05", []string{"src/lib.rs", "Cargo.toml"}, 20, ex05Test)
+	return Exercise.NewExercise("05", "ex05", []string{"src/lib.rs", "Cargo.toml"}, 15, ex05Test)
 }
