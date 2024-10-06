@@ -39,6 +39,6 @@ func R02() *Module.Module {
 		"06": ex06(),
 		"07": ex07(),
 	}
-	r02 := Module.NewModule("02", 40, exercises, "subjects/module-02.md", "shortinette-testenv")
+	r02 := Module.NewModule("02", 50, exercises, "subjects/module-02.md", "shortinette-testenv")
 	return &r02
 }
