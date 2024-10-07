@@ -57,7 +57,7 @@ fn my_unused_function() {}
 
 * For exercises managed with cargo, the command `cargo clippy -- -D warnings` must run **with no errors**!
 
-* You are *strongly* encouraged to write extensive tests for the functions and systems you turn in. However, for function/library submissions (_anything which is not a program_), do **not** submit a main. Tests can use the symbols you want, even if they are not specified in the `allowed symbols` section.
+* You are *strongly* encouraged to write extensive tests for the functions and systems you turn in. However, for function/library submissions (_anything which is not a program_), do **not** submit a main. Tests can use the symbols and lint levels you want, even if they are not specified in the `allowed symbols` section.
 
 
 ## Exercise 00: `choose`
