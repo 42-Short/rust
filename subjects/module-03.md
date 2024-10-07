@@ -418,7 +418,7 @@ turn-in directory:
     ex07/
 
 files to turn in:
-    src/lib.rs  src/*.rs  Cargo.toml
+    src/lib.rs  Cargo.toml
 
 allowed symbols:
     str::{split, to_string, lines}  std::result::Result
