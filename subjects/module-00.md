@@ -286,7 +286,7 @@ allowed symbols:
 ```
 
 Write a **program** which prints every Friday that falls on the 13th of the month, since the first
-day of year 1 (it was a monday).
+day of year 1 (it was a monday) until today.
 
 To complete this task, you must write the following function:
 
