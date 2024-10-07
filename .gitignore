@@ -19,6 +19,7 @@ node_modules
 # LOGS
 
 traces/
+*.log
 
 # DEBUGGER
 
@@ -31,3 +32,4 @@ sqlite3/
 # CONFIG
 
 config/participants.json
+

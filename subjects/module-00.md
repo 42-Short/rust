@@ -270,7 +270,7 @@ thread 'main' panicked at 'attempt to add with overflow', src/overflow.rs:3:5
 255u8 + 1u8 == 0
 ```
 
-* You are allowed to modify lint levels for completing this exercise! Up to you to figure out which :)
+* **You are allowed to modify lint levels for completing this exercise! Up to you to figure out which :)**
 
 ## Exercise 05: Friday The 13th
 
