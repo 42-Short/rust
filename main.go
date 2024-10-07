@@ -30,7 +30,8 @@ func main() {
 	}
 	short := Short.NewShort("Rust Piscine 1.0", modules, webhook.NewWebhookTestMode(modules, "/webhook", "8080"))
 	short.Start()
-	if err := scheduler.Schedule(short, time.Now(), time.Hour*24); err != nil {
+	startTime := time.Date(2024, 10, 7, 9, 42, 0, 0, time.Local)
+	if err := scheduler.Schedule(short, startTime, time.Hour*24); err != nil {
 		fmt.Println(err)
 	}
 }

@@ -23,6 +23,13 @@ func Schedule(short Short.Short, startTime time.Time, moduleDuration time.Durati
 	for _, moduleName := range moduleList {
 		module := short.Modules[moduleName]
 		now := time.Now()
+		endTime := startTime.Add(moduleDuration)
+		if now.After(endTime) {
+			startTime = endTime
+			logger.Info.Printf("Skipping module %s (already over)", moduleName)
+			continue
+		}
+
 		if now.Before(startTime) {
 			time.Sleep(time.Until(startTime))
 		}
@@ -33,7 +40,6 @@ func Schedule(short Short.Short, startTime time.Time, moduleDuration time.Durati
 			return fmt.Errorf("error starting module %s: %v", moduleName, err)
 		}
 
-		endTime := startTime.Add(moduleDuration)
 		if now.Before(endTime) {
 			time.Sleep(time.Until(endTime))
 		}
