@@ -64,7 +64,7 @@ allowed symbols:
     std::println
 ```
 
-Create a `min` **function** that takes two integers, and returns the smaller one. To make the file compile and for it to be testable, you must add a  `main` function to showing that your function is
+Create a `min` **function** that takes two integers, and returns the smaller one. To make the file compile and for it to be testable, you must submit a  `main` function to showing that your function is
 indeed correct.
 
 The function must be prototyped like this:
@@ -121,6 +121,7 @@ The `collatz` function must execute the following algorithm...
 
 ...until *n* equals 1. On each iteration, *n* must be displayed on the standard output, followed
 by a line feed.
+Make sure to prevent timeouts!
 
 ```txt
 Input:
