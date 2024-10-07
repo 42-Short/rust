@@ -344,6 +344,7 @@ allowed dependencies;
 allowed symbols:
     ftkit::read_number  ftkit::random_number
     i32::cmp  std::cmp::Ordering
+    std::println
 ```
 
 Create a **program** that plays the guessing game.
