@@ -121,6 +121,7 @@ The `collatz` function must execute the following algorithm...
 
 ...until *n* equals 1. On each iteration, *n* must be displayed on the standard output, followed
 by a line feed.
+Make sure to prevent timeouts!
 
 ```txt
 Input:
