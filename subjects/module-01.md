@@ -319,7 +319,7 @@ You _may_ assume that:  `start_time.len() == end_time.len() == profit.len()`
 
 You _may not_ assume that our tester does not have a timeout x)
 
-
+```
 MIT License
 
 Copyright (c) 2024 Nils Mathieu
@@ -341,3 +341,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```

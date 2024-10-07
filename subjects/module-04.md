@@ -447,7 +447,7 @@ bytes.
 To decrypt a message, read `B+1` bytes from the encrypted message, and pass this base-256 number
 through the decryption function. Encode the resulting decrypted chunk into `B` bytes, and voilà!
 
-
+```
 MIT License
 
 Copyright (c) 2024 Nils Mathieu
@@ -469,3 +469,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
