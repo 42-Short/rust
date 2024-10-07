@@ -293,3 +293,868 @@ INFO: 2024/10/07 11:54:58 uploaded traces/miturk-00-20241007_115451.log to repo 
 INFO: 2024/10/07 11:54:58 added new release '0/100 - retry at 12:09' to miturk-00
 INFO: 2024/10/07 11:54:58 updated row with id miturk-00 in table repositories_00
 INFO: 2024/10/07 11:54:58 pushing to branch: main
+INFO: 2024/10/07 11:54:59 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:55:00 push event on lbaumeis-00 identified as submission, grading..
+INFO: 2024/10/07 11:55:01 added new release '10/100 - retry at 12:07' to lbaumeis-00
+INFO: 2024/10/07 11:55:01 pushing to branch: main
+INFO: 2024/10/07 11:55:01 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:55:16 push event on aapenko-00 identified as submission, grading..
+INFO: 2024/10/07 11:55:16 repository https://github.com/Short-Test-Orga/aapenko-00.git cloned
+INFO: 2024/10/07 11:55:22 pushing to branch: traces
+INFO: 2024/10/07 11:55:22 uploaded traces/aapenko-00-20241007_115516.log to repo aapenko-00
+INFO: 2024/10/07 11:55:23 added new release '20/100 - retry at 12:25' to aapenko-00
+INFO: 2024/10/07 11:55:23 updated row with id aapenko-00 in table repositories_00
+INFO: 2024/10/07 11:55:24 pushing to branch: main
+INFO: 2024/10/07 11:55:24 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:56:12 push event on apashkov-00 identified as submission, grading..
+INFO: 2024/10/07 11:56:13 repository https://github.com/Short-Test-Orga/apashkov-00.git cloned
+INFO: 2024/10/07 11:56:20 pushing to branch: traces
+INFO: 2024/10/07 11:56:20 uploaded traces/apashkov-00-20241007_115613.log to repo apashkov-00
+INFO: 2024/10/07 11:56:21 added new release '20/100 - retry at 12:56' to apashkov-00
+INFO: 2024/10/07 11:56:21 updated row with id apashkov-00 in table repositories_00
+INFO: 2024/10/07 11:56:21 pushing to branch: main
+INFO: 2024/10/07 11:56:22 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:57:16 push event on apashkov-00 identified as submission, grading..
+INFO: 2024/10/07 11:57:17 added new release '20/100 - retry at 12:56' to apashkov-00
+INFO: 2024/10/07 11:57:17 pushing to branch: main
+INFO: 2024/10/07 11:57:18 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:59:28 push event on mgeiger--00 identified as submission, grading..
+INFO: 2024/10/07 11:59:29 added new release '10/100 - retry at 12:06' to mgeiger--00
+INFO: 2024/10/07 11:59:29 pushing to branch: main
+INFO: 2024/10/07 11:59:29 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:00:29 push event on icseri-00 identified as submission, grading..
+INFO: 2024/10/07 12:00:29 repository https://github.com/Short-Test-Orga/icseri-00.git cloned
+INFO: 2024/10/07 12:00:37 pushing to branch: traces
+INFO: 2024/10/07 12:00:37 uploaded traces/icseri-00-20241007_120029.log to repo icseri-00
+INFO: 2024/10/07 12:00:38 added new release '0/100 - retry at 12:15' to icseri-00
+INFO: 2024/10/07 12:00:38 updated row with id icseri-00 in table repositories_00
+INFO: 2024/10/07 12:00:39 pushing to branch: main
+INFO: 2024/10/07 12:00:39 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:01:50 push event on apashkov-00 identified as submission, grading..
+INFO: 2024/10/07 12:01:51 added new release '20/100 - retry at 12:56' to apashkov-00
+INFO: 2024/10/07 12:01:51 pushing to branch: main
+INFO: 2024/10/07 12:01:52 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:04:26 push event on oohnivch-00 identified as submission, grading..
+INFO: 2024/10/07 12:04:27 repository https://github.com/Short-Test-Orga/oohnivch-00.git cloned
+INFO: 2024/10/07 12:04:33 pushing to branch: traces
+INFO: 2024/10/07 12:04:33 uploaded traces/oohnivch-00-20241007_120427.log to repo oohnivch-00
+INFO: 2024/10/07 12:04:35 added new release '20/100 - retry at 12:49' to oohnivch-00
+INFO: 2024/10/07 12:04:35 updated row with id oohnivch-00 in table repositories_00
+INFO: 2024/10/07 12:04:35 pushing to branch: main
+INFO: 2024/10/07 12:04:35 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:04:45 push event on lbaumeis-00 identified as submission, grading..
+INFO: 2024/10/07 12:04:46 added new release '10/100 - retry at 12:07' to lbaumeis-00
+INFO: 2024/10/07 12:04:46 pushing to branch: main
+INFO: 2024/10/07 12:04:47 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:08:01 push event on aszabo-00 identified as submission, grading..
+INFO: 2024/10/07 12:08:01 repository https://github.com/Short-Test-Orga/aszabo-00.git cloned
+INFO: 2024/10/07 12:08:04 push event on lbaumeis-00 identified as submission, grading..
+INFO: 2024/10/07 12:08:04 repository https://github.com/Short-Test-Orga/lbaumeis-00.git cloned
+INFO: 2024/10/07 12:08:09 pushing to branch: traces
+INFO: 2024/10/07 12:08:10 uploaded traces/aszabo-00-20241007_120801.log to repo aszabo-00
+INFO: 2024/10/07 12:08:11 added new release '20/100 - retry at 13:08' to aszabo-00
+INFO: 2024/10/07 12:08:11 updated row with id aszabo-00 in table repositories_00
+INFO: 2024/10/07 12:08:11 pushing to branch: main
+INFO: 2024/10/07 12:08:12 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:08:15 pushing to branch: traces
+INFO: 2024/10/07 12:08:15 uploaded traces/lbaumeis-00-20241007_120804.log to repo lbaumeis-00
+INFO: 2024/10/07 12:08:16 added new release '30/100 - retry at 12:38' to lbaumeis-00
+INFO: 2024/10/07 12:08:16 updated row with id lbaumeis-00 in table repositories_00
+INFO: 2024/10/07 12:08:16 pushing to branch: main
+INFO: 2024/10/07 12:08:17 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:09:21 push event on iberegsz-00 identified as submission, grading..
+INFO: 2024/10/07 12:09:21 repository https://github.com/Short-Test-Orga/iberegsz-00.git cloned
+INFO: 2024/10/07 12:09:27 pushing to branch: traces
+INFO: 2024/10/07 12:09:28 uploaded traces/iberegsz-00-20241007_120922.log to repo iberegsz-00
+INFO: 2024/10/07 12:09:29 added new release '20/100 - retry at 13:09' to iberegsz-00
+INFO: 2024/10/07 12:09:29 updated row with id iberegsz-00 in table repositories_00
+INFO: 2024/10/07 12:09:29 pushing to branch: main
+INFO: 2024/10/07 12:09:29 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:09:31 push event on tkasbari-00 identified as submission, grading..
+INFO: 2024/10/07 12:09:32 added new release '20/100 - retry at 12:17' to tkasbari-00
+INFO: 2024/10/07 12:09:32 pushing to branch: main
+INFO: 2024/10/07 12:09:33 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:11:10 push event on jwolfram-00 identified as submission, grading..
+INFO: 2024/10/07 12:11:11 repository https://github.com/Short-Test-Orga/jwolfram-00.git cloned
+INFO: 2024/10/07 12:11:17 pushing to branch: traces
+INFO: 2024/10/07 12:11:17 uploaded traces/jwolfram-00-20241007_121111.log to repo jwolfram-00
+INFO: 2024/10/07 12:11:18 added new release '10/100 - retry at 12:26' to jwolfram-00
+INFO: 2024/10/07 12:11:18 updated row with id jwolfram-00 in table repositories_00
+INFO: 2024/10/07 12:11:18 pushing to branch: main
+INFO: 2024/10/07 12:11:18 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:11:59 push event on hrother-00 identified as submission, grading..
+INFO: 2024/10/07 12:12:00 repository https://github.com/Short-Test-Orga/hrother-00.git cloned
+INFO: 2024/10/07 12:12:06 pushing to branch: traces
+INFO: 2024/10/07 12:12:06 uploaded traces/hrother-00-20241007_121200.log to repo hrother-00
+INFO: 2024/10/07 12:12:07 added new release '20/100 - retry at 12:42' to hrother-00
+INFO: 2024/10/07 12:12:07 updated row with id hrother-00 in table repositories_00
+INFO: 2024/10/07 12:12:08 pushing to branch: main
+INFO: 2024/10/07 12:12:08 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:13:23 push event on dscholz-00 identified as submission, grading..
+INFO: 2024/10/07 12:13:24 repository https://github.com/Short-Test-Orga/dscholz-00.git cloned
+INFO: 2024/10/07 12:13:29 pushing to branch: traces
+INFO: 2024/10/07 12:13:30 uploaded traces/dscholz-00-20241007_121324.log to repo dscholz-00
+INFO: 2024/10/07 12:13:31 added new release '10/100 - retry at 12:58' to dscholz-00
+INFO: 2024/10/07 12:13:31 updated row with id dscholz-00 in table repositories_00
+INFO: 2024/10/07 12:13:31 pushing to branch: main
+INFO: 2024/10/07 12:13:31 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:14:47 push event on tkasbari-00 identified as submission, grading..
+INFO: 2024/10/07 12:14:48 added new release '20/100 - retry at 12:17' to tkasbari-00
+INFO: 2024/10/07 12:14:48 pushing to branch: main
+INFO: 2024/10/07 12:14:49 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:15:22 push event on miturk-00 identified as submission, grading..
+INFO: 2024/10/07 12:15:23 repository https://github.com/Short-Test-Orga/miturk-00.git cloned
+INFO: 2024/10/07 12:15:30 pushing to branch: traces
+INFO: 2024/10/07 12:15:30 uploaded traces/miturk-00-20241007_121523.log to repo miturk-00
+INFO: 2024/10/07 12:15:31 added new release '20/100 - retry at 12:45' to miturk-00
+INFO: 2024/10/07 12:15:31 updated row with id miturk-00 in table repositories_00
+INFO: 2024/10/07 12:15:31 pushing to branch: main
+INFO: 2024/10/07 12:15:32 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:16:48 push event on aapenko-00 identified as submission, grading..
+INFO: 2024/10/07 12:16:49 added new release '20/100 - retry at 12:25' to aapenko-00
+INFO: 2024/10/07 12:16:49 pushing to branch: main
+INFO: 2024/10/07 12:16:50 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:17:04 push event on kbrauer-00 identified as submission, grading..
+INFO: 2024/10/07 12:17:05 repository https://github.com/Short-Test-Orga/kbrauer-00.git cloned
+INFO: 2024/10/07 12:17:11 pushing to branch: traces
+INFO: 2024/10/07 12:17:11 uploaded traces/kbrauer-00-20241007_121705.log to repo kbrauer-00
+INFO: 2024/10/07 12:17:12 added new release '20/100 - retry at 13:02' to kbrauer-00
+INFO: 2024/10/07 12:17:12 updated row with id kbrauer-00 in table repositories_00
+INFO: 2024/10/07 12:17:13 pushing to branch: main
+INFO: 2024/10/07 12:17:13 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:17:58 push event on aapenko-00 identified as submission, grading..
+INFO: 2024/10/07 12:17:59 added new release '20/100 - retry at 12:25' to aapenko-00
+INFO: 2024/10/07 12:17:59 pushing to branch: main
+INFO: 2024/10/07 12:18:00 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:24:34 push event on rpinchas-00 identified as submission, grading..
+INFO: 2024/10/07 12:24:34 repository https://github.com/Short-Test-Orga/rpinchas-00.git cloned
+INFO: 2024/10/07 12:24:41 pushing to branch: traces
+INFO: 2024/10/07 12:24:42 uploaded traces/rpinchas-00-20241007_122434.log to repo rpinchas-00
+INFO: 2024/10/07 12:24:43 added new release '20/100 - retry at 13:24' to rpinchas-00
+INFO: 2024/10/07 12:24:43 updated row with id rpinchas-00 in table repositories_00
+INFO: 2024/10/07 12:24:43 pushing to branch: main
+INFO: 2024/10/07 12:24:43 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:25:11 push event on oltolmac-00 identified as submission, grading..
+INFO: 2024/10/07 12:25:11 repository https://github.com/Short-Test-Orga/oltolmac-00.git cloned
+INFO: 2024/10/07 12:25:19 pushing to branch: traces
+INFO: 2024/10/07 12:25:20 uploaded traces/oltolmac-00-20241007_122511.log to repo oltolmac-00
+INFO: 2024/10/07 12:25:21 added new release '30/100 - retry at 13:10' to oltolmac-00
+INFO: 2024/10/07 12:25:21 updated row with id oltolmac-00 in table repositories_00
+INFO: 2024/10/07 12:25:21 pushing to branch: main
+INFO: 2024/10/07 12:25:22 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:25:38 push event on icseri-00 identified as submission, grading..
+INFO: 2024/10/07 12:25:39 repository https://github.com/Short-Test-Orga/icseri-00.git cloned
+INFO: 2024/10/07 12:25:47 pushing to branch: traces
+INFO: 2024/10/07 12:25:47 uploaded traces/icseri-00-20241007_122539.log to repo icseri-00
+INFO: 2024/10/07 12:25:48 added new release '40/100 - retry at 12:55' to icseri-00
+INFO: 2024/10/07 12:25:48 updated row with id icseri-00 in table repositories_00
+INFO: 2024/10/07 12:25:48 pushing to branch: main
+INFO: 2024/10/07 12:25:49 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:27:24 push event on mgeiger--00 identified as submission, grading..
+INFO: 2024/10/07 12:27:25 repository https://github.com/Short-Test-Orga/mgeiger--00.git cloned
+INFO: 2024/10/07 12:27:31 pushing to branch: traces
+INFO: 2024/10/07 12:27:31 uploaded traces/mgeiger--00-20241007_122725.log to repo mgeiger--00
+INFO: 2024/10/07 12:27:32 added new release '20/100 - retry at 12:57' to mgeiger--00
+INFO: 2024/10/07 12:27:32 updated row with id mgeiger--00 in table repositories_00
+INFO: 2024/10/07 12:27:33 pushing to branch: main
+INFO: 2024/10/07 12:27:33 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:32:58 push event on kbrauer-00 identified as submission, grading..
+INFO: 2024/10/07 12:32:59 repository https://github.com/Short-Test-Orga/kbrauer-00.git cloned
+INFO: 2024/10/07 12:33:05 pushing to branch: traces
+INFO: 2024/10/07 12:33:05 uploaded traces/kbrauer-00-20241007_123259.log to repo kbrauer-00
+INFO: 2024/10/07 12:33:06 added new release '20/100 - retry at 12:48' to kbrauer-00
+INFO: 2024/10/07 12:33:06 updated row with id kbrauer-00 in table repositories_00
+INFO: 2024/10/07 12:33:06 pushing to branch: main
+INFO: 2024/10/07 12:33:07 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:35:03 push event on rpinchas-00 identified as submission, grading..
+INFO: 2024/10/07 12:35:03 repository https://github.com/Short-Test-Orga/rpinchas-00.git cloned
+INFO: 2024/10/07 12:35:09 pushing to branch: traces
+INFO: 2024/10/07 12:35:10 uploaded traces/rpinchas-00-20241007_123503.log to repo rpinchas-00
+INFO: 2024/10/07 12:35:11 added new release '20/100 - retry at 12:50' to rpinchas-00
+INFO: 2024/10/07 12:35:11 updated row with id rpinchas-00 in table repositories_00
+INFO: 2024/10/07 12:35:11 pushing to branch: main
+INFO: 2024/10/07 12:35:11 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:35:45 push event on kbrauer-00 identified as submission, grading..
+INFO: 2024/10/07 12:35:45 repository https://github.com/Short-Test-Orga/kbrauer-00.git cloned
+INFO: 2024/10/07 12:35:53 pushing to branch: traces
+INFO: 2024/10/07 12:35:54 uploaded traces/kbrauer-00-20241007_123545.log to repo kbrauer-00
+INFO: 2024/10/07 12:35:55 added new release '30/100 - retry at 12:50' to kbrauer-00
+INFO: 2024/10/07 12:35:55 updated row with id kbrauer-00 in table repositories_00
+INFO: 2024/10/07 12:35:55 pushing to branch: main
+INFO: 2024/10/07 12:35:55 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:38:04 push event on rpinchas-00 identified as submission, grading..
+INFO: 2024/10/07 12:38:05 repository https://github.com/Short-Test-Orga/rpinchas-00.git cloned
+INFO: 2024/10/07 12:38:10 pushing to branch: traces
+INFO: 2024/10/07 12:38:11 uploaded traces/rpinchas-00-20241007_123805.log to repo rpinchas-00
+INFO: 2024/10/07 12:38:12 added new release '20/100 - retry at 12:53' to rpinchas-00
+INFO: 2024/10/07 12:38:12 updated row with id rpinchas-00 in table repositories_00
+INFO: 2024/10/07 12:38:12 pushing to branch: main
+INFO: 2024/10/07 12:38:13 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:39:34 push event on mgeiger--00 identified as submission, grading..
+INFO: 2024/10/07 12:39:35 added new release '20/100 - retry at 12:57' to mgeiger--00
+INFO: 2024/10/07 12:39:35 pushing to branch: main
+INFO: 2024/10/07 12:39:35 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:39:57 push event on rpinchas-00 identified as submission, grading..
+INFO: 2024/10/07 12:39:58 repository https://github.com/Short-Test-Orga/rpinchas-00.git cloned
+INFO: 2024/10/07 12:40:04 pushing to branch: traces
+INFO: 2024/10/07 12:40:04 uploaded traces/rpinchas-00-20241007_123958.log to repo rpinchas-00
+INFO: 2024/10/07 12:40:05 added new release '20/100 - retry at 12:55' to rpinchas-00
+INFO: 2024/10/07 12:40:05 updated row with id rpinchas-00 in table repositories_00
+INFO: 2024/10/07 12:40:05 pushing to branch: main
+INFO: 2024/10/07 12:40:06 push event on lbaumeis-00 identified as submission, grading..
+INFO: 2024/10/07 12:40:06 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:40:06 repository https://github.com/Short-Test-Orga/lbaumeis-00.git cloned
+INFO: 2024/10/07 12:40:14 pushing to branch: traces
+INFO: 2024/10/07 12:40:15 uploaded traces/lbaumeis-00-20241007_124006.log to repo lbaumeis-00
+INFO: 2024/10/07 12:40:15 added new release '30/100 - retry at 13:25' to lbaumeis-00
+INFO: 2024/10/07 12:40:15 updated row with id lbaumeis-00 in table repositories_00
+INFO: 2024/10/07 12:40:16 pushing to branch: main
+INFO: 2024/10/07 12:40:16 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:40:22 push event on lbaumeis-00 identified as submission, grading..
+INFO: 2024/10/07 12:40:23 added new release '30/100 - retry at 13:25' to lbaumeis-00
+INFO: 2024/10/07 12:40:23 pushing to branch: main
+INFO: 2024/10/07 12:40:23 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:42:46 push event on mgeiger--00 identified as submission, grading..
+INFO: 2024/10/07 12:42:47 added new release '20/100 - retry at 12:57' to mgeiger--00
+INFO: 2024/10/07 12:42:47 pushing to branch: main
+INFO: 2024/10/07 12:42:47 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:42:49 push event on dgutak-00 identified as submission, grading..
+INFO: 2024/10/07 12:42:50 repository https://github.com/Short-Test-Orga/dgutak-00.git cloned
+INFO: 2024/10/07 12:42:58 pushing to branch: traces
+INFO: 2024/10/07 12:42:59 uploaded traces/dgutak-00-20241007_124250.log to repo dgutak-00
+INFO: 2024/10/07 12:43:00 added new release '30/100 - retry at 13:27' to dgutak-00
+INFO: 2024/10/07 12:43:00 updated row with id dgutak-00 in table repositories_00
+INFO: 2024/10/07 12:43:00 pushing to branch: main
+INFO: 2024/10/07 12:43:00 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:43:13 push event on rpinchas-00 identified as submission, grading..
+INFO: 2024/10/07 12:43:14 added new release '20/100 - retry at 12:55' to rpinchas-00
+INFO: 2024/10/07 12:43:14 pushing to branch: main
+INFO: 2024/10/07 12:43:14 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:46:52 push event on miturk-00 identified as submission, grading..
+INFO: 2024/10/07 12:46:52 repository https://github.com/Short-Test-Orga/miturk-00.git cloned
+INFO: 2024/10/07 12:47:00 pushing to branch: traces
+INFO: 2024/10/07 12:47:01 uploaded traces/miturk-00-20241007_124652.log to repo miturk-00
+INFO: 2024/10/07 12:47:02 added new release '20/100 - retry at 13:32' to miturk-00
+INFO: 2024/10/07 12:47:02 updated row with id miturk-00 in table repositories_00
+INFO: 2024/10/07 12:47:02 pushing to branch: main
+INFO: 2024/10/07 12:47:03 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 12:47:17 push event on aapenko-00 identified as submission, grading..
+INFO: 2024/10/07 12:47:18 repository https://github.com/Short-Test-Orga/aapenko-00.git cloned
+INFO: 2024/10/07 12:47:23 pushing to branch: traces
+INFO: 2024/10/07 12:47:24 uploaded traces/aapenko-00-20241007_124718.log to repo aapenko-00
+INFO: 2024/10/07 12:47:25 added new release '20/100 - retry at 13:32' to aapenko-00
+INFO: 2024/10/07 12:47:25 updated row with id aapenko-00 in table repositories_00
+INFO: 2024/10/07 12:47:25 pushing to branch: main
+INFO: 2024/10/07 12:47:26 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:00:09 push event on rpinchas-00 identified as submission, grading..
+INFO: 2024/10/07 13:00:10 repository https://github.com/Short-Test-Orga/rpinchas-00.git cloned
+INFO: 2024/10/07 13:00:16 pushing to branch: traces
+INFO: 2024/10/07 13:00:17 uploaded traces/rpinchas-00-20241007_130010.log to repo rpinchas-00
+INFO: 2024/10/07 13:00:18 added new release '20/100 - retry at 13:15' to rpinchas-00
+INFO: 2024/10/07 13:00:18 updated row with id rpinchas-00 in table repositories_00
+INFO: 2024/10/07 13:00:18 pushing to branch: main
+INFO: 2024/10/07 13:00:18 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:03:58 push event on mmusic-00 identified as submission, grading..
+INFO: 2024/10/07 13:03:58 repository https://github.com/Short-Test-Orga/mmusic-00.git cloned
+INFO: 2024/10/07 13:04:04 pushing to branch: traces
+INFO: 2024/10/07 13:04:04 uploaded traces/mmusic-00-20241007_130358.log to repo mmusic-00
+INFO: 2024/10/07 13:04:05 added new release '0/100 - retry at 13:19' to mmusic-00
+INFO: 2024/10/07 13:04:05 updated row with id mmusic-00 in table repositories_00
+INFO: 2024/10/07 13:04:05 pushing to branch: main
+INFO: 2024/10/07 13:04:05 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:07:08 push event on mmusic-00 identified as submission, grading..
+INFO: 2024/10/07 13:07:09 added new release '0/100 - retry at 13:19' to mmusic-00
+INFO: 2024/10/07 13:07:09 pushing to branch: main
+INFO: 2024/10/07 13:07:10 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:10:13 push event on iberegsz-00 identified as submission, grading..
+INFO: 2024/10/07 13:10:14 repository https://github.com/Short-Test-Orga/iberegsz-00.git cloned
+INFO: 2024/10/07 13:10:20 pushing to branch: traces
+INFO: 2024/10/07 13:10:20 uploaded traces/iberegsz-00-20241007_131014.log to repo iberegsz-00
+INFO: 2024/10/07 13:10:21 added new release '20/100 - retry at 14:10' to iberegsz-00
+INFO: 2024/10/07 13:10:21 updated row with id iberegsz-00 in table repositories_00
+INFO: 2024/10/07 13:10:22 pushing to branch: main
+INFO: 2024/10/07 13:10:22 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:10:42 push event on vvovis-00 identified as submission, grading..
+INFO: 2024/10/07 13:10:43 repository https://github.com/Short-Test-Orga/vvovis-00.git cloned
+INFO: 2024/10/07 13:10:49 pushing to branch: traces
+INFO: 2024/10/07 13:10:49 uploaded traces/vvovis-00-20241007_131043.log to repo vvovis-00
+INFO: 2024/10/07 13:10:50 added new release '20/100 - retry at 13:55' to vvovis-00
+INFO: 2024/10/07 13:10:50 updated row with id vvovis-00 in table repositories_00
+INFO: 2024/10/07 13:10:50 pushing to branch: main
+INFO: 2024/10/07 13:10:51 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:13:02 push event on mgeiger--00 identified as submission, grading..
+INFO: 2024/10/07 13:13:04 repository https://github.com/Short-Test-Orga/mgeiger--00.git cloned
+INFO: 2024/10/07 13:13:11 pushing to branch: traces
+INFO: 2024/10/07 13:13:11 uploaded traces/mgeiger--00-20241007_131304.log to repo mgeiger--00
+INFO: 2024/10/07 13:13:12 added new release '20/100 - retry at 13:58' to mgeiger--00
+INFO: 2024/10/07 13:13:12 updated row with id mgeiger--00 in table repositories_00
+INFO: 2024/10/07 13:13:13 pushing to branch: main
+INFO: 2024/10/07 13:13:13 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:14:33 push event on mmusic-00 identified as submission, grading..
+INFO: 2024/10/07 13:14:34 added new release '0/100 - retry at 13:19' to mmusic-00
+INFO: 2024/10/07 13:14:34 pushing to branch: main
+INFO: 2024/10/07 13:14:35 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:16:02 push event on kbrauer-00 identified as submission, grading..
+INFO: 2024/10/07 13:16:02 repository https://github.com/Short-Test-Orga/kbrauer-00.git cloned
+INFO: 2024/10/07 13:16:10 pushing to branch: traces
+INFO: 2024/10/07 13:16:11 uploaded traces/kbrauer-00-20241007_131602.log to repo kbrauer-00
+INFO: 2024/10/07 13:16:12 added new release '40/100 - retry at 13:46' to kbrauer-00
+INFO: 2024/10/07 13:16:12 updated row with id kbrauer-00 in table repositories_00
+INFO: 2024/10/07 13:16:12 pushing to branch: main
+INFO: 2024/10/07 13:16:13 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:17:18 push event on rpinchas-00 identified as submission, grading..
+INFO: 2024/10/07 13:17:18 repository https://github.com/Short-Test-Orga/rpinchas-00.git cloned
+INFO: 2024/10/07 13:17:26 pushing to branch: traces
+INFO: 2024/10/07 13:17:27 uploaded traces/rpinchas-00-20241007_131718.log to repo rpinchas-00
+INFO: 2024/10/07 13:17:28 added new release '40/100 - retry at 13:47' to rpinchas-00
+INFO: 2024/10/07 13:17:28 updated row with id rpinchas-00 in table repositories_00
+INFO: 2024/10/07 13:17:28 pushing to branch: main
+INFO: 2024/10/07 13:17:29 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:19:22 push event on mhuszar-00 identified as submission, grading..
+INFO: 2024/10/07 13:19:22 repository https://github.com/Short-Test-Orga/mhuszar-00.git cloned
+INFO: 2024/10/07 13:19:28 pushing to branch: traces
+INFO: 2024/10/07 13:19:28 uploaded traces/mhuszar-00-20241007_131922.log to repo mhuszar-00
+INFO: 2024/10/07 13:19:29 added new release '20/100 - retry at 13:49' to mhuszar-00
+INFO: 2024/10/07 13:19:29 updated row with id mhuszar-00 in table repositories_00
+INFO: 2024/10/07 13:19:29 pushing to branch: main
+INFO: 2024/10/07 13:19:30 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:20:59 push event on mmusic-00 identified as submission, grading..
+INFO: 2024/10/07 13:21:00 repository https://github.com/Short-Test-Orga/mmusic-00.git cloned
+INFO: 2024/10/07 13:21:06 pushing to branch: traces
+INFO: 2024/10/07 13:21:06 uploaded traces/mmusic-00-20241007_132100.log to repo mmusic-00
+INFO: 2024/10/07 13:21:07 added new release '20/100 - retry at 13:51' to mmusic-00
+INFO: 2024/10/07 13:21:07 updated row with id mmusic-00 in table repositories_00
+INFO: 2024/10/07 13:21:07 pushing to branch: main
+INFO: 2024/10/07 13:21:08 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:22:29 push event on arybarsk-00 identified as submission, grading..
+INFO: 2024/10/07 13:22:29 repository https://github.com/Short-Test-Orga/arybarsk-00.git cloned
+INFO: 2024/10/07 13:22:35 pushing to branch: traces
+INFO: 2024/10/07 13:22:36 uploaded traces/arybarsk-00-20241007_132229.log to repo arybarsk-00
+INFO: 2024/10/07 13:22:37 added new release '20/100 - retry at 14:07' to arybarsk-00
+INFO: 2024/10/07 13:22:37 updated row with id arybarsk-00 in table repositories_00
+INFO: 2024/10/07 13:22:37 pushing to branch: main
+INFO: 2024/10/07 13:22:38 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:24:10 push event on tbatis-00 identified as submission, grading..
+INFO: 2024/10/07 13:24:11 repository https://github.com/Short-Test-Orga/tbatis-00.git cloned
+INFO: 2024/10/07 13:24:17 pushing to branch: traces
+INFO: 2024/10/07 13:24:18 uploaded traces/tbatis-00-20241007_132411.log to repo tbatis-00
+INFO: 2024/10/07 13:24:19 added new release '0/100 - retry at 13:39' to tbatis-00
+INFO: 2024/10/07 13:24:19 updated row with id tbatis-00 in table repositories_00
+INFO: 2024/10/07 13:24:19 pushing to branch: main
+INFO: 2024/10/07 13:24:19 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:24:49 push event on oltolmac-00 identified as submission, grading..
+INFO: 2024/10/07 13:24:49 repository https://github.com/Short-Test-Orga/oltolmac-00.git cloned
+INFO: 2024/10/07 13:24:58 pushing to branch: traces
+INFO: 2024/10/07 13:24:58 uploaded traces/oltolmac-00-20241007_132449.log to repo oltolmac-00
+INFO: 2024/10/07 13:24:59 added new release '40/100 - retry at 14:24' to oltolmac-00
+INFO: 2024/10/07 13:24:59 updated row with id oltolmac-00 in table repositories_00
+INFO: 2024/10/07 13:24:59 pushing to branch: main
+INFO: 2024/10/07 13:25:00 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:26:08 push event on oltolmac-00 identified as submission, grading..
+INFO: 2024/10/07 13:26:09 added new release '40/100 - retry at 14:24' to oltolmac-00
+INFO: 2024/10/07 13:26:09 pushing to branch: main
+INFO: 2024/10/07 13:26:10 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:28:40 push event on dpotsch-00 identified as submission, grading..
+INFO: 2024/10/07 13:28:41 repository https://github.com/Short-Test-Orga/dpotsch-00.git cloned
+INFO: 2024/10/07 13:28:47 pushing to branch: traces
+INFO: 2024/10/07 13:28:48 uploaded traces/dpotsch-00-20241007_132841.log to repo dpotsch-00
+INFO: 2024/10/07 13:28:49 added new release '20/100 - retry at 14:28' to dpotsch-00
+INFO: 2024/10/07 13:28:49 updated row with id dpotsch-00 in table repositories_00
+INFO: 2024/10/07 13:28:49 pushing to branch: main
+INFO: 2024/10/07 13:28:49 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:30:41 push event on lbaumeis-00 identified as submission, grading..
+INFO: 2024/10/07 13:30:42 repository https://github.com/Short-Test-Orga/lbaumeis-00.git cloned
+INFO: 2024/10/07 13:30:51 pushing to branch: traces
+INFO: 2024/10/07 13:30:51 uploaded traces/lbaumeis-00-20241007_133042.log to repo lbaumeis-00
+INFO: 2024/10/07 13:30:52 added new release '40/100 - retry at 14:30' to lbaumeis-00
+INFO: 2024/10/07 13:30:52 updated row with id lbaumeis-00 in table repositories_00
+INFO: 2024/10/07 13:30:52 pushing to branch: main
+INFO: 2024/10/07 13:30:53 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:30:58 push event on apashkov-00 identified as submission, grading..
+INFO: 2024/10/07 13:30:58 repository https://github.com/Short-Test-Orga/apashkov-00.git cloned
+INFO: 2024/10/07 13:31:06 pushing to branch: traces
+INFO: 2024/10/07 13:31:07 uploaded traces/apashkov-00-20241007_133058.log to repo apashkov-00
+INFO: 2024/10/07 13:31:08 added new release '40/100 - retry at 14:31' to apashkov-00
+INFO: 2024/10/07 13:31:08 updated row with id apashkov-00 in table repositories_00
+INFO: 2024/10/07 13:31:08 pushing to branch: main
+INFO: 2024/10/07 13:31:09 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:32:25 push event on ishvaiko-00 identified as submission, grading..
+INFO: 2024/10/07 13:32:26 repository https://github.com/Short-Test-Orga/ishvaiko-00.git cloned
+INFO: 2024/10/07 13:32:33 pushing to branch: traces
+INFO: 2024/10/07 13:32:34 uploaded traces/ishvaiko-00-20241007_133226.log to repo ishvaiko-00
+INFO: 2024/10/07 13:32:35 added new release '20/100 - retry at 13:47' to ishvaiko-00
+INFO: 2024/10/07 13:32:35 updated row with id ishvaiko-00 in table repositories_00
+INFO: 2024/10/07 13:32:35 pushing to branch: main
+INFO: 2024/10/07 13:32:35 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:37:01 push event on apashkov-00 identified as submission, grading..
+INFO: 2024/10/07 13:37:02 added new release '40/100 - retry at 14:31' to apashkov-00
+INFO: 2024/10/07 13:37:02 pushing to branch: main
+INFO: 2024/10/07 13:37:02 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:37:13 push event on dpotsch-00 identified as submission, grading..
+INFO: 2024/10/07 13:37:14 added new release '20/100 - retry at 14:28' to dpotsch-00
+INFO: 2024/10/07 13:37:14 pushing to branch: main
+INFO: 2024/10/07 13:37:14 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:44:55 push event on miturk-00 identified as submission, grading..
+INFO: 2024/10/07 13:44:55 repository https://github.com/Short-Test-Orga/miturk-00.git cloned
+INFO: 2024/10/07 13:45:04 pushing to branch: traces
+INFO: 2024/10/07 13:45:04 uploaded traces/miturk-00-20241007_134455.log to repo miturk-00
+INFO: 2024/10/07 13:45:05 added new release '40/100 - retry at 14:45' to miturk-00
+INFO: 2024/10/07 13:45:05 updated row with id miturk-00 in table repositories_00
+INFO: 2024/10/07 13:45:05 pushing to branch: main
+INFO: 2024/10/07 13:45:06 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:50:00 push event on aszabo-00 identified as submission, grading..
+INFO: 2024/10/07 13:50:01 repository https://github.com/Short-Test-Orga/aszabo-00.git cloned
+INFO: 2024/10/07 13:50:08 pushing to branch: traces
+INFO: 2024/10/07 13:50:09 uploaded traces/aszabo-00-20241007_135001.log to repo aszabo-00
+INFO: 2024/10/07 13:50:10 added new release '20/100 - retry at 14:50' to aszabo-00
+INFO: 2024/10/07 13:50:10 updated row with id aszabo-00 in table repositories_00
+INFO: 2024/10/07 13:50:10 pushing to branch: main
+INFO: 2024/10/07 13:50:10 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:50:23 push event on dzakhan-00 identified as submission, grading..
+INFO: 2024/10/07 13:50:24 repository https://github.com/Short-Test-Orga/dzakhan-00.git cloned
+INFO: 2024/10/07 13:50:33 pushing to branch: traces
+INFO: 2024/10/07 13:50:34 uploaded traces/dzakhan-00-20241007_135024.log to repo dzakhan-00
+INFO: 2024/10/07 13:50:35 added new release '10/100 - retry at 14:05' to dzakhan-00
+INFO: 2024/10/07 13:50:35 updated row with id dzakhan-00 in table repositories_00
+INFO: 2024/10/07 13:50:35 pushing to branch: main
+INFO: 2024/10/07 13:50:35 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:50:57 push event on dzakhan-00 identified as submission, grading..
+INFO: 2024/10/07 13:50:58 added new release '10/100 - retry at 14:05' to dzakhan-00
+INFO: 2024/10/07 13:50:58 pushing to branch: main
+INFO: 2024/10/07 13:50:58 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 13:51:47 push event on aapenko-00 identified as submission, grading..
+INFO: 2024/10/07 13:51:48 repository https://github.com/Short-Test-Orga/aapenko-00.git cloned
+INFO: 2024/10/07 13:51:55 pushing to branch: traces
+INFO: 2024/10/07 13:51:56 uploaded traces/aapenko-00-20241007_135148.log to repo aapenko-00
+INFO: 2024/10/07 13:51:57 added new release '20/100 - retry at 14:51' to aapenko-00
+INFO: 2024/10/07 13:51:57 updated row with id aapenko-00 in table repositories_00
+INFO: 2024/10/07 13:51:57 pushing to branch: main
+INFO: 2024/10/07 13:51:59 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:00:23 push event on tkafanov-00 identified as submission, grading..
+INFO: 2024/10/07 14:00:24 repository https://github.com/Short-Test-Orga/tkafanov-00.git cloned
+INFO: 2024/10/07 14:00:32 pushing to branch: traces
+INFO: 2024/10/07 14:00:32 uploaded traces/tkafanov-00-20241007_140024.log to repo tkafanov-00
+INFO: 2024/10/07 14:00:33 added new release '0/100 - retry at 14:15' to tkafanov-00
+INFO: 2024/10/07 14:00:33 updated row with id tkafanov-00 in table repositories_00
+INFO: 2024/10/07 14:00:33 pushing to branch: main
+INFO: 2024/10/07 14:00:34 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:07:31 push event on tkafanov-00 identified as submission, grading..
+INFO: 2024/10/07 14:07:32 added new release '0/100 - retry at 14:15' to tkafanov-00
+INFO: 2024/10/07 14:07:32 pushing to branch: main
+INFO: 2024/10/07 14:07:33 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:13:23 push event on iberegsz-00 identified as submission, grading..
+INFO: 2024/10/07 14:13:24 repository https://github.com/Short-Test-Orga/iberegsz-00.git cloned
+INFO: 2024/10/07 14:13:30 pushing to branch: traces
+INFO: 2024/10/07 14:13:30 uploaded traces/iberegsz-00-20241007_141324.log to repo iberegsz-00
+INFO: 2024/10/07 14:13:31 added new release '20/100 - retry at 15:13' to iberegsz-00
+INFO: 2024/10/07 14:13:31 updated row with id iberegsz-00 in table repositories_00
+INFO: 2024/10/07 14:13:31 pushing to branch: main
+INFO: 2024/10/07 14:13:32 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:14:14 push event on dzakhan-00 identified as submission, grading..
+INFO: 2024/10/07 14:14:14 repository https://github.com/Short-Test-Orga/dzakhan-00.git cloned
+INFO: 2024/10/07 14:14:23 pushing to branch: traces
+INFO: 2024/10/07 14:14:24 uploaded traces/dzakhan-00-20241007_141414.log to repo dzakhan-00
+INFO: 2024/10/07 14:14:25 added new release '10/100 - retry at 14:44' to dzakhan-00
+INFO: 2024/10/07 14:14:25 updated row with id dzakhan-00 in table repositories_00
+INFO: 2024/10/07 14:14:25 pushing to branch: main
+INFO: 2024/10/07 14:14:25 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:15:12 push event on dzakhan-00 identified as submission, grading..
+INFO: 2024/10/07 14:15:13 added new release '10/100 - retry at 14:44' to dzakhan-00
+INFO: 2024/10/07 14:15:13 pushing to branch: main
+INFO: 2024/10/07 14:15:13 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:15:17 push event on tkafanov-00 identified as submission, grading..
+INFO: 2024/10/07 14:15:18 added new release '0/100 - retry at 14:15' to tkafanov-00
+INFO: 2024/10/07 14:15:18 pushing to branch: main
+INFO: 2024/10/07 14:15:19 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:16:37 push event on tkafanov-00 identified as submission, grading..
+INFO: 2024/10/07 14:16:38 repository https://github.com/Short-Test-Orga/tkafanov-00.git cloned
+INFO: 2024/10/07 14:16:41 push event on apashkov-00 identified as submission, grading..
+INFO: 2024/10/07 14:16:42 added new release '40/100 - retry at 14:31' to apashkov-00
+INFO: 2024/10/07 14:16:43 pushing to branch: main
+INFO: 2024/10/07 14:16:43 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:16:45 pushing to branch: traces
+INFO: 2024/10/07 14:16:45 uploaded traces/tkafanov-00-20241007_141638.log to repo tkafanov-00
+INFO: 2024/10/07 14:16:46 added new release '20/100 - retry at 14:46' to tkafanov-00
+INFO: 2024/10/07 14:16:46 updated row with id tkafanov-00 in table repositories_00
+INFO: 2024/10/07 14:16:47 pushing to branch: main
+INFO: 2024/10/07 14:16:47 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:16:47 push event on iberegsz-00 identified as submission, grading..
+INFO: 2024/10/07 14:16:48 repository https://github.com/Short-Test-Orga/iberegsz-00.git cloned
+INFO: 2024/10/07 14:16:55 pushing to branch: traces
+INFO: 2024/10/07 14:16:55 uploaded traces/iberegsz-00-20241007_141648.log to repo iberegsz-00
+INFO: 2024/10/07 14:16:56 added new release '20/100 - retry at 14:31' to iberegsz-00
+INFO: 2024/10/07 14:16:56 updated row with id iberegsz-00 in table repositories_00
+INFO: 2024/10/07 14:16:56 pushing to branch: main
+INFO: 2024/10/07 14:16:57 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:17:52 push event on iberegsz-00 identified as submission, grading..
+INFO: 2024/10/07 14:17:52 repository https://github.com/Short-Test-Orga/iberegsz-00.git cloned
+INFO: 2024/10/07 14:17:59 pushing to branch: traces
+INFO: 2024/10/07 14:17:59 uploaded traces/iberegsz-00-20241007_141752.log to repo iberegsz-00
+INFO: 2024/10/07 14:18:00 added new release '20/100 - retry at 14:32' to iberegsz-00
+INFO: 2024/10/07 14:18:00 updated row with id iberegsz-00 in table repositories_00
+INFO: 2024/10/07 14:18:00 pushing to branch: main
+INFO: 2024/10/07 14:18:01 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:18:42 push event on iberegsz-00 identified as submission, grading..
+INFO: 2024/10/07 14:18:43 added new release '20/100 - retry at 14:33' to iberegsz-00
+INFO: 2024/10/07 14:18:43 pushing to branch: main
+INFO: 2024/10/07 14:18:43 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:20:05 push event on iberegsz-00 identified as submission, grading..
+INFO: 2024/10/07 14:20:06 repository https://github.com/Short-Test-Orga/iberegsz-00.git cloned
+INFO: 2024/10/07 14:20:13 pushing to branch: traces
+INFO: 2024/10/07 14:20:14 uploaded traces/iberegsz-00-20241007_142006.log to repo iberegsz-00
+INFO: 2024/10/07 14:20:15 added new release '20/100 - retry at 14:35' to iberegsz-00
+INFO: 2024/10/07 14:20:15 updated row with id iberegsz-00 in table repositories_00
+INFO: 2024/10/07 14:20:15 pushing to branch: main
+INFO: 2024/10/07 14:20:15 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:23:16 push event on iberegsz-00 identified as submission, grading..
+INFO: 2024/10/07 14:23:17 repository https://github.com/Short-Test-Orga/iberegsz-00.git cloned
+INFO: 2024/10/07 14:23:23 pushing to branch: traces
+INFO: 2024/10/07 14:23:24 uploaded traces/iberegsz-00-20241007_142317.log to repo iberegsz-00
+INFO: 2024/10/07 14:23:25 added new release '20/100 - retry at 14:38' to iberegsz-00
+INFO: 2024/10/07 14:23:25 updated row with id iberegsz-00 in table repositories_00
+INFO: 2024/10/07 14:23:25 pushing to branch: main
+INFO: 2024/10/07 14:23:25 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:23:47 push event on iberegsz-00 identified as submission, grading..
+INFO: 2024/10/07 14:23:48 repository https://github.com/Short-Test-Orga/iberegsz-00.git cloned
+INFO: 2024/10/07 14:23:56 pushing to branch: traces
+INFO: 2024/10/07 14:23:57 uploaded traces/iberegsz-00-20241007_142348.log to repo iberegsz-00
+INFO: 2024/10/07 14:23:58 added new release '40/100 - retry at 14:38' to iberegsz-00
+INFO: 2024/10/07 14:23:58 updated row with id iberegsz-00 in table repositories_00
+INFO: 2024/10/07 14:23:58 pushing to branch: main
+INFO: 2024/10/07 14:23:59 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:27:23 push event on aszabo-00 identified as submission, grading..
+INFO: 2024/10/07 14:27:24 added new release '20/100 - retry at 14:50' to aszabo-00
+INFO: 2024/10/07 14:27:24 pushing to branch: main
+INFO: 2024/10/07 14:27:25 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:30:43 push event on hrother-00 identified as submission, grading..
+INFO: 2024/10/07 14:30:44 repository https://github.com/Short-Test-Orga/hrother-00.git cloned
+INFO: 2024/10/07 14:30:53 pushing to branch: traces
+INFO: 2024/10/07 14:30:54 uploaded traces/hrother-00-20241007_143044.log to repo hrother-00
+INFO: 2024/10/07 14:30:55 added new release '40/100 - retry at 15:15' to hrother-00
+INFO: 2024/10/07 14:30:55 updated row with id hrother-00 in table repositories_00
+INFO: 2024/10/07 14:30:55 pushing to branch: main
+INFO: 2024/10/07 14:30:56 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:33:57 push event on tkasbari-00 identified as submission, grading..
+INFO: 2024/10/07 14:33:58 repository https://github.com/Short-Test-Orga/tkasbari-00.git cloned
+INFO: 2024/10/07 14:34:05 pushing to branch: traces
+INFO: 2024/10/07 14:34:05 uploaded traces/tkasbari-00-20241007_143358.log to repo tkasbari-00
+INFO: 2024/10/07 14:34:06 added new release '20/100 - retry at 15:34' to tkasbari-00
+INFO: 2024/10/07 14:34:06 updated row with id tkasbari-00 in table repositories_00
+INFO: 2024/10/07 14:34:06 pushing to branch: main
+INFO: 2024/10/07 14:34:07 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:36:52 push event on ishvaiko-00 identified as submission, grading..
+INFO: 2024/10/07 14:36:52 repository https://github.com/Short-Test-Orga/ishvaiko-00.git cloned
+INFO: 2024/10/07 14:36:59 pushing to branch: traces
+INFO: 2024/10/07 14:37:00 uploaded traces/ishvaiko-00-20241007_143652.log to repo ishvaiko-00
+INFO: 2024/10/07 14:37:00 added new release '20/100 - retry at 15:07' to ishvaiko-00
+INFO: 2024/10/07 14:37:00 updated row with id ishvaiko-00 in table repositories_00
+INFO: 2024/10/07 14:37:01 pushing to branch: main
+INFO: 2024/10/07 14:37:01 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:38:34 push event on tkafanov-00 identified as submission, grading..
+INFO: 2024/10/07 14:38:34 repository https://github.com/Short-Test-Orga/tkafanov-00.git cloned
+INFO: 2024/10/07 14:38:42 pushing to branch: traces
+INFO: 2024/10/07 14:38:43 uploaded traces/tkafanov-00-20241007_143834.log to repo tkafanov-00
+INFO: 2024/10/07 14:38:44 added new release '40/100 - retry at 14:53' to tkafanov-00
+INFO: 2024/10/07 14:38:44 updated row with id tkafanov-00 in table repositories_00
+INFO: 2024/10/07 14:38:44 pushing to branch: main
+INFO: 2024/10/07 14:38:45 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:42:32 push event on ishvaiko-00 identified as submission, grading..
+INFO: 2024/10/07 14:42:33 added new release '20/100 - retry at 15:07' to ishvaiko-00
+INFO: 2024/10/07 14:42:33 pushing to branch: main
+INFO: 2024/10/07 14:42:34 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:44:17 push event on mgeiger--00 identified as submission, grading..
+INFO: 2024/10/07 14:44:18 repository https://github.com/Short-Test-Orga/mgeiger--00.git cloned
+INFO: 2024/10/07 14:44:19 push event on dzakhan-00 identified as submission, grading..
+INFO: 2024/10/07 14:44:20 added new release '10/100 - retry at 14:44' to dzakhan-00
+INFO: 2024/10/07 14:44:20 pushing to branch: main
+INFO: 2024/10/07 14:44:21 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:44:26 pushing to branch: traces
+INFO: 2024/10/07 14:44:27 uploaded traces/mgeiger--00-20241007_144418.log to repo mgeiger--00
+INFO: 2024/10/07 14:44:28 added new release '40/100 - retry at 15:44' to mgeiger--00
+INFO: 2024/10/07 14:44:28 updated row with id mgeiger--00 in table repositories_00
+INFO: 2024/10/07 14:44:28 pushing to branch: main
+INFO: 2024/10/07 14:44:28 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:44:41 push event on apashkov-00 identified as submission, grading..
+INFO: 2024/10/07 14:44:42 repository https://github.com/Short-Test-Orga/apashkov-00.git cloned
+INFO: 2024/10/07 14:44:49 push event on dzakhan-00 identified as submission, grading..
+INFO: 2024/10/07 14:44:50 repository https://github.com/Short-Test-Orga/dzakhan-00.git cloned
+INFO: 2024/10/07 14:44:50 pushing to branch: traces
+INFO: 2024/10/07 14:44:50 uploaded traces/apashkov-00-20241007_144442.log to repo apashkov-00
+INFO: 2024/10/07 14:44:51 added new release '40/100 - retry at 15:44' to apashkov-00
+INFO: 2024/10/07 14:44:51 updated row with id apashkov-00 in table repositories_00
+INFO: 2024/10/07 14:44:52 pushing to branch: main
+INFO: 2024/10/07 14:44:52 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:44:58 push event on tkasbari-00 identified as submission, grading..
+INFO: 2024/10/07 14:44:58 repository https://github.com/Short-Test-Orga/tkasbari-00.git cloned
+INFO: 2024/10/07 14:44:58 pushing to branch: traces
+INFO: 2024/10/07 14:44:59 uploaded traces/dzakhan-00-20241007_144450.log to repo dzakhan-00
+INFO: 2024/10/07 14:45:00 added new release '40/100 - retry at 15:29' to dzakhan-00
+INFO: 2024/10/07 14:45:00 updated row with id dzakhan-00 in table repositories_00
+INFO: 2024/10/07 14:45:00 pushing to branch: main
+INFO: 2024/10/07 14:45:00 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:45:05 pushing to branch: traces
+INFO: 2024/10/07 14:45:05 uploaded traces/tkasbari-00-20241007_144458.log to repo tkasbari-00
+INFO: 2024/10/07 14:45:06 added new release '20/100 - retry at 15:00' to tkasbari-00
+INFO: 2024/10/07 14:45:06 updated row with id tkasbari-00 in table repositories_00
+INFO: 2024/10/07 14:45:06 pushing to branch: main
+INFO: 2024/10/07 14:45:07 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:46:12 push event on apashkov-00 identified as submission, grading..
+INFO: 2024/10/07 14:46:13 added new release '40/100 - retry at 15:44' to apashkov-00
+INFO: 2024/10/07 14:46:13 pushing to branch: main
+INFO: 2024/10/07 14:46:14 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:46:31 push event on tkasbari-00 identified as submission, grading..
+INFO: 2024/10/07 14:46:31 repository https://github.com/Short-Test-Orga/tkasbari-00.git cloned
+INFO: 2024/10/07 14:46:39 pushing to branch: traces
+INFO: 2024/10/07 14:46:39 uploaded traces/tkasbari-00-20241007_144631.log to repo tkasbari-00
+INFO: 2024/10/07 14:46:40 added new release '50/100 - retry at 15:01' to tkasbari-00
+INFO: 2024/10/07 14:46:40 updated row with id tkasbari-00 in table repositories_00
+INFO: 2024/10/07 14:46:41 pushing to branch: main
+INFO: 2024/10/07 14:46:41 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:49:08 push event on mbonengl-00 identified as submission, grading..
+INFO: 2024/10/07 14:49:08 repository https://github.com/Short-Test-Orga/mbonengl-00.git cloned
+INFO: 2024/10/07 14:49:16 pushing to branch: traces
+INFO: 2024/10/07 14:49:16 uploaded traces/mbonengl-00-20241007_144908.log to repo mbonengl-00
+INFO: 2024/10/07 14:49:17 added new release '20/100 - retry at 15:49' to mbonengl-00
+INFO: 2024/10/07 14:49:17 updated row with id mbonengl-00 in table repositories_00
+INFO: 2024/10/07 14:49:17 pushing to branch: main
+INFO: 2024/10/07 14:49:18 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:49:55 push event on jwolfram-00 identified as submission, grading..
+INFO: 2024/10/07 14:49:56 repository https://github.com/Short-Test-Orga/jwolfram-00.git cloned
+INFO: 2024/10/07 14:50:03 pushing to branch: traces
+INFO: 2024/10/07 14:50:04 uploaded traces/jwolfram-00-20241007_144956.log to repo jwolfram-00
+INFO: 2024/10/07 14:50:05 added new release '10/100 - retry at 15:20' to jwolfram-00
+INFO: 2024/10/07 14:50:05 updated row with id jwolfram-00 in table repositories_00
+INFO: 2024/10/07 14:50:05 pushing to branch: main
+INFO: 2024/10/07 14:50:05 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:51:06 push event on miturk-00 identified as submission, grading..
+INFO: 2024/10/07 14:51:07 repository https://github.com/Short-Test-Orga/miturk-00.git cloned
+INFO: 2024/10/07 14:51:10 push event on aprevrha-00 identified as submission, grading..
+INFO: 2024/10/07 14:51:11 repository https://github.com/Short-Test-Orga/aprevrha-00.git cloned
+INFO: 2024/10/07 14:51:17 pushing to branch: traces
+INFO: 2024/10/07 14:51:17 uploaded traces/miturk-00-20241007_145107.log to repo miturk-00
+INFO: 2024/10/07 14:51:18 added new release '50/100 - retry at 15:06' to miturk-00
+INFO: 2024/10/07 14:51:18 updated row with id miturk-00 in table repositories_00
+INFO: 2024/10/07 14:51:18 pushing to branch: main
+INFO: 2024/10/07 14:51:19 pushing to branch: traces
+INFO: 2024/10/07 14:51:19 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:51:19 uploaded traces/aprevrha-00-20241007_145111.log to repo aprevrha-00
+INFO: 2024/10/07 14:51:20 added new release '20/100 - retry at 15:36' to aprevrha-00
+INFO: 2024/10/07 14:51:20 updated row with id aprevrha-00 in table repositories_00
+INFO: 2024/10/07 14:51:20 pushing to branch: main
+INFO: 2024/10/07 14:51:21 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:51:36 push event on aszabo-00 identified as submission, grading..
+INFO: 2024/10/07 14:51:36 repository https://github.com/Short-Test-Orga/aszabo-00.git cloned
+INFO: 2024/10/07 14:51:44 pushing to branch: traces
+INFO: 2024/10/07 14:51:45 uploaded traces/aszabo-00-20241007_145136.log to repo aszabo-00
+INFO: 2024/10/07 14:51:46 added new release '50/100 - retry at 15:06' to aszabo-00
+INFO: 2024/10/07 14:51:46 updated row with id aszabo-00 in table repositories_00
+INFO: 2024/10/07 14:51:46 pushing to branch: main
+INFO: 2024/10/07 14:51:47 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:51:58 push event on mhuszar-00 identified as submission, grading..
+INFO: 2024/10/07 14:51:58 repository https://github.com/Short-Test-Orga/mhuszar-00.git cloned
+INFO: 2024/10/07 14:52:04 pushing to branch: traces
+INFO: 2024/10/07 14:52:05 uploaded traces/mhuszar-00-20241007_145158.log to repo mhuszar-00
+INFO: 2024/10/07 14:52:06 added new release '20/100 - retry at 15:07' to mhuszar-00
+INFO: 2024/10/07 14:52:06 updated row with id mhuszar-00 in table repositories_00
+INFO: 2024/10/07 14:52:06 pushing to branch: main
+INFO: 2024/10/07 14:52:07 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:54:13 push event on vvovis-00 identified as submission, grading..
+INFO: 2024/10/07 14:54:13 repository https://github.com/Short-Test-Orga/vvovis-00.git cloned
+INFO: 2024/10/07 14:54:22 pushing to branch: traces
+INFO: 2024/10/07 14:54:22 uploaded traces/vvovis-00-20241007_145413.log to repo vvovis-00
+INFO: 2024/10/07 14:54:24 added new release '20/100 - retry at 15:54' to vvovis-00
+INFO: 2024/10/07 14:54:24 updated row with id vvovis-00 in table repositories_00
+INFO: 2024/10/07 14:54:24 pushing to branch: main
+INFO: 2024/10/07 14:54:24 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:54:49 push event on mhuszar-00 identified as submission, grading..
+INFO: 2024/10/07 14:54:49 repository https://github.com/Short-Test-Orga/mhuszar-00.git cloned
+INFO: 2024/10/07 14:54:58 pushing to branch: traces
+INFO: 2024/10/07 14:54:58 uploaded traces/mhuszar-00-20241007_145449.log to repo mhuszar-00
+INFO: 2024/10/07 14:54:59 added new release '40/100 - retry at 15:09' to mhuszar-00
+INFO: 2024/10/07 14:54:59 updated row with id mhuszar-00 in table repositories_00
+INFO: 2024/10/07 14:55:00 pushing to branch: main
+INFO: 2024/10/07 14:55:00 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:55:17 push event on dgutak-00 identified as submission, grading..
+INFO: 2024/10/07 14:55:18 repository https://github.com/Short-Test-Orga/dgutak-00.git cloned
+INFO: 2024/10/07 14:55:26 pushing to branch: traces
+INFO: 2024/10/07 14:55:26 uploaded traces/dgutak-00-20241007_145518.log to repo dgutak-00
+INFO: 2024/10/07 14:55:27 added new release '50/100 - retry at 15:10' to dgutak-00
+INFO: 2024/10/07 14:55:27 updated row with id dgutak-00 in table repositories_00
+INFO: 2024/10/07 14:55:28 pushing to branch: main
+INFO: 2024/10/07 14:55:28 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:56:21 push event on lbaumeis-00 identified as submission, grading..
+INFO: 2024/10/07 14:56:22 repository https://github.com/Short-Test-Orga/lbaumeis-00.git cloned
+INFO: 2024/10/07 14:56:29 pushing to branch: traces
+INFO: 2024/10/07 14:56:30 uploaded traces/lbaumeis-00-20241007_145622.log to repo lbaumeis-00
+INFO: 2024/10/07 14:56:31 added new release '40/100 - retry at 15:56' to lbaumeis-00
+INFO: 2024/10/07 14:56:31 updated row with id lbaumeis-00 in table repositories_00
+INFO: 2024/10/07 14:56:31 pushing to branch: main
+INFO: 2024/10/07 14:56:32 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 14:59:38 push event on aapenko-00 identified as submission, grading..
+INFO: 2024/10/07 14:59:38 repository https://github.com/Short-Test-Orga/aapenko-00.git cloned
+INFO: 2024/10/07 14:59:46 pushing to branch: traces
+INFO: 2024/10/07 14:59:46 uploaded traces/aapenko-00-20241007_145938.log to repo aapenko-00
+INFO: 2024/10/07 14:59:47 added new release '50/100 - retry at 15:14' to aapenko-00
+INFO: 2024/10/07 14:59:47 updated row with id aapenko-00 in table repositories_00
+INFO: 2024/10/07 14:59:48 pushing to branch: main
+INFO: 2024/10/07 14:59:48 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:00:05 push event on lbaumeis-00 identified as submission, grading..
+INFO: 2024/10/07 15:00:07 added new release '40/100 - retry at 15:56' to lbaumeis-00
+INFO: 2024/10/07 15:00:07 pushing to branch: main
+INFO: 2024/10/07 15:00:08 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:08:03 push event on oohnivch-00 identified as submission, grading..
+INFO: 2024/10/07 15:08:04 repository https://github.com/Short-Test-Orga/oohnivch-00.git cloned
+INFO: 2024/10/07 15:08:10 pushing to branch: traces
+INFO: 2024/10/07 15:08:10 uploaded traces/oohnivch-00-20241007_150804.log to repo oohnivch-00
+INFO: 2024/10/07 15:08:11 added new release '20/100 - retry at 16:08' to oohnivch-00
+INFO: 2024/10/07 15:08:11 updated row with id oohnivch-00 in table repositories_00
+INFO: 2024/10/07 15:08:12 pushing to branch: main
+INFO: 2024/10/07 15:08:12 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:09:45 push event on miheider-00 identified as submission, grading..
+INFO: 2024/10/07 15:09:46 repository https://github.com/Short-Test-Orga/miheider-00.git cloned
+INFO: 2024/10/07 15:09:53 pushing to branch: traces
+INFO: 2024/10/07 15:09:53 uploaded traces/miheider-00-20241007_150946.log to repo miheider-00
+INFO: 2024/10/07 15:09:54 added new release '10/100 - retry at 15:39' to miheider-00
+INFO: 2024/10/07 15:09:54 updated row with id miheider-00 in table repositories_00
+INFO: 2024/10/07 15:09:54 pushing to branch: main
+INFO: 2024/10/07 15:09:55 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:23:20 push event on aapenko-00 identified as submission, grading..
+INFO: 2024/10/07 15:23:20 repository https://github.com/Short-Test-Orga/aapenko-00.git cloned
+INFO: 2024/10/07 15:23:28 pushing to branch: traces
+INFO: 2024/10/07 15:23:29 uploaded traces/aapenko-00-20241007_152320.log to repo aapenko-00
+INFO: 2024/10/07 15:23:30 added new release '50/100 - retry at 15:38' to aapenko-00
+INFO: 2024/10/07 15:23:30 updated row with id aapenko-00 in table repositories_00
+INFO: 2024/10/07 15:23:30 pushing to branch: main
+INFO: 2024/10/07 15:23:30 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:24:33 push event on msimic-00 identified as submission, grading..
+INFO: 2024/10/07 15:24:34 repository https://github.com/Short-Test-Orga/msimic-00.git cloned
+INFO: 2024/10/07 15:24:40 pushing to branch: traces
+INFO: 2024/10/07 15:24:40 uploaded traces/msimic-00-20241007_152434.log to repo msimic-00
+INFO: 2024/10/07 15:24:41 added new release '0/100 - retry at 15:39' to msimic-00
+INFO: 2024/10/07 15:24:41 updated row with id msimic-00 in table repositories_00
+INFO: 2024/10/07 15:24:42 pushing to branch: main
+INFO: 2024/10/07 15:24:42 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:26:24 push event on mresch-00 identified as submission, grading..
+INFO: 2024/10/07 15:26:24 repository https://github.com/Short-Test-Orga/mresch-00.git cloned
+INFO: 2024/10/07 15:26:30 pushing to branch: traces
+INFO: 2024/10/07 15:26:31 uploaded traces/mresch-00-20241007_152624.log to repo mresch-00
+INFO: 2024/10/07 15:26:31 added new release '0/100 - retry at 15:41' to mresch-00
+INFO: 2024/10/07 15:26:31 updated row with id mresch-00 in table repositories_00
+INFO: 2024/10/07 15:26:31 pushing to branch: main
+INFO: 2024/10/07 15:26:32 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:28:02 push event on hanjkim-00 identified as submission, grading..
+INFO: 2024/10/07 15:28:02 repository https://github.com/Short-Test-Orga/hanjkim-00.git cloned
+INFO: 2024/10/07 15:28:11 pushing to branch: traces
+INFO: 2024/10/07 15:28:12 uploaded traces/hanjkim-00-20241007_152802.log to repo hanjkim-00
+INFO: 2024/10/07 15:28:13 added new release '30/100 - retry at 16:28' to hanjkim-00
+INFO: 2024/10/07 15:28:13 updated row with id hanjkim-00 in table repositories_00
+INFO: 2024/10/07 15:28:13 pushing to branch: main
+INFO: 2024/10/07 15:28:14 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:28:59 push event on arybarsk-00 identified as submission, grading..
+INFO: 2024/10/07 15:29:00 repository https://github.com/Short-Test-Orga/arybarsk-00.git cloned
+INFO: 2024/10/07 15:29:01 push event on nsassenb-00 identified as submission, grading..
+INFO: 2024/10/07 15:29:01 repository https://github.com/Short-Test-Orga/nsassenb-00.git cloned
+INFO: 2024/10/07 15:29:10 pushing to branch: traces
+INFO: 2024/10/07 15:29:10 uploaded traces/arybarsk-00-20241007_152900.log to repo arybarsk-00
+INFO: 2024/10/07 15:29:11 push event on ishvaiko-00 identified as submission, grading..
+INFO: 2024/10/07 15:29:11 repository https://github.com/Short-Test-Orga/ishvaiko-00.git cloned
+INFO: 2024/10/07 15:29:11 added new release '20/100 - retry at 16:29' to arybarsk-00
+INFO: 2024/10/07 15:29:11 updated row with id arybarsk-00 in table repositories_00
+INFO: 2024/10/07 15:29:12 pushing to branch: main
+INFO: 2024/10/07 15:29:12 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:29:14 pushing to branch: traces
+INFO: 2024/10/07 15:29:15 uploaded traces/nsassenb-00-20241007_152901.log to repo nsassenb-00
+INFO: 2024/10/07 15:29:16 added new release '10/100 - retry at 15:44' to nsassenb-00
+INFO: 2024/10/07 15:29:16 updated row with id nsassenb-00 in table repositories_00
+INFO: 2024/10/07 15:29:16 pushing to branch: main
+INFO: 2024/10/07 15:29:17 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:29:19 pushing to branch: traces
+INFO: 2024/10/07 15:29:20 uploaded traces/ishvaiko-00-20241007_152911.log to repo ishvaiko-00
+INFO: 2024/10/07 15:29:21 added new release '40/100 - retry at 16:14' to ishvaiko-00
+INFO: 2024/10/07 15:29:21 updated row with id ishvaiko-00 in table repositories_00
+INFO: 2024/10/07 15:29:21 pushing to branch: main
+INFO: 2024/10/07 15:29:22 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:33:09 push event on mresch-00 identified as submission, grading..
+INFO: 2024/10/07 15:33:10 added new release '0/100 - retry at 15:41' to mresch-00
+INFO: 2024/10/07 15:33:11 pushing to branch: main
+INFO: 2024/10/07 15:33:11 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:36:29 push event on oltolmac-00 identified as submission, grading..
+INFO: 2024/10/07 15:36:29 repository https://github.com/Short-Test-Orga/oltolmac-00.git cloned
+INFO: 2024/10/07 15:36:37 pushing to branch: traces
+INFO: 2024/10/07 15:36:38 uploaded traces/oltolmac-00-20241007_153629.log to repo oltolmac-00
+INFO: 2024/10/07 15:36:39 added new release '40/100 - retry at 16:36' to oltolmac-00
+INFO: 2024/10/07 15:36:39 updated row with id oltolmac-00 in table repositories_00
+INFO: 2024/10/07 15:36:39 pushing to branch: main
+INFO: 2024/10/07 15:36:39 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:39:02 push event on msimic-00 identified as submission, grading..
+INFO: 2024/10/07 15:39:03 added new release '0/100 - retry at 15:39' to msimic-00
+INFO: 2024/10/07 15:39:03 pushing to branch: main
+INFO: 2024/10/07 15:39:03 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:41:28 push event on nsassenb-00 identified as submission, grading..
+INFO: 2024/10/07 15:41:29 added new release '10/100 - retry at 15:44' to nsassenb-00
+INFO: 2024/10/07 15:41:30 pushing to branch: main
+INFO: 2024/10/07 15:41:30 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:44:26 push event on msimic-00 identified as submission, grading..
+INFO: 2024/10/07 15:44:26 repository https://github.com/Short-Test-Orga/msimic-00.git cloned
+INFO: 2024/10/07 15:44:33 pushing to branch: traces
+INFO: 2024/10/07 15:44:34 uploaded traces/msimic-00-20241007_154426.log to repo msimic-00
+INFO: 2024/10/07 15:44:35 added new release '0/100 - retry at 16:14' to msimic-00
+INFO: 2024/10/07 15:44:35 updated row with id msimic-00 in table repositories_00
+INFO: 2024/10/07 15:44:35 pushing to branch: main
+INFO: 2024/10/07 15:44:35 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:45:25 push event on miheider-00 identified as submission, grading..
+INFO: 2024/10/07 15:45:26 repository https://github.com/Short-Test-Orga/miheider-00.git cloned
+INFO: 2024/10/07 15:45:32 pushing to branch: traces
+INFO: 2024/10/07 15:45:33 uploaded traces/miheider-00-20241007_154526.log to repo miheider-00
+INFO: 2024/10/07 15:45:34 added new release '10/100 - retry at 16:30' to miheider-00
+INFO: 2024/10/07 15:45:34 updated row with id miheider-00 in table repositories_00
+INFO: 2024/10/07 15:45:34 pushing to branch: main
+INFO: 2024/10/07 15:45:35 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:46:13 push event on iberegsz-00 identified as submission, grading..
+INFO: 2024/10/07 15:46:14 repository https://github.com/Short-Test-Orga/iberegsz-00.git cloned
+INFO: 2024/10/07 15:46:22 pushing to branch: traces
+INFO: 2024/10/07 15:46:23 uploaded traces/iberegsz-00-20241007_154614.log to repo iberegsz-00
+INFO: 2024/10/07 15:46:24 added new release '50/100 - retry at 16:01' to iberegsz-00
+INFO: 2024/10/07 15:46:24 updated row with id iberegsz-00 in table repositories_00
+INFO: 2024/10/07 15:46:24 pushing to branch: main
+INFO: 2024/10/07 15:46:24 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:49:06 push event on aszabo-00 identified as submission, grading..
+INFO: 2024/10/07 15:49:06 repository https://github.com/Short-Test-Orga/aszabo-00.git cloned
+INFO: 2024/10/07 15:49:15 pushing to branch: traces
+INFO: 2024/10/07 15:49:15 uploaded traces/aszabo-00-20241007_154906.log to repo aszabo-00
+INFO: 2024/10/07 15:49:16 added new release '50/100 - retry at 16:04' to aszabo-00
+INFO: 2024/10/07 15:49:16 updated row with id aszabo-00 in table repositories_00
+INFO: 2024/10/07 15:49:17 pushing to branch: main
+INFO: 2024/10/07 15:49:17 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:53:17 push event on tkafanov-00 identified as submission, grading..
+INFO: 2024/10/07 15:53:18 repository https://github.com/Short-Test-Orga/tkafanov-00.git cloned
+INFO: 2024/10/07 15:53:27 pushing to branch: traces
+INFO: 2024/10/07 15:53:28 uploaded traces/tkafanov-00-20241007_155318.log to repo tkafanov-00
+INFO: 2024/10/07 15:53:29 added new release '50/100 - retry at 16:08' to tkafanov-00
+INFO: 2024/10/07 15:53:29 updated row with id tkafanov-00 in table repositories_00
+INFO: 2024/10/07 15:53:29 pushing to branch: main
+INFO: 2024/10/07 15:53:30 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:55:18 push event on dzakhan-00 identified as submission, grading..
+INFO: 2024/10/07 15:55:19 repository https://github.com/Short-Test-Orga/dzakhan-00.git cloned
+INFO: 2024/10/07 15:55:28 pushing to branch: traces
+INFO: 2024/10/07 15:55:28 uploaded traces/dzakhan-00-20241007_155519.log to repo dzakhan-00
+INFO: 2024/10/07 15:55:29 added new release '50/100 - retry at 16:10' to dzakhan-00
+INFO: 2024/10/07 15:55:29 updated row with id dzakhan-00 in table repositories_00
+INFO: 2024/10/07 15:55:29 pushing to branch: main
+INFO: 2024/10/07 15:55:30 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 15:58:21 push event on vvovis-00 identified as submission, grading..
+INFO: 2024/10/07 15:58:21 repository https://github.com/Short-Test-Orga/vvovis-00.git cloned
+INFO: 2024/10/07 15:58:30 pushing to branch: traces
+INFO: 2024/10/07 15:58:30 uploaded traces/vvovis-00-20241007_155821.log to repo vvovis-00
+INFO: 2024/10/07 15:58:31 added new release '20/100 - retry at 16:58' to vvovis-00
+INFO: 2024/10/07 15:58:31 updated row with id vvovis-00 in table repositories_00
+INFO: 2024/10/07 15:58:32 pushing to branch: main
+INFO: 2024/10/07 15:58:32 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 16:01:30 push event on mresch-00 identified as submission, grading..
+INFO: 2024/10/07 16:01:30 repository https://github.com/Short-Test-Orga/mresch-00.git cloned
+INFO: 2024/10/07 16:01:38 pushing to branch: traces
+INFO: 2024/10/07 16:01:38 uploaded traces/mresch-00-20241007_160130.log to repo mresch-00
+INFO: 2024/10/07 16:01:39 added new release '0/100 - retry at 16:31' to mresch-00
+INFO: 2024/10/07 16:01:39 updated row with id mresch-00 in table repositories_00
+INFO: 2024/10/07 16:01:39 pushing to branch: main
+INFO: 2024/10/07 16:01:40 uploaded ./sqlite3/repositories.db to repo sqlite3

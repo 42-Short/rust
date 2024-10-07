@@ -175,8 +175,8 @@ The rules have changed a bit, however. They must be followed in order.
 * When the number is both a multiple of 3 and 5, "fizzbuzz" must be displayed.
 * When the number is a multiple of 3, "fizz" must be displayed.
 * When the number is a multiple of 5, "buzz" must be displayed.
-* When the number is congruent to 3 modulo 11 "FIZZ" is displayed.
-* When the number is congruent to 5 modulo 11 "BUZZ" is displayed.
+* When the number modulo 11 is congruent to 3 "FIZZ" is displayed.
+* When the number modulo 11 is congruent to 5 "BUZZ" is displayed.
 * Otherwise, the number itself is written.
 
 Example:
@@ -227,7 +227,6 @@ Create a Cargo project.
 * Its author must be you.
 * Its description must be "my answer to the fifth exercise of the first module of 42's Rust Piscine"
 * It must not be possible to publish the package, even when using `cargo publish`.
-
 * The following commands must give this output:
 
 ```txt
@@ -269,6 +268,8 @@ thread 'main' panicked at 'attempt to add with overflow', src/overflow.rs:3:5
 >_ cargo run --profile no-overflows --bin test-overflows
 255u8 + 1u8 == 0
 ```
+
+* You are allowed to modify lint levels for completing this exercise! Up to you to figure out which :)
 
 ## Exercise 05: Friday The 13th
 
