@@ -1,0 +1,295 @@
+DEV_MODE environment variable not set, assuming productionINFO: 2024/10/07 11:08:58 all dependencies are already installed
+INFO: 2024/10/07 11:08:58 Starting module 00
+INFO: 2024/10/07 11:08:59 repository sqlite3 already exists. Skipping creation
+INFO: 2024/10/07 11:08:59 repository https://github.com/Short-Test-Orga/sqlite3.git cloned
+INFO: 2024/10/07 11:08:59 table repositories_00 created
+INFO: 2024/10/07 11:08:59 pushing to branch: main
+INFO: 2024/10/07 11:08:59 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:08:59 initialized table repositories_00 with participant data
+INFO: 2024/10/07 11:09:00 repository mgeiger--00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:00 uploaded subjects/module-00.md to repo mgeiger--00
+INFO: 2024/10/07 11:09:01 repository oohnivch-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:02 uploaded subjects/module-00.md to repo oohnivch-00
+INFO: 2024/10/07 11:09:02 repository icseri-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:03 uploaded subjects/module-00.md to repo icseri-00
+INFO: 2024/10/07 11:09:03 repository tkasbari-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:04 uploaded subjects/module-00.md to repo tkasbari-00
+INFO: 2024/10/07 11:09:04 repository aismaili-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:05 uploaded subjects/module-00.md to repo aismaili-00
+INFO: 2024/10/07 11:09:05 repository aszabo-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:06 uploaded subjects/module-00.md to repo aszabo-00
+INFO: 2024/10/07 11:09:06 repository mesenyur-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:07 uploaded subjects/module-00.md to repo mesenyur-00
+INFO: 2024/10/07 11:09:07 repository ecaliska-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:08 uploaded subjects/module-00.md to repo ecaliska-00
+INFO: 2024/10/07 11:09:08 repository mleitner-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:09 uploaded subjects/module-00.md to repo mleitner-00
+INFO: 2024/10/07 11:09:09 repository jwolfram-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:10 uploaded subjects/module-00.md to repo jwolfram-00
+INFO: 2024/10/07 11:09:11 repository aal-jana-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:11 uploaded subjects/module-00.md to repo aal-jana-00
+INFO: 2024/10/07 11:09:12 repository bszilas-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:13 uploaded subjects/module-00.md to repo bszilas-00
+INFO: 2024/10/07 11:09:13 repository dgutak-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:14 uploaded subjects/module-00.md to repo dgutak-00
+INFO: 2024/10/07 11:09:14 repository iberegsz-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:15 uploaded subjects/module-00.md to repo iberegsz-00
+INFO: 2024/10/07 11:09:15 repository svereten-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:17 uploaded subjects/module-00.md to repo svereten-00
+INFO: 2024/10/07 11:09:17 repository fseles-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:18 uploaded subjects/module-00.md to repo fseles-00
+INFO: 2024/10/07 11:09:18 repository vfrants-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:19 uploaded subjects/module-00.md to repo vfrants-00
+INFO: 2024/10/07 11:09:19 repository bpochlau-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:20 uploaded subjects/module-00.md to repo bpochlau-00
+INFO: 2024/10/07 11:09:20 repository amirfatt-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:21 uploaded subjects/module-00.md to repo amirfatt-00
+INFO: 2024/10/07 11:09:22 repository hanjkim-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:23 uploaded subjects/module-00.md to repo hanjkim-00
+INFO: 2024/10/07 11:09:23 repository caigner-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:24 uploaded subjects/module-00.md to repo caigner-00
+INFO: 2024/10/07 11:09:24 repository arybarsk-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:25 uploaded subjects/module-00.md to repo arybarsk-00
+INFO: 2024/10/07 11:09:25 repository amalkhal-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:25 x-ratelimit-remaining: 4977
+INFO: 2024/10/07 11:09:25 x-ratelimit-reset: 1728295740
+INFO: 2024/10/07 11:09:25 retry-after: 
+INFO: 2024/10/07 11:09:25 response body: {"message":"Not Found","documentation_url":"https://docs.github.com/rest/collaborators/collaborators#add-a-repository-collaborator","status":"404"}
+INFO: 2024/10/07 11:09:26 repository rbasyrov-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:27 uploaded subjects/module-00.md to repo rbasyrov-00
+INFO: 2024/10/07 11:09:27 repository apashkov-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:28 uploaded subjects/module-00.md to repo apashkov-00
+INFO: 2024/10/07 11:09:28 repository aapenko-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:29 uploaded subjects/module-00.md to repo aapenko-00
+INFO: 2024/10/07 11:09:30 repository nsassenb-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:30 uploaded subjects/module-00.md to repo nsassenb-00
+INFO: 2024/10/07 11:09:31 repository nicvrlja-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:31 uploaded subjects/module-00.md to repo nicvrlja-00
+INFO: 2024/10/07 11:09:32 repository miturk-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:33 uploaded subjects/module-00.md to repo miturk-00
+INFO: 2024/10/07 11:09:33 repository aguilmea-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:34 uploaded subjects/module-00.md to repo aguilmea-00
+INFO: 2024/10/07 11:09:34 repository teesma-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:35 uploaded subjects/module-00.md to repo teesma-00
+INFO: 2024/10/07 11:09:35 repository hrother-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:36 uploaded subjects/module-00.md to repo hrother-00
+INFO: 2024/10/07 11:09:36 repository mhuszar-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:38 uploaded subjects/module-00.md to repo mhuszar-00
+INFO: 2024/10/07 11:09:38 repository lyeh-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:39 uploaded subjects/module-00.md to repo lyeh-00
+INFO: 2024/10/07 11:09:39 repository ldulling-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:40 uploaded subjects/module-00.md to repo ldulling-00
+INFO: 2024/10/07 11:09:40 repository ishvaiko-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:41 uploaded subjects/module-00.md to repo ishvaiko-00
+INFO: 2024/10/07 11:09:41 repository msimic-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:42 uploaded subjects/module-00.md to repo msimic-00
+INFO: 2024/10/07 11:09:43 repository tbatis-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:43 uploaded subjects/module-00.md to repo tbatis-00
+INFO: 2024/10/07 11:09:44 repository dpotsch-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:45 uploaded subjects/module-00.md to repo dpotsch-00
+INFO: 2024/10/07 11:09:45 repository oltolmac-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:46 uploaded subjects/module-00.md to repo oltolmac-00
+INFO: 2024/10/07 11:09:46 repository johuber-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:47 uploaded subjects/module-00.md to repo johuber-00
+INFO: 2024/10/07 11:09:47 repository jsakanov-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:48 uploaded subjects/module-00.md to repo jsakanov-00
+INFO: 2024/10/07 11:09:48 repository mbonengl-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:49 uploaded subjects/module-00.md to repo mbonengl-00
+INFO: 2024/10/07 11:09:49 repository fstark-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:50 uploaded subjects/module-00.md to repo fstark-00
+INFO: 2024/10/07 11:09:51 repository dzakhan-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:51 uploaded subjects/module-00.md to repo dzakhan-00
+INFO: 2024/10/07 11:09:52 repository miheider-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:53 uploaded subjects/module-00.md to repo miheider-00
+INFO: 2024/10/07 11:09:53 repository mmusic-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:54 uploaded subjects/module-00.md to repo mmusic-00
+INFO: 2024/10/07 11:09:54 repository dscholz-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:55 uploaded subjects/module-00.md to repo dscholz-00
+INFO: 2024/10/07 11:09:55 repository rpinchas-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:56 uploaded subjects/module-00.md to repo rpinchas-00
+INFO: 2024/10/07 11:09:56 repository mresch-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:57 uploaded subjects/module-00.md to repo mresch-00
+INFO: 2024/10/07 11:09:57 repository kbrauer-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:58 uploaded subjects/module-00.md to repo kbrauer-00
+INFO: 2024/10/07 11:09:58 repository vvovis-00 already exists. Skipping creation
+INFO: 2024/10/07 11:09:59 uploaded subjects/module-00.md to repo vvovis-00
+INFO: 2024/10/07 11:09:59 repository Drucilla-00 already exists. Skipping creation
+INFO: 2024/10/07 11:10:01 uploaded subjects/module-00.md to repo Drucilla-00
+INFO: 2024/10/07 11:10:01 repository todecekal-00 already exists. Skipping creation
+INFO: 2024/10/07 11:10:02 uploaded subjects/module-00.md to repo todecekal-00
+INFO: 2024/10/07 11:10:02 repository lbaumeis-00 already exists. Skipping creation
+INFO: 2024/10/07 11:10:03 uploaded subjects/module-00.md to repo lbaumeis-00
+INFO: 2024/10/07 11:10:03 repository Leonardo-00 already exists. Skipping creation
+INFO: 2024/10/07 11:10:04 uploaded subjects/module-00.md to repo Leonardo-00
+INFO: 2024/10/07 11:10:04 repository tkafanov-00 already exists. Skipping creation
+INFO: 2024/10/07 11:10:05 uploaded subjects/module-00.md to repo tkafanov-00
+INFO: 2024/10/07 11:10:05 repository Marta-00 already exists. Skipping creation
+INFO: 2024/10/07 11:10:06 uploaded subjects/module-00.md to repo Marta-00
+INFO: 2024/10/07 11:10:07 repository aprevrha-00 already exists. Skipping creation
+INFO: 2024/10/07 11:10:08 uploaded subjects/module-00.md to repo aprevrha-00
+INFO: 2024/10/07 11:10:08 pushing to branch: main
+INFO: 2024/10/07 11:10:08 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:10:08 Webhook server started for module 00
+INFO: 2024/10/07 11:11:39 push event on dscholz-00 identified as submission, grading..
+INFO: 2024/10/07 11:11:40 added new release '0/100 - retry at 11:22' to dscholz-00
+INFO: 2024/10/07 11:11:41 pushing to branch: main
+INFO: 2024/10/07 11:11:41 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:13:01 push event on rpinchas-00 identified as submission, grading..
+INFO: 2024/10/07 11:13:02 added new release '10/100 - retry at 12:05' to rpinchas-00
+INFO: 2024/10/07 11:13:02 pushing to branch: main
+INFO: 2024/10/07 11:13:03 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:14:29 push event on rpinchas-00 identified as submission, grading..
+INFO: 2024/10/07 11:14:30 added new release '10/100 - retry at 12:05' to rpinchas-00
+INFO: 2024/10/07 11:14:30 pushing to branch: main
+INFO: 2024/10/07 11:14:30 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:18:58 push event on hanjkim-00 identified as submission, grading..
+INFO: 2024/10/07 11:18:59 repository https://github.com/Short-Test-Orga/hanjkim-00.git cloned
+INFO: 2024/10/07 11:19:05 pushing to branch: traces
+INFO: 2024/10/07 11:19:05 uploaded traces/hanjkim-00-20241007_111859.log to repo hanjkim-00
+INFO: 2024/10/07 11:19:06 added new release '20/100 - retry at 12:04' to hanjkim-00
+INFO: 2024/10/07 11:19:06 updated row with id hanjkim-00 in table repositories_00
+INFO: 2024/10/07 11:19:06 pushing to branch: main
+INFO: 2024/10/07 11:19:07 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:19:10 push event on iberegsz-00 identified as submission, grading..
+INFO: 2024/10/07 11:19:11 repository https://github.com/Short-Test-Orga/iberegsz-00.git cloned
+INFO: 2024/10/07 11:19:17 pushing to branch: traces
+INFO: 2024/10/07 11:19:18 uploaded traces/iberegsz-00-20241007_111911.log to repo iberegsz-00
+INFO: 2024/10/07 11:19:19 added new release '10/100 - retry at 12:04' to iberegsz-00
+INFO: 2024/10/07 11:19:19 updated row with id iberegsz-00 in table repositories_00
+INFO: 2024/10/07 11:19:19 pushing to branch: main
+INFO: 2024/10/07 11:19:19 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:21:24 push event on kbrauer-00 identified as submission, grading..
+INFO: 2024/10/07 11:21:24 repository https://github.com/Short-Test-Orga/kbrauer-00.git cloned
+INFO: 2024/10/07 11:21:31 pushing to branch: traces
+INFO: 2024/10/07 11:21:31 uploaded traces/kbrauer-00-20241007_112124.log to repo kbrauer-00
+INFO: 2024/10/07 11:21:32 added new release '20/100 - retry at 11:51' to kbrauer-00
+INFO: 2024/10/07 11:21:32 updated row with id kbrauer-00 in table repositories_00
+INFO: 2024/10/07 11:21:33 pushing to branch: main
+INFO: 2024/10/07 11:21:33 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:22:40 push event on mbonengl-00 identified as submission, grading..
+INFO: 2024/10/07 11:22:42 repository https://github.com/Short-Test-Orga/mbonengl-00.git cloned
+INFO: 2024/10/07 11:22:48 pushing to branch: traces
+INFO: 2024/10/07 11:22:48 uploaded traces/mbonengl-00-20241007_112242.log to repo mbonengl-00
+INFO: 2024/10/07 11:22:49 added new release '20/100 - retry at 12:07' to mbonengl-00
+INFO: 2024/10/07 11:22:49 updated row with id mbonengl-00 in table repositories_00
+INFO: 2024/10/07 11:22:50 pushing to branch: main
+INFO: 2024/10/07 11:22:50 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:25:10 push event on dscholz-00 identified as submission, grading..
+INFO: 2024/10/07 11:25:11 repository https://github.com/Short-Test-Orga/dscholz-00.git cloned
+INFO: 2024/10/07 11:25:17 pushing to branch: traces
+INFO: 2024/10/07 11:25:17 uploaded traces/dscholz-00-20241007_112511.log to repo dscholz-00
+INFO: 2024/10/07 11:25:19 added new release '10/100 - retry at 11:55' to dscholz-00
+INFO: 2024/10/07 11:25:19 updated row with id dscholz-00 in table repositories_00
+INFO: 2024/10/07 11:25:19 pushing to branch: main
+INFO: 2024/10/07 11:25:19 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:25:39 push event on dpotsch-00 identified as submission, grading..
+INFO: 2024/10/07 11:25:40 repository https://github.com/Short-Test-Orga/dpotsch-00.git cloned
+INFO: 2024/10/07 11:25:45 pushing to branch: traces
+INFO: 2024/10/07 11:25:46 uploaded traces/dpotsch-00-20241007_112540.log to repo dpotsch-00
+INFO: 2024/10/07 11:25:47 added new release '20/100 - retry at 12:10' to dpotsch-00
+INFO: 2024/10/07 11:25:47 updated row with id dpotsch-00 in table repositories_00
+INFO: 2024/10/07 11:25:47 pushing to branch: main
+INFO: 2024/10/07 11:25:48 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:28:03 push event on oltolmac-00 identified as submission, grading..
+INFO: 2024/10/07 11:28:03 repository https://github.com/Short-Test-Orga/oltolmac-00.git cloned
+INFO: 2024/10/07 11:28:09 pushing to branch: traces
+INFO: 2024/10/07 11:28:10 uploaded traces/oltolmac-00-20241007_112803.log to repo oltolmac-00
+INFO: 2024/10/07 11:28:11 added new release '20/100 - retry at 11:43' to oltolmac-00
+INFO: 2024/10/07 11:28:11 updated row with id oltolmac-00 in table repositories_00
+INFO: 2024/10/07 11:28:11 pushing to branch: main
+INFO: 2024/10/07 11:28:12 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:29:23 push event on aapenko-00 identified as submission, grading..
+INFO: 2024/10/07 11:29:23 repository https://github.com/Short-Test-Orga/aapenko-00.git cloned
+INFO: 2024/10/07 11:29:29 pushing to branch: traces
+INFO: 2024/10/07 11:29:29 uploaded traces/aapenko-00-20241007_112923.log to repo aapenko-00
+INFO: 2024/10/07 11:29:30 added new release '10/100 - retry at 11:44' to aapenko-00
+INFO: 2024/10/07 11:29:30 updated row with id aapenko-00 in table repositories_00
+INFO: 2024/10/07 11:29:30 pushing to branch: main
+INFO: 2024/10/07 11:29:31 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:32:09 push event on tkasbari-00 identified as submission, grading..
+INFO: 2024/10/07 11:32:09 repository https://github.com/Short-Test-Orga/tkasbari-00.git cloned
+INFO: 2024/10/07 11:32:15 pushing to branch: traces
+INFO: 2024/10/07 11:32:16 uploaded traces/tkasbari-00-20241007_113209.log to repo tkasbari-00
+INFO: 2024/10/07 11:32:17 added new release '20/100 - retry at 12:17' to tkasbari-00
+INFO: 2024/10/07 11:32:17 updated row with id tkasbari-00 in table repositories_00
+INFO: 2024/10/07 11:32:17 pushing to branch: main
+INFO: 2024/10/07 11:32:18 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:41:22 push event on kbrauer-00 identified as submission, grading..
+INFO: 2024/10/07 11:41:23 added new release '20/100 - retry at 11:51' to kbrauer-00
+INFO: 2024/10/07 11:41:23 pushing to branch: main
+INFO: 2024/10/07 11:41:23 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:42:07 push event on tkasbari-00 identified as submission, grading..
+INFO: 2024/10/07 11:42:08 added new release '20/100 - retry at 12:17' to tkasbari-00
+INFO: 2024/10/07 11:42:08 pushing to branch: main
+INFO: 2024/10/07 11:42:08 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:43:15 push event on hanjkim-00 identified as submission, grading..
+INFO: 2024/10/07 11:43:16 added new release '20/100 - retry at 12:04' to hanjkim-00
+INFO: 2024/10/07 11:43:16 pushing to branch: main
+INFO: 2024/10/07 11:43:17 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:43:28 push event on oltolmac-00 identified as submission, grading..
+INFO: 2024/10/07 11:43:28 repository https://github.com/Short-Test-Orga/oltolmac-00.git cloned
+INFO: 2024/10/07 11:43:30 push event on apashkov-00 identified as submission, grading..
+INFO: 2024/10/07 11:43:31 added new release '20/100 - retry at 11:54' to apashkov-00
+INFO: 2024/10/07 11:43:31 pushing to branch: main
+INFO: 2024/10/07 11:43:32 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:43:35 pushing to branch: traces
+INFO: 2024/10/07 11:43:36 uploaded traces/oltolmac-00-20241007_114328.log to repo oltolmac-00
+INFO: 2024/10/07 11:43:37 added new release '20/100 - retry at 12:13' to oltolmac-00
+INFO: 2024/10/07 11:43:37 updated row with id oltolmac-00 in table repositories_00
+INFO: 2024/10/07 11:43:37 pushing to branch: main
+INFO: 2024/10/07 11:43:38 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:48:30 push event on rbasyrov-00 identified as submission, grading..
+INFO: 2024/10/07 11:48:31 added new release '30/100 - retry at 11:51' to rbasyrov-00
+INFO: 2024/10/07 11:48:31 pushing to branch: main
+INFO: 2024/10/07 11:48:31 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:49:05 push event on apashkov-00 identified as submission, grading..
+INFO: 2024/10/07 11:49:06 added new release '20/100 - retry at 11:54' to apashkov-00
+INFO: 2024/10/07 11:49:06 pushing to branch: main
+INFO: 2024/10/07 11:49:06 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:51:21 push event on aprevrha-00 identified as submission, grading..
+INFO: 2024/10/07 11:51:22 repository https://github.com/Short-Test-Orga/aprevrha-00.git cloned
+INFO: 2024/10/07 11:51:25 push event on mgeiger--00 identified as submission, grading..
+INFO: 2024/10/07 11:51:25 repository https://github.com/Short-Test-Orga/mgeiger--00.git cloned
+INFO: 2024/10/07 11:51:28 pushing to branch: traces
+INFO: 2024/10/07 11:51:29 uploaded traces/aprevrha-00-20241007_115122.log to repo aprevrha-00
+INFO: 2024/10/07 11:51:30 added new release '20/100 - retry at 12:21' to aprevrha-00
+INFO: 2024/10/07 11:51:30 updated row with id aprevrha-00 in table repositories_00
+INFO: 2024/10/07 11:51:30 pushing to branch: main
+INFO: 2024/10/07 11:51:30 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:51:32 pushing to branch: traces
+INFO: 2024/10/07 11:51:33 uploaded traces/mgeiger--00-20241007_115125.log to repo mgeiger--00
+INFO: 2024/10/07 11:51:33 added new release '10/100 - retry at 12:06' to mgeiger--00
+INFO: 2024/10/07 11:51:33 updated row with id mgeiger--00 in table repositories_00
+INFO: 2024/10/07 11:51:34 pushing to branch: main
+INFO: 2024/10/07 11:51:34 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:52:19 push event on rbasyrov-00 identified as submission, grading..
+INFO: 2024/10/07 11:52:19 repository https://github.com/Short-Test-Orga/rbasyrov-00.git cloned
+INFO: 2024/10/07 11:52:28 pushing to branch: traces
+INFO: 2024/10/07 11:52:28 uploaded traces/rbasyrov-00-20241007_115219.log to repo rbasyrov-00
+INFO: 2024/10/07 11:52:29 added new release '40/100 - retry at 12:52' to rbasyrov-00
+INFO: 2024/10/07 11:52:29 updated row with id rbasyrov-00 in table repositories_00
+INFO: 2024/10/07 11:52:29 pushing to branch: main
+INFO: 2024/10/07 11:52:30 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:52:30 push event on lbaumeis-00 identified as submission, grading..
+INFO: 2024/10/07 11:52:31 repository https://github.com/Short-Test-Orga/lbaumeis-00.git cloned
+INFO: 2024/10/07 11:52:39 pushing to branch: traces
+INFO: 2024/10/07 11:52:39 uploaded traces/lbaumeis-00-20241007_115231.log to repo lbaumeis-00
+INFO: 2024/10/07 11:52:40 added new release '10/100 - retry at 12:07' to lbaumeis-00
+INFO: 2024/10/07 11:52:40 updated row with id lbaumeis-00 in table repositories_00
+INFO: 2024/10/07 11:52:40 pushing to branch: main
+INFO: 2024/10/07 11:52:41 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:53:02 push event on rbasyrov-00 identified as submission, grading..
+INFO: 2024/10/07 11:53:03 added new release '40/100 - retry at 12:52' to rbasyrov-00
+INFO: 2024/10/07 11:53:04 pushing to branch: main
+INFO: 2024/10/07 11:53:04 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:54:01 push event on mgeiger--00 identified as submission, grading..
+INFO: 2024/10/07 11:54:02 added new release '10/100 - retry at 12:06' to mgeiger--00
+INFO: 2024/10/07 11:54:02 pushing to branch: main
+INFO: 2024/10/07 11:54:02 uploaded ./sqlite3/repositories.db to repo sqlite3
+INFO: 2024/10/07 11:54:51 push event on miturk-00 identified as submission, grading..
+INFO: 2024/10/07 11:54:51 repository https://github.com/Short-Test-Orga/miturk-00.git cloned
+INFO: 2024/10/07 11:54:57 pushing to branch: traces
+INFO: 2024/10/07 11:54:58 uploaded traces/miturk-00-20241007_115451.log to repo miturk-00
+INFO: 2024/10/07 11:54:58 added new release '0/100 - retry at 12:09' to miturk-00
+INFO: 2024/10/07 11:54:58 updated row with id miturk-00 in table repositories_00
+INFO: 2024/10/07 11:54:58 pushing to branch: main
