@@ -175,8 +175,8 @@ The rules have changed a bit, however. They must be followed in order.
 * When the number is both a multiple of 3 and 5, "fizzbuzz" must be displayed.
 * When the number is a multiple of 3, "fizz" must be displayed.
 * When the number is a multiple of 5, "buzz" must be displayed.
-* When the number is congruent to 3 modulo 11 "FIZZ" is displayed.
-* When the number is congruent to 5 modulo 11 "BUZZ" is displayed.
+* When the number modulo 11 is congruent to 3 "FIZZ" is displayed.
+* When the number module 11 is congruent to 5 "BUZZ" is displayed.
 * Otherwise, the number itself is written.
 
 Example:
