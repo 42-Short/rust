@@ -115,36 +115,38 @@ they are not specified in the `allowed symbols` section.
 
 ## Module Rules
 
-You _are_ allowed to use `unsafe` code in this module! However, some rules must be followed.
+In this module, you will take your first steps in writing dangerous code safely. 
+If you keep going until the very end, you will learn stuff no sane person should ever have to
+know about, like cross-compiling languages with Foreign Function Interfaces (FFI), or the `#![no_main]` keyword. 
+
+Therefore, you _are_ allowed to use `unsafe` code in this module! However, some rules must be followed.
 
 1. You must use the `#![forbid(unsafe_op_in_unsafe_fn)]` global attribute.
 
-2. When an `unsafe fn` function is defined, its documentation must contain a `# Safety` section
+2. When an `unsafe fn` is defined, its documentation must contain a `# Safety` section
    describing how to use it correctly.
 
 ```rust
 /// Returns one of the elements of `slice`, as specified by
-/// `index`, but without checking whether `index` is actually
-/// in bounds.
+/// `index`
 ///
 /// # Safety
 ///
 /// The provided `index` must be in bounds (i.e. it must be
-/// strictly less than `slice.len()`).
+/// **strictly** less than `slice.len()`).
 unsafe fn get_unchecked(slice: &[u32], index: usize) -> u32 {
     // SAFETY:
     //  - We have been given a regular `&[u32]` slice, which
     //    ensures that the pointer is valid for reads and is
     //    properly aligned. We can turn it back into a regular
     //    reference.
-    //  - The caller must ensure that the `index` is in bounds,
-    //    ensuring that `add()` won't overflow the memory block
-    //    referenced by `slice`.
+    //  - The responsibility to ensure that the `index` is in bounds,
+    //    is on the caller.
     unsafe { *slice.as_ptr().add(index) }
 }
 ```
 
-3. When an `unsafe trait` trait is defined, its documentation must contain a `# Safety` section
+3. When an `unsafe trait` is defined, its documentation must contain a `# Safety` section
    describing how to implement it correctly.
 
 ```rust
@@ -164,7 +166,8 @@ unsafe trait Zeroable {
 }
 ```
 
-4. Every time an `unsafe` block is used, it must be annotated with a `SAFETY:` directive.
+4. Every time an `unsafe` block is used, it must be annotated with a `SAFETY:` directive, explaining the 
+thinking process behind this code.
 
 ```rust
 let slice: &[u32] = &[1, 2, 3];
@@ -430,7 +433,7 @@ allowed symbols:
     std::mem::forget;
 ```
 
-Create an `Errno` type, respondible for managing errors coming from C code.
+Create an `Errno` type, responsible for managing errors coming from C code.
 
 ```rust
 struct Errno(libc::c_int);
@@ -442,8 +445,8 @@ impl Errno {
 }
 ```
 
-- `last` must return the calling thread's last "errno".
-- `make_last` must make an `Errno` the calling thread's last "errno".
+- `last` must return the **calling thread**'s last `errno`.
+- `make_last` must make an `Errno` the calling thread's last `errno`.
 - `description` must return a textual description of the error. Don't try to enumate _every_
   possible error! Use a function of `libc` to do it for you.
 
