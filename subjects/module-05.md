@@ -16,25 +16,26 @@ error: pineapple doesn't go on pizza
 
 ## General Rules
 
-* Any code you turn in must compile *without warnings* using the `rustc` compiler available on the school's machines without additional options. If not specified differently in the subject, you are **not** allowed to use the `unsafe` keyword anywhere in your code.
+* Any exercise you turn in must compile using the `cargo` package manager, either with `cargo run`
+if the subject requires a *program*, or with `cargo test` otherwise. Only dependencies specified
+in the `allowed dependencies` section are allowed. Only symbols specified in the `allowed symbols`
+section are allowed.
 
-* For exercises using the `cargo` package manager, the same rule applies. In that case, only the crates specified in the `allowed dependencies` section are allowed. Any other dependency is forbidden. More generally, only the symbols specified in `allowed symbols` are authorized within an exercise.
+* Every exercise must be part of a virtual Cargo workspace, a single `workspace.members` table must
+be declared for the whole module.
 
-* You are generally *not* authorized to modify lint levels - either using `#[attributes]`, `#![global_attributes]` or with command-line arguments. You may optionally allow the `dead_code` lint to silence warnings about unused variables, functions, etc.
+* Everything must compile *without warnings* with the `rustc` compiler available on the school's
+machines without additional options.  You are *not* allowed to use `unsafe` code anywere in your
+code.
 
-```rust
-// Either globally:
-#![allow(dead_code)] 
+* You are generally *not* authorized to modify lint levels - either using `#\[attributes\]`,
+`#!\[global_attributes\]` or with command-line arguments. You may optionally allow the `dead_code`
+lint to silence warnings about unused variables, functions, etc.
 
-// Or locally, for a simple item:
-#[allow(dead_code)]
-fn my_unused_function() {}
-```
-
-* For exercises managed with cargo, the command `cargo clippy -- -D warnings` must run **with no errors**!
-
-* You are *strongly* encouraged to write extensive tests for the functions and systems you turn in. However, for function/library submissions (_anything which is not a program_), do **not** submit a main. Tests can use the symbols and lint levels you want, even if they are not specified in the `allowed symbols` section.
-
+* You are *strongly* encouraged to write extensive tests for the functions and systems you turn in.
+Correcting an already well-tested exercise is easier and faster than having to write them during
+defense. Tests (when not specifically required by the subject) can use the symbols you want, even if
+they are not specified in the `allowed symbols` section.
 
 ## Exercise 00: Cellular
 
