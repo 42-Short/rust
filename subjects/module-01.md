@@ -271,7 +271,7 @@ Write a **function** that adds two numbers together. The numbers are given as a 
 digits and may be arbitrarily large.
 
 ```rust
-fn big_add(a: &[u8], &[u8]) -> Vec<u8>;
+fn big_add(a: &[u8], b: &[u8]) -> Vec<u8>;
 ```
 
 * `a` and `b` must only contain digits (`b'0'` to `b'9'` included). If anything else is found, the
