@@ -232,7 +232,7 @@ files to turn in:
     src/lib.rs  Cargo.toml
 
 allowed symbols:
-    std::vec::Vec::{remove, len}
+    std::vec::Vec::{remove, len, is_empty}
     std::iter*
 ```
 
