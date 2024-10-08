@@ -92,7 +92,10 @@ func getRegexResults(keywordsSlice []string, cleanFileBytes []byte, allowedKeywo
 	return nil
 }
 
-var ignorePatterns = `(?m)(?s)//.*?$|///.*?$|/\*.*?\*/|"(?:\\.|[^"\\])*"|r#*"(?:.|\n)*?"#*`
+func removeTestModules(content []byte) []byte {
+	testModuleRegex := regexp.MustCompile(`(?s)#\[cfg\(test\)\][\s\n]*mod[\s\n]+test[\s\n]*\{.*?\}`)
+	return testModuleRegex.ReplaceAll(content, []byte{})
+}
 
 func allowedKeywordsCheck(filesToCheck []string, allowedKeywords map[string]int) (err error) {
 	keywordsSlice := []string{}
@@ -105,8 +108,10 @@ func allowedKeywordsCheck(filesToCheck []string, allowedKeywords map[string]int)
 		return err
 	}
 
-	ignoreExpr, _ := regexp.Compile(ignorePatterns)
+	ignoreExpr, _ := regexp.Compile(`(?m)(?s)//.*?$|///.*?$|/\*.*?\*/|"(?:\\.|[^"\\])*"|r#*"(?:.|\n)*?"#*`)
 	cleanFileBytes := ignoreExpr.ReplaceAll([]byte(filesAsString), []byte(""))
+
+	cleanFileBytes = removeTestModules(cleanFileBytes)
 
 	return getRegexResults(keywordsSlice, cleanFileBytes, allowedKeywords)
 }
