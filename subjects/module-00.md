@@ -364,7 +364,7 @@ allowed symbols:
     std::println
 ```
 
-Create a **program** that plays the guessing game.
+Create a guessing game **program**, where the player has to guess the correct number.
 
 ```txt
 >_ cargo run
