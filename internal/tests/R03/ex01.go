@@ -2,6 +2,8 @@ package R03
 
 import (
 	"path/filepath"
+	"rust-piscine/internal/alloweditems"
+	"time"
 
 	"github.com/42-Short/shortinette/pkg/logger"
 
@@ -10,7 +12,7 @@ import (
 )
 
 var Ex01TestMod = `
-[cfg(test)]
+#[cfg(test)]
 mod shortinette_rust_test_module03_ex01_0001 {
     use super::*;
 
@@ -28,18 +30,22 @@ mod shortinette_rust_test_module03_ex01_0001 {
 func ex01Test(exercise *Exercise.Exercise) Exercise.Result {
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 
-	if err := testutils.AppendStringToFile(Ex01TestMod, exercise.TurnInFiles[1]); err != nil {
+	if err := alloweditems.Check(*exercise, "", map[string]int{"unsafe": 0, "return": 0}); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
+
+	if err := testutils.AppendStringToFile(Ex01TestMod, exercise.TurnInFiles[0]); err != nil {
 		logger.Exercise.Printf("internal error: %v", err)
 		return Exercise.InternalError(err.Error())
 	}
 
-	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test", "--release", "shortinette_rust_test_module03_ex01_0001"})
+	_, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test", "--release", "shortinette_rust_test_module03_ex01_0001"}, testutils.WithTimeout(5*time.Second))
 	if err != nil {
-		return Exercise.AssertionError("", output)
+		return Exercise.RuntimeError(err.Error())
 	}
 	return Exercise.Passed("OK")
 }
 
 func ex01() Exercise.Exercise {
-	return Exercise.NewExercise("01", "ex01", []string{"src/lib.rs", "Cargo.toml"}, 25, ex01Test)
+	return Exercise.NewExercise("01", "ex01", []string{"src/lib.rs", "Cargo.toml"}, 10, ex01Test)
 }

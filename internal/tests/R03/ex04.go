@@ -2,6 +2,8 @@ package R03
 
 import (
 	"path/filepath"
+	"rust-piscine/internal/alloweditems"
+	"time"
 
 	"github.com/42-Short/shortinette/pkg/logger"
 
@@ -10,7 +12,7 @@ import (
 )
 
 var Ex04TestMod = `
-[cfg(test)]
+#[cfg(test)]
 mod shortinette_rust_test_module03_ex04_0001 {
     use super::*;
 
@@ -44,6 +46,7 @@ mod shortinette_rust_test_module03_ex04_0001 {
                 parse_and_test_time(hour, minute);
             }
         }
+        parse_and_test_time(24, 00);
     }
 
     #[test]
@@ -115,6 +118,9 @@ mod shortinette_rust_test_module03_ex04_0001 {
         parse_and_assert_error("12:60", TimeParseError::InvalidNumber);
         parse_and_assert_error("12:-1", TimeParseError::InvalidNumber);
         parse_and_assert_error("-1:12", TimeParseError::InvalidNumber);
+        parse_and_assert_error("12:0/", TimeParseError::InvalidNumber);
+        parse_and_assert_error("/2:00", TimeParseError::InvalidNumber);
+        parse_and_assert_error("24:01", TimeParseError::InvalidNumber);
     }
 
     #[test]
@@ -130,18 +136,22 @@ mod shortinette_rust_test_module03_ex04_0001 {
 func ex04Test(exercise *Exercise.Exercise) Exercise.Result {
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 
-	if err := testutils.AppendStringToFile(Ex04TestMod, exercise.TurnInFiles[1]); err != nil {
+	if err := alloweditems.Check(*exercise, "", map[string]int{"unsafe": 0}); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
+
+	if err := testutils.AppendStringToFile(Ex04TestMod, exercise.TurnInFiles[0]); err != nil {
 		logger.Exercise.Printf("internal error: %v", err)
 		return Exercise.InternalError(err.Error())
 	}
 
-	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test", "--release", "shortinette_rust_test_module03_ex04_0001"})
+	_, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test", "--release", "shortinette_rust_test_module03_ex04_0001"}, testutils.WithTimeout(5*time.Second))
 	if err != nil {
-		return Exercise.AssertionError("", output)
+		return Exercise.RuntimeError(err.Error())
 	}
 	return Exercise.Passed("OK")
 }
 
 func ex04() Exercise.Exercise {
-	return Exercise.NewExercise("04", "ex04", []string{"src/lib.rs", "Cargo.toml"}, 25, ex04Test)
+	return Exercise.NewExercise("04", "ex04", []string{"src/main.rs", "Cargo.toml"}, 10, ex04Test)
 }

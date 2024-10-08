@@ -2,6 +2,8 @@ package R03
 
 import (
 	"path/filepath"
+	"rust-piscine/internal/alloweditems"
+	"time"
 
 	"github.com/42-Short/shortinette/pkg/logger"
 
@@ -10,7 +12,7 @@ import (
 )
 
 var Ex07TestMod = `
-[cfg(test)]
+#[cfg(test)]
 mod shortinette_rust_test_module03_ex07_0001 {
     use super::*;
 
@@ -132,6 +134,59 @@ mod shortinette_rust_test_module03_ex07_0001 {
 
         decode_csv::<User>(csv).unwrap_err();
     }
+
+    #[test]
+    fn string_encode() {
+        let mut line = String::new();
+        assert!(("\n".to_string().encode(&mut line).is_err()));
+        assert!((",".to_string().encode(&mut line).is_err()));
+    }
+
+    #[test]
+    fn numbers() {
+        let mut line = String::new();
+
+        assert!(12_u8.encode(&mut line).is_ok());
+        assert!(48_u16.encode(&mut line).is_ok());
+        assert!(75_u32.encode(&mut line).is_ok());
+        assert!(4831_u64.encode(&mut line).is_ok());
+        assert!(1919_u128.encode(&mut line).is_ok());
+        assert!(57329_usize.encode(&mut line).is_ok());
+        assert!(73_i8.encode(&mut line).is_ok());
+        assert!(874_i16.encode(&mut line).is_ok());
+        assert!(4727_i32.encode(&mut line).is_ok());
+        assert!(4994_i64.encode(&mut line).is_ok());
+        assert!(9448_i128.encode(&mut line).is_ok());
+        assert!(9484_isize.encode(&mut line).is_ok());
+
+        assert_eq!("1248754831191957329738744727499494489484", line);
+    }
+
+    #[test]
+    fn option() {
+        let mut line = String::new();
+
+        let hello = Some(String::from("hello"));
+        assert!(hello.encode(&mut line).is_ok());
+        assert_eq!("hello", line);
+
+        line.clear();
+
+        struct Foo;
+        impl Field for Foo {
+            fn encode(&self, _target: &mut String) -> Result<(), EncodingError> {
+                unreachable!()
+            }
+
+            fn decode(_field: &str) -> Result<Self, DecodingError> {
+                unreachable!()
+            }
+        }
+
+        let world: Option<Foo> = None;
+        assert!(world.encode(&mut line).is_ok());
+        assert_eq!("", line);
+    }
 }
 
 `
@@ -182,18 +237,22 @@ mod shortinette_rust_test_module03_ex07_0002 {
 func ex07Test(exercise *Exercise.Exercise) Exercise.Result {
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 
-	if err := testutils.AppendStringToFile(Ex07TestMod, exercise.TurnInFiles[1]); err != nil {
+	if err := alloweditems.Check(*exercise, "", map[string]int{"unsafe": 0}); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
+
+	if err := testutils.AppendStringToFile(Ex07TestMod, exercise.TurnInFiles[0]); err != nil {
 		logger.Exercise.Printf("internal error: %v", err)
 		return Exercise.InternalError(err.Error())
 	}
 
-	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test", "--release", "shortinette_rust_test_module03_ex07_0001"})
+	_, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test", "--release", "shortinette_rust_test_module03_ex07_0001"}, testutils.WithTimeout(5*time.Second))
 	if err != nil {
-		return Exercise.AssertionError("", output)
+		return Exercise.RuntimeError(err.Error())
 	}
 	return Exercise.Passed("OK")
 }
 
 func ex07() Exercise.Exercise {
-	return Exercise.NewExercise("07", "ex07", []string{"src/lib.rs", "Cargo.toml"}, 25, ex07Test)
+	return Exercise.NewExercise("07", "ex07", []string{"src/lib.rs", "Cargo.toml"}, 20, ex07Test)
 }
