@@ -34,6 +34,7 @@ func Schedule(short Short.Short, startTime time.Time, moduleDuration time.Durati
 			time.Sleep(time.Until(desiredSwitchTime))
 		} else {
 			desiredSwitchTime = desiredSwitchTime.Add(24 * time.Hour)
+			time.Sleep(time.Until(desiredSwitchTime))
 		}
 
 		logger.Info.Printf("Grading module %s", moduleName)
