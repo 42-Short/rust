@@ -106,11 +106,11 @@ The name of a color is determined using the following rules, applied in order. T
 * The color `[0, 0, 255]` is "pure blue".
 * The color `[128, 128, 128]` is "perfect grey".
 * Any color whose components are all bellow 31 is "almost black".
-* Any color whose red component is above 128, whose green and blue components are between 0 and 127
+* Any color whose red component is above 128, whose green and blue components are between 0 and 127 (inclusive),
 is "redish".
-* Any color whose green component is above 128, whose red and blue components are between 0 and 127
+* Any color whose green component is above 128, whose red and blue components are between 0 and 127 (inclusive),
 is "greenish".
-* Any color whose blue component is above 128, whose red and green components are between 0 and 127
+* Any color whose blue component is above 128, whose red and green components are between 0 and 127 (inclusive),
 is "blueish".
 * Any other color is named "unknown".
 
