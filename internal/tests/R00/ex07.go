@@ -15,7 +15,7 @@ import (
 var TestMod = `
 #[cfg(test)]
 mod shortinette_tests_rust_0007 {
-	use crate::lib::strpcmp;
+	use crate::strpcmp;
 
 	#[test]
 	fn test1() {
