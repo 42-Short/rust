@@ -2,6 +2,8 @@ package R03
 
 import (
 	"path/filepath"
+	"rust-piscine/internal/alloweditems"
+	"time"
 
 	"github.com/42-Short/shortinette/pkg/logger"
 
@@ -10,7 +12,7 @@ import (
 )
 
 var Ex06TestMod = `
-[cfg(test)]
+#[cfg(test)]
 mod shortinette_rust_test_module03_ex06_0001 {
     use super::*;
 
@@ -36,8 +38,8 @@ mod shortinette_rust_test_module03_ex06_0001 {
 
         let cloned = list.clone();
         assert_eq!(cloned.count(), list.count());
-        assert_eq!(&cloned[0], &cloned[0]);
-        assert_eq!(&cloned[1], &cloned[1]);
+        assert_eq!(&list[0], &cloned[0]);
+        assert_eq!(&list[1], &cloned[1]);
     }
 
     #[test]
@@ -228,22 +230,31 @@ mod shortinette_rust_test_module03_ex06_0001 {
     }
 }
 `
+var clippyTomlAsString = `
+disallowed-macros = ["std::vec"]
+disallowed-methods = ["std::iter::Iterator::collect", "std::iter::repeat", "std::collections::VecDeque", "std::collections::LinkedList", "std::collections::has_map::HashMap"]
+disallowed-types = ["std::vec::Vec", "std::iter::Iterator", "std::collections::VecDeque", "std::collections::LinkedList", "std::collections::has_map::HashMap", "std::collections::hash_set::HashSet", "std::collections::BTreeSet", "std::collections::BinaryHeap"]
+`
 
 func ex06Test(exercise *Exercise.Exercise) Exercise.Result {
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 
-	if err := testutils.AppendStringToFile(Ex06TestMod, exercise.TurnInFiles[1]); err != nil {
+	if err := alloweditems.Check(*exercise, clippyTomlAsString, map[string]int{"unsafe": 0}); err != nil {
+		return Exercise.CompilationError(err.Error())
+	}
+
+	if err := testutils.AppendStringToFile(Ex06TestMod, exercise.TurnInFiles[0]); err != nil {
 		logger.Exercise.Printf("internal error: %v", err)
 		return Exercise.InternalError(err.Error())
 	}
 
-	output, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test", "--release", "shortinette_rust_test_module03_ex06_0001"})
+	_, err := testutils.RunCommandLine(workingDirectory, "cargo", []string{"test", "--release", "shortinette_rust_test_module03_ex06_0001"}, testutils.WithTimeout(5*time.Second))
 	if err != nil {
-		return Exercise.AssertionError("", output)
+		return Exercise.RuntimeError(err.Error())
 	}
 	return Exercise.Passed("OK")
 }
 
 func ex06() Exercise.Exercise {
-	return Exercise.NewExercise("06", "ex06", []string{"src/lib.rs", "Cargo.toml"}, 25, ex06Test)
+	return Exercise.NewExercise("06", "ex06", []string{"src/lib.rs", "Cargo.toml"}, 15, ex06Test)
 }
