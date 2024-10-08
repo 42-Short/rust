@@ -42,7 +42,7 @@ mod shortinette_rust_test_module03_ex05_0001 {
         let v = Vector::new(1, 2);
         let w = Vector { x: 1, y: 2 };
 
-        assert_eq!(v, w);
+        assert_eq!(v, w, "Vector::new() and Vector {} do not result in the same");
     }
 
     #[test]
@@ -154,6 +154,7 @@ mod shortinette_rust_test_module03_ex05_0001 {
         let rhs = Vector::new(1, 2);
         assert!(!(lhs != rhs));
     }
+
     #[test]
     fn length_f32() {
         let mut vector: Vector<f32>;
