@@ -20,31 +20,29 @@ func Schedule(short Short.Short, startTime time.Time, moduleDuration time.Durati
 		return err
 	}
 
+	desiredSwitchTime := time.Date(startTime.Year(), startTime.Month(), startTime.Day(), 9, 42, 0, 0, startTime.Location())
+
 	for _, moduleName := range moduleList {
 		module := short.Modules[moduleName]
-		now := time.Now()
-		if now.Before(startTime) {
-			time.Sleep(time.Until(startTime))
-		}
 
-		logger.Info.Printf("Starting module %s", moduleName)
-		
 		if err = short.StartModule(moduleName); err != nil {
 			return fmt.Errorf("error starting module %s: %v", moduleName, err)
 		}
 
-		endTime := startTime.Add(moduleDuration)
-		if now.Before(endTime) {
-			time.Sleep(time.Until(endTime))
+		now := time.Now()
+		if now.Before(desiredSwitchTime) {
+			time.Sleep(time.Until(desiredSwitchTime))
+		} else {
+			desiredSwitchTime = desiredSwitchTime.Add(24 * time.Hour)
 		}
 
 		logger.Info.Printf("Grading module %s", moduleName)
-		
+
 		if err = Short.EndModule(module, *config); err != nil {
 			return fmt.Errorf("error ending module %s: %v", moduleName, err)
 		}
 
-		startTime = endTime
+		desiredSwitchTime = desiredSwitchTime.Add(24 * time.Hour)
 	}
 
 	return nil
