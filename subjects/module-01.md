@@ -149,6 +149,7 @@ files to turn in:
 
 allowed symbols:
     <[u32]>::{len, is_empty, contains}
+    std::iter*
 ```
 
 Write a **function** that returns the largest subslice of `haystack` that contains *all* numbers in
@@ -201,10 +202,13 @@ files to turn in:
 
 allowed symbols:
     <[i32]>::{len, is_empty, swap}  std::{assert, assert_eq, panic}
+    std::iter*
 ```
 
 You are given a list of boxes (`[width, height]`). Sort that list of boxes in a way for every box
 to be *contained* in the previous one. If the operation is not possible, the function must panic.
+
+You are **not** allowed to flip the boxes to make them fit.
 
 ```rust
 fn sort_boxes(boxes: &mut [[u32; 2]]);
@@ -229,6 +233,7 @@ files to turn in:
 
 allowed symbols:
     std::vec::Vec::{remove, len}
+    std::iter*
 ```
 
 Write a **function** that removes all repeated elements of a list, preserving its initial ordering.
@@ -259,6 +264,7 @@ allowed symbols:
     std::vec::Vec::{push, len, is_empty, new, reverse}
     u8::is_ascii_digit
     std::assert
+    std::iter*
 ```
 
 Write a **function** that adds two numbers together. The numbers are given as a list of decimal
@@ -291,6 +297,7 @@ files to turn in:
 
 allowed symbols:
     std::Vec::*
+    std::iter*
 ```
 Leonardo has `n` tasks, which he needs to prioritize. He organized them into a vector of tasks. One task is defined as follows:
 

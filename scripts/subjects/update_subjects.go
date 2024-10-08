@@ -23,7 +23,7 @@ import (
 //
 // Returns the URL as a string.
 func buildPushURL(repo string, targetFilePath string) (url string) {
-	return fmt.Sprintf("https://api.github.com/repos/%s/%s/contents/%s", os.Getenv("GITHUB_ORGANISATION"), repo, targetFilePath)
+	return fmt.Sprintf("https://api.github.com/repos/%s/%s/contents/%s", "Short-Test-Orga", repo, targetFilePath)
 }
 
 func sendHTTPRequest(request *http.Request) (response *http.Response, err error) {
@@ -101,8 +101,8 @@ func createPushRequest(url string, token string, targetFilePath string, commitMe
 	requestDetails := map[string]interface{}{
 		"message": commitMessage,
 		"committer": map[string]string{
-			"name":  os.Getenv("GITHUB_ADMIN"),
-			"email": os.Getenv("GITHUB_EMAIL"),
+			"name":  "winstonallo",
+			"email": "arthurbiedchar@gmail.com",
 		},
 		"content": encodedContent,
 		"path":    targetFilePath,
@@ -134,7 +134,7 @@ func createPushRequest(url string, token string, targetFilePath string, commitMe
 }
 
 func buildFileURL(repoID string, branch string, filePath string) (url string) {
-	return fmt.Sprintf("https://api.github.com/repos/%s/%s/contents/%s?ref=%s", os.Getenv("GITHUB_ORGANISATION"), repoID, filePath, branch)
+	return fmt.Sprintf("https://api.github.com/repos/%s/%s/contents/%s?ref=%s", "Short-Test-Orga", repoID, filePath, branch)
 }
 
 // uploadRaw uploads raw data directly to a GitHub repository at the specified file path.
@@ -152,12 +152,12 @@ func uploadRaw(repoID string, data string, targetFilePath string, commitMessage 
 	url := buildPushURL(repoID, targetFilePath)
 	shaURL := buildFileURL(repoID, branch, targetFilePath)
 
-	sha, err := getFileSHA(shaURL, os.Getenv("GITHUB_TOKEN"))
+	sha, err := getFileSHA(shaURL, (os.Getenv("GITHUB_TOKEN")))
 	if err != nil {
 		return err
 	}
 
-	request, err := createPushRequest(url, os.Getenv("GITHUB_TOKEN"), targetFilePath, commitMessage, encodedData, sha, branch)
+	request, err := createPushRequest(url, (os.Getenv("GITHUB_TOKEN")), targetFilePath, commitMessage, encodedData, sha, branch)
 	if err != nil {
 		return err
 	}
@@ -191,12 +191,12 @@ func uploadFile(repoID string, localFilePath string, targetFilePath string, comm
 
 	url := buildPushURL(repoID, targetFilePath)
 
-	sha, err := getFileSHA(url, os.Getenv("GITHUB_TOKEN"))
+	sha, err := getFileSHA(url, (os.Getenv("GITHUB_TOKEN")))
 	if err != nil {
 		return err
 	}
 
-	request, err := createPushRequest(url, os.Getenv("GITHUB_TOKEN"), targetFilePath, commitMessage, encodedContent, sha, branch)
+	request, err := createPushRequest(url, (os.Getenv("GITHUB_TOKEN")), targetFilePath, commitMessage, encodedContent, sha, branch)
 	if err != nil {
 		return err
 	}
@@ -217,7 +217,7 @@ type ShortConfig struct {
 
 func deleteRepo(repoID string) bool {
 	org := os.Getenv("GITHUB_ORGANISATION")
-	token := os.Getenv("GITHUB_TOKEN")
+	token := (os.Getenv("GITHUB_TOKEN"))
 	url := fmt.Sprintf("https://api.github.com/repos/%s/%s", org, repoID)
 
 	req, err := http.NewRequest("DELETE", url, nil)
@@ -246,10 +246,8 @@ func deleteRepo(repoID string) bool {
 }
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatalf("Error loading .env file")
-	}
+	logger.InitializeStandardLoggers("TEST")
+	godotenv.Load()
 
 	if len(os.Args) != 4 {
 		fmt.Println("usage: go run . <module> <path-to-new-subject> <commit-message>")
@@ -260,14 +258,19 @@ func main() {
 	subjectPath := os.Args[2]
 	commitMessage := os.Args[3]
 
-	config, _ := os.ReadFile(os.Getenv("CONFIG_PATH"))
+	config, _ := os.ReadFile("config/final-participants.json")
 
 	var shortConfig ShortConfig
 	if err := json.Unmarshal(config, &shortConfig); err != nil {
-		log.Fatalf("Error parsing shortconfig.json: %v", err)
+		log.Fatalf("Error parsing %s: %v", os.Getenv("CONFIG_PATH"), err)
 	}
 
 	for _, participant := range shortConfig.Participants {
-		uploadFile(fmt.Sprintf("%s-%s", participant.IntraLogin, moduleName), subjectPath, "README.md", commitMessage, "main")
+		if err := uploadFile(fmt.Sprintf("%s-%s", participant.IntraLogin, moduleName), subjectPath, "README.md", commitMessage, "main"); err != nil {
+			fmt.Println(err)
+			fmt.Println((os.Getenv("GITHUB_TOKEN")))
+		} else {
+			fmt.Printf("updated repo for %s\n", participant.IntraLogin)
+		}
 	}
 }
