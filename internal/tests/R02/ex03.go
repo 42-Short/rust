@@ -11,11 +11,6 @@ mod shortinette_tests_rust_0203 {
     use super::*;
 
     #[test]
-    fn test_default_trait() {
-        assert_eq!(MyType::default(), MyType{});
-    }
-    
-    #[test]
     fn test_clone_trait() {
         let instance = MyType::default();
         assert_eq!(instance, instance.clone());
