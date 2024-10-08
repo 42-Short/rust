@@ -339,7 +339,6 @@ Content-Length: ...
 having to detect the end of the payload.
 
 ## Exercise 06: ft_strings
-## Exercise 06: ft_strings
 
 ```txt
 turn-in directory:
