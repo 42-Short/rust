@@ -19,11 +19,10 @@ func ex00Test(exercise *Exercise.Exercise) Exercise.Result {
 	}
 	workingDirectory := filepath.Join(exercise.CloneDirectory, exercise.TurnInDirectory)
 
-	_, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "cargo run"})
-	if err != nil {
-		return Exercise.RuntimeError(err.Error())
+	if result := testNoInput(workingDirectory); !result.Passed {
+		return result
 	}
-	_, err = testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "cargo run | true"})
+	_, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "cargo run | true"})
 	if err != nil {
 		return Exercise.RuntimeError(err.Error())
 	}
