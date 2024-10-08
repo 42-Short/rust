@@ -77,7 +77,7 @@ func constKeywordCheck(exercise *Exercise.Exercise) Exercise.Result {
 }
 
 func ex02Test(exercise *Exercise.Exercise) Exercise.Result {
-	if err := alloweditems.Check(*exercise, "", map[string]int{"unsafe": 0}); err != nil {
+	if err := alloweditems.Check(*exercise, "", map[string]int{"unsafe": 0, "if": 0}); err != nil {
 		return Exercise.CompilationError(err.Error())
 	}
 	if result := constKeywordCheck(exercise); !result.Passed {

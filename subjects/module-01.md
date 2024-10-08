@@ -114,6 +114,8 @@ is "greenish".
 is "blueish".
 * Any other color is named "unknown".
 
+The `if` keyword is **_not_** allowed!
+
 ```rust
 const fn color_name(color: &[u8; 3]) -> &str;
 ```
@@ -290,7 +292,7 @@ files to turn in:
 allowed symbols:
     std::Vec::*
 ```
-Leonardo has `n` tasks, which he needs to prioritize. He organized them into a list of tasks. One task is defined as follows:
+Leonardo has `n` tasks, which he needs to prioritize. He organized them into a vector of tasks. One task is defined as follows:
 
 ```rust
 struct Task{
@@ -301,9 +303,9 @@ struct Task{
 ```
 
 For a task `i`:
-* `tasks[i].start_time` is when the task needs to be started
-* `tasks[i].end_time` is when the task needs to finish
-* `tasks[i].cookies` is how many cookies he will get from students for finishing task `i` 
+* `tasks[i].start_time` is the start time for `task[i]`
+* `tasks[i].end_time` is the end time for `task[i]`
+* `tasks[i].cookies` is how many cookies he will get from students for finishing `task[i]` 
 
 Unfortunately, he sucks at multitasking. Write a **function** which returns the maximum amount of cookies he can get without any tasks overlapping. 
 Your function must have this signature:
@@ -314,13 +316,14 @@ fn time_manager(tasks: &mut Vec<Task>) -> u32
 
 **Constraints**
 
-`Task[i].start_time < Task[i].end_time`
+_note_: If Leonardo chooses a task ending at time `t`, he will be able to start another task that starts at time `t` right away.
 
-_note_: If Leonardo chooses a task that ends at time `t`, he will be able to start another task that starts at time `t` right away.
+You do not need to perform any input checks. You _may_ assume the following: 
+* `task[i].start_time < task[i].end_time`
+* `task[i].start_time >= 0`
+* `task[i].end_time >= 1`
 
-You _may_ assume that:  `start_time.len() == end_time.len() == profit.len()`
-
-You _may not_ assume that our tester does not have a timeout x)
+What you _may not_ assume is our tester not having a timeout ಠ_ರೃ, so **_don't be a brute_**.
 
 ```
 MIT License
