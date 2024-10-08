@@ -100,6 +100,8 @@ struct 🦀;
   `#![global_attributes]` or with command-line arguments. You may optionally allow the `dead_code`
   lint to silence warnings about unused variables, functions, etc.
 
+- For exercises managed with cargo, the command `cargo clippy -- -D warnings` must run **with no errors**!
+
 - You are _strongly_ encouraged to write extensive tests for the functions and systems you turn in.
   Correcting an already well-tested exercise is easier and faster than having to write them during
   defense. Tests (when not specifically required by the subject) can use the symbols you want, even if
