@@ -165,9 +165,9 @@ Example:
 
 ```rust
 assert_eq!(largest_group(&[1, 3, 4, 3, 5, 5, 4], &[5, 3]), &[3, 5, 5]);
-assert_eq!(largest_group(&[1, 3, 4, 3, 5, 5, 4], &[5], &[5, 5]));
-assert_eq!(largest_group(&[1, 3, 4, 3, 5, 5, 4], &[], &[]));
-assert_eq!(largest_group(&[1, 3, 4, 3, 5, 5, 4], &[4, 1], &[]));
+assert_eq!(largest_group(&[1, 3, 4, 3, 5, 5, 4], &[5]), &[5, 5]);
+assert_eq!(largest_group(&[1, 3, 4, 3, 5, 5, 4], &[]), &[]);
+assert_eq!(largest_group(&[1, 3, 4, 3, 5, 5, 4], &[4, 1]), &[]);
 ```
 
 Once again, you may need to specify some *lifetime annotations* for the function. To check whether
