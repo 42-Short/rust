@@ -22,27 +22,27 @@ fn punch_card() {
 ## General Rules
 
 * Any exercise you turn in must compile using the `cargo` package manager, either with `cargo run`
-if the subject requires a *program*, or with `cargo test` otherwise. Only dependencies specified
-in the `allowed dependencies` section are allowed. Only symbols specified in the `allowed symbols`
+if the subject requires a _program_, or with `cargo test` otherwise. Only dependencies specified
+in the allowed dependencies section are allowed. Only symbols specified in the `allowed symbols`
 section are allowed.
 
 * Every exercise must be part of a virtual Cargo workspace, a single `workspace.members` table must
 be declared for the whole module.
 
-* Everything must compile *without warnings* with the `rustc` compiler available on the school's
-machines without additional options.  You are *not* allowed to use `unsafe` code anywere in your
+* Everything must compile _without warnings_ with the `rustc` compiler available on the school's
+machines without additional options.  You are _not_ allowed to use `unsafe` code anywere in your
 code.
 
-* You are generally *not* authorized to modify lint levels - either using `#\[attributes\]`,
-`#!\[global_attributes\]` or with command-line arguments. You may optionally allow the `dead_code`
+* You are generally not authorized to modify lint levels - either using `#[attributes]`,
+`#![global_attributes]` or with command-line arguments. You may optionally allow the `dead_code`
 lint to silence warnings about unused variables, functions, etc.
 
-* For exercises managed with cargo, the command `cargo clippy -- -D warnings` must run **with no errors**!
+* For exercises managed with cargo, the command `cargo clippy -- -D warnings` must run with no errors!
 
-* You are *strongly* encouraged to write extensive tests for the functions and systems you turn in.
+* You are _strongly_ encouraged to write extensive tests for the functions and systems you turn in.
 Correcting an already well-tested exercise is easier and faster than having to write them during
 defense. Tests (when not specifically required by the subject) can use the symbols you want, even if
-they are not specified in the `allowed symbols` section.
+they are not specified in the `allowed symbols` section. 
 
 ## Exercise 00: Reference me daddy
 
