@@ -329,7 +329,7 @@ You do not need to perform any input checks. You _may_ assume the following:
 * `task[i].start_time >= 0`
 * `task[i].end_time >= 1`
 
-What you _may not_ assume is our tester not having a timeout ಠ_ರೃ, so **_don't be a brute_**.
+What you _may not_ assume is our tester not having a timeout ಠ_ಠ, so **_don't be a brute_**.
 
 ```
 MIT License
