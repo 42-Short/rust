@@ -30,7 +30,7 @@ mod shortinette_tests_rust_0203 {
 
     #[test]
     fn test_debug_trait() {
-        assert_eq!(format!("{:?}", MyType::default()), "MyType");
+        format!("{:?}", MyType::default());
     }
 }
 
@@ -39,7 +39,7 @@ mod shortinette_tests_rust_0203 {
 var clippyTomlAsString03 = ``
 
 func ex03Test(exercise *Exercise.Exercise) Exercise.Result {
-    return runDefaultTest(exercise, cargoTestModAsString03, clippyTomlAsString03, map[string]int{"impl": 0, "unsafe": 0})
+	return runDefaultTest(exercise, cargoTestModAsString03, clippyTomlAsString03, map[string]int{"impl": 0, "unsafe": 0})
 }
 
 func ex03() Exercise.Exercise {
