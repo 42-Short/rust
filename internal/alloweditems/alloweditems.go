@@ -173,7 +173,7 @@ func getRustFiles(exercise Exercise.Exercise) []string {
 //
 // See https://rust-lang.github.io/rust-clippy/master/index.html for details.
 func Check(exercise Exercise.Exercise, clippyTomlAsString string, allowedKeywords map[string]int, lintLevelModifications ...string) (err error) {
-	lintLevelModifications = append(lintLevelModifications, "#![allow(clippy::doc_lazy_continuation)]", "#![allow(dead_code)]", "#![allow(clippy::duplicated_attributes)]")
+	lintLevelModifications = append(lintLevelModifications, "#![allow(clippy::doc_lazy_continuation)]", "#![allow(dead_code)]", "#![allow(clippy::duplicated_attributes)]", "#![allow(clippy::explicit_counter_loop)]")
 	filesToCheck := getRustFiles(exercise)
 
 	for _, file := range filesToCheck {

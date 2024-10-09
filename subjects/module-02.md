@@ -128,7 +128,7 @@ files to turn in:
     src/main.rs  Cargo.toml
 ```
 
-Copy/Past the following code and make it compile by adding type alias definitions.
+Copy/Paste the following code and make it compile by adding type alias definitions.
 
 ```rust
 fn seconds_to_minutes(seconds: Seconds) -> Minutes {
@@ -282,7 +282,7 @@ allowed symbols:
     std::{print, println}
     std::vec::Vec::{new, push, remove, clear, len, is_empty}
     std::string::String::as_str
-    str::{to_string, parse, len, is_empty, trim, strip_prefix}
+    str::{to_string, parse, len, is_empty, trim, strip_prefix, strip_suffix}
     ftkit::{read_line, read_number}
     std::result::Result
 ```
@@ -293,7 +293,7 @@ When the user starts the program, they are asked what to do. Available commands 
 
 ```rust
 enum Command {
-    Todo(String),   // Command: "QUIT"
+    Todo(String),   // Command: "TODO"
     Done(usize),    // Command: "DONE"
     Purge,          // Command: "PURGE"
     Quit,           // Command: "QUIT"
