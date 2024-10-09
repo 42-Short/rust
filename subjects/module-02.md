@@ -280,6 +280,8 @@ allowed dependencies:
 
 allowed symbols:
     std::{print, println}
+    std::io::stdout
+    std::io::Stdout::{flush}
     std::vec::Vec::{new, push, remove, clear, len, is_empty}
     std::string::String::as_str
     str::{to_string, parse, len, is_empty, trim, strip_prefix, strip_suffix}
