@@ -58,10 +58,9 @@ lint to silence warnings about unused variables, functions, etc.
 
 * For exercises managed with cargo, the command `cargo clippy -- -D warnings` must run with no errors!
 
-* You are _strongly_ encouraged to write extensive tests for the functions and systems you turn in.
-Correcting an already well-tested exercise is easier and faster than having to write them during
-defense. Tests (when not specifically required by the subject) can use the symbols you want, even if
-they are not specified in the `allowed symbols` section. 
+* You are _strongly_ encouraged to write extensive tests for the functions and programs you turn in.
+ Tests (when not specifically required by the subject) can use the symbols you want, even if
+they are not specified in the `allowed symbols` section. **However**, tests should **not** introduce **any additional external dependencies** beyond those already required by the subject.
 
 ## Exercise 00: `choose`
 

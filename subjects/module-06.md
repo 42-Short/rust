@@ -108,18 +108,17 @@ lint to silence warnings about unused variables, functions, etc.
 
 * For exercises managed with cargo, the command `cargo clippy -- -D warnings` must run with no errors!
 
-* You are _strongly_ encouraged to write extensive tests for the functions and systems you turn in.
-Correcting an already well-tested exercise is easier and faster than having to write them during
-defense. Tests (when not specifically required by the subject) can use the symbols you want, even if
-they are not specified in the `allowed symbols` section. 
+* You are _strongly_ encouraged to write extensive tests for the functions and programs you turn in.
+ Tests (when not specifically required by the subject) can use the symbols you want, even if
+they are not specified in the `allowed symbols` section. **However**, tests should **not** introduce **any additional external dependencies** beyond those already required by the subject.
 
 ## Module Rules
 
 In this module, you will take your first steps in writing dangerous code safely. 
 If you keep going until the very end, you will learn stuff no sane person should ever have to
-know about, like cross-compiling languages with Foreign Function Interfaces (FFI), or the `#![no_main]` keyword. 
+worry about, like cross-compiling languages with **F**oreign **F**unction **I**nterfaces (FFI), or the `#![no_main]` attribute. 
 
-Therefore, you _are_ allowed to use `unsafe` code in this module! However, some rules must be followed.
+Therefore, you are _allowed_ to use `unsafe` code in this module! However, some rules must be followed.
 
 1. You must use the `#![forbid(unsafe_op_in_unsafe_fn)]` global attribute.
 
@@ -188,9 +187,9 @@ unsafe impl Zeroable for u64 {}
 
 To summarize:
 
-- `unsafe fn` means "know what you are doing before calling this function".
-- `unsafe trait` means "know what you are doing before implementing this trait".
-- `unsafe {}` and `unsafe impl` both mean "I know what I am doing".
+- `unsafe fn` means **_'know what you are doing before calling this function'_**.
+- `unsafe trait` means **_'know what you are doing before implementing this trait'_**.
+- `unsafe {}` and `unsafe impl` both mean **_'I know what I am doing'_**.
 
 ## Exercise 00: Libft
 

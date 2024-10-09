@@ -115,10 +115,8 @@ lint to silence warnings about unused variables, functions, etc.
 
 * For exercises managed with cargo, the command `cargo clippy -- -D warnings` must run with no errors!
 
-* You are _strongly_ encouraged to write extensive tests for the functions and systems you turn in.
-Correcting an already well-tested exercise is easier and faster than having to write them during
-defense. Tests (when not specifically required by the subject) can use the symbols you want, even if
-they are not specified in the `allowed symbols` section. 
+* You are _strongly_ encouraged to write extensive tests for the functions and programs you turn in.
+ Tests can use the symbols & attributes you want, even if they are not specified in the `allowed symbols` section. **However**, tests should **not** introduce **any additional external dependencies** beyond those already required by the subject.
 
 ## Exercise 00: Dimensional Analysis
 
@@ -174,7 +172,7 @@ struct Point {
 
 Implement the following inherent functions:
 
-* `new`, which creates a new `Point` instance with specific coordinates.
+* `new`, which creates a new `Point` with the coordinates passed to it.
 * `zero`, which creates a new `Point` at coordinates `(0, 0)`.
 * `distance`, which computes the distance between two existing points.
 * `translate`, which adds the vector `(dx, dy)` to the coordinates of the point.
@@ -202,7 +200,7 @@ files to turn in:
 * Once a pizza has been ordered, it takes two days before the cook start working on it.
 * Making a pizza takes roughly 5 days.
 * Once the pizza is ready, the only delivery man must pick it up. It takes 3 days on average.
-* Delivering the pizza always take a whole week.
+* Delivering the pizza always takes a whole week.
 
 Define the following type:
 
@@ -227,7 +225,7 @@ impl PizzaStatus {
 
 * `from_delivery_time` predicts the status of a pizza that was ordered `ordered_days_ago` days ago.
 * `get_delivery_time_in_days` returns the estimated time before the pizza is delivered, in days. The
-worst case is always returned.
+**worst case** (longest delivery time) is always returned.
 
 ## Exercise 03: Dry Boilerplates
 
@@ -295,10 +293,10 @@ When the user starts the program, they are asked what to do. Available commands 
 
 ```rust
 enum Command {
-    Todo(String),
-    Done(usize),
-    Purge,
-    Quit,
+    Todo(String),   // Command: "QUIT"
+    Done(usize),    // Command: "DONE"
+    Purge,          // Command: "PURGE"
+    Quit,           // Command: "QUIT"
 }
 
 impl Command {
@@ -339,23 +337,23 @@ You may design the interface you want to this exercise. Here is an example.
 ```txt
 >_ cargo run
 
-TODO go shopping
+TODO star shortinette (https://github.com/42-Short/shortinette)
 
-    0 [ ] go shopping
+    0 [ ] star shortinette (https://github.com/42-Short/shortinette)
 
-TODO do my homeworks
+TODO finish this module
 
-    0 [ ] go shopping
-    1 [ ] do my homeworks
+    0 [ ] star shortinette (https://github.com/42-Short/shortinette)
+    1 [ ] finish this module
 
 DONE 0
 
-    0 [ ] do my homeworks
-      [x] go shopping
+    0 [ ] finish this module
+      [x] star shortinette (https://github.com/42-Short/shortinette)
 
 PURGE
 
-    0 [ ] do my homework
+    0 [ ] finish this module
 
 QUIT
 ```
@@ -374,7 +372,7 @@ allowed symbols:
     <[T]>::len
 ```
 
-Define a `Color` type, responsible for describing a color by its red, green and blue components.
+Define a `Color` type, responsible for describing a color by its red, green and blue channels.
 
 ```rust
 struct Color {
@@ -405,25 +403,31 @@ impl Color {
 }
 ```
 
-* The `closest_mix` function must try mixing up to `max` colors taken from `palette`, as if painted
-on a white canvas. The mix function must account for their opacity (the second element of each
-tuple). The created color that's the closest to `self` is returned.
+* The `closest_mix` function must try mixing up to `max` colors taken from `palette`, as if painting
+on a white canvas. 
+* Each color in the `palette` array is a tuple where the first element is the color, and the second is its opacity (`alpha`), a value between $0$ and $255$. An opacity of $255$ means fully opaque, and $0$ means fully transparent.
+* The function should create a new color by blending up to `max` colors from the palette, and return the one that is **closest** to the original color (`self`).
 
-The formula used to blend a color A over another color B is the following. B is assumed to be
-opaque, and A has an opacity of `alpha`. 1 means opaque, 0 means transparent.
-
-```
+### Color Blending Formula 
+To blend two colors $A$ and $B$, use the following formula, where $B$ is fully opaque, and $A$ has an opacity $alpha$ between $0$ and $255$:
+$$
 C = A * alpha + B * (1 - alpha)
-```
+$$
+* $A$ is the color being blended on top, with opacity $alpha$.
+* $B$ is the background color, which is fully opaque.
+* The result $C$ is the blended color.
 
-The distance between two colors A and B must be computed like this:
+### Distance Between Two Colors
+The distance between two colors $A$ and $B$ is calculated by finding the difference between their red, green and blue values separately. For each color channel, (r, g and b), the distance is computed as the absolute difference between the values of $A$ and $B$. This can be expressed as:
+* $d_r$ is the distance between the red value of $A$ and the red value of $B$.
+* $d_g$ is the distance between the green value of $A$ and the green value of $B$.
+* $d_b$ is the distance between the blue value of $A$ and the blue value of $B$.
 
-```
-dr = A.red - B.red
-dg = A.green - B.green
-db = A.blue - B.blue
-distance = dr * dr + dg * dg + db * db
-```
+In general, for each color channel (red, green, or blue), the distance is $d_x = |A_x - B_x|$, where $x$ represents one of the color channels.
+
+$$
+distance = d_r^2 + d_g^2 + d_b^2
+$$
 
 Example:
 
