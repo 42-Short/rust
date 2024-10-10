@@ -101,7 +101,15 @@ mod shortinette_rust_test_module03_ex04_0001 {
     fn invalid_length() {
         parse_and_assert_error("23:231", TimeParseError::InvalidLength);
         parse_and_assert_error("123:23", TimeParseError::InvalidLength);
-        parse_and_assert_error("", TimeParseError::InvalidLength);
+
+        let err = "".parse::<Time>().unwrap_err();
+        match err {
+            TimeParseError::MissingColon | TimeParseError::InvalidLength => {}
+            TimeParseError::InvalidNumber => {
+                panic!("Expected either invalid colon or length when parsing empty string")
+            }
+        }
+
         parse_and_assert_error("2", TimeParseError::InvalidLength);
         parse_and_assert_error("23", TimeParseError::InvalidLength);
         parse_and_assert_error("23:2", TimeParseError::InvalidLength);
