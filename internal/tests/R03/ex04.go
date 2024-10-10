@@ -34,7 +34,7 @@ mod shortinette_rust_test_module03_ex04_0001 {
 
     fn parse_and_test_time(hours: u32, minutes: u32) {
         let raw = format!("{hours:0>2}:{minutes:0>2}");
-        let time: Time = raw.parse().expect(format!("Failed to parse {raw}"));
+        let time: Time = raw.parse().expect(&format!("Failed to parse {raw}"));
 
         assert_eq!(time.hours, hours, "Invalid hours for time {raw}");
         assert_eq!(time.minutes, minutes, "Invalid minutes for time {raw}");
@@ -61,7 +61,7 @@ mod shortinette_rust_test_module03_ex04_0001 {
                 );
 
                 let raw = format!("{hour:0>2}:{minute:0>2}");
-                let time: Time = raw.parse().expect(format!("Failed to parse {raw}"));
+                let time: Time = raw.parse().expect(&format!("Failed to parse {raw}"));
                 assert_eq!(time.to_string(), expected);
             }
         }
