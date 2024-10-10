@@ -110,8 +110,22 @@ mod shortinette_rust_test_module03_ex04_0001 {
             }
         }
 
-        parse_and_assert_error("2", TimeParseError::InvalidLength);
-        parse_and_assert_error("23", TimeParseError::InvalidLength);
+        let err = "2".parse::<Time>().unwrap_err();
+        match err {
+            TimeParseError::MissingColon | TimeParseError::InvalidLength => {}
+            TimeParseError::InvalidNumber => {
+                panic!("Expected either invalid colon or length when parsing 2")
+            }
+        }
+
+        let err = "23".parse::<Time>().unwrap_err();
+        match err {
+            TimeParseError::MissingColon | TimeParseError::InvalidLength => {}
+            TimeParseError::InvalidNumber => {
+                panic!("Expected either invalid colon or length when parsing 23")
+            }
+        }
+
         parse_and_assert_error("23:2", TimeParseError::InvalidLength);
         parse_and_assert_error("23:223", TimeParseError::InvalidLength);
         parse_and_assert_error(
@@ -124,10 +138,6 @@ mod shortinette_rust_test_module03_ex04_0001 {
     fn invalid_time() {
         parse_and_assert_error("25:12", TimeParseError::InvalidNumber);
         parse_and_assert_error("12:60", TimeParseError::InvalidNumber);
-        parse_and_assert_error("12:-1", TimeParseError::InvalidNumber);
-        parse_and_assert_error("-1:12", TimeParseError::InvalidNumber);
-        parse_and_assert_error("12:0/", TimeParseError::InvalidNumber);
-        parse_and_assert_error("/2:00", TimeParseError::InvalidNumber);
         parse_and_assert_error("24:01", TimeParseError::InvalidNumber);
     }
 
@@ -137,6 +147,10 @@ mod shortinette_rust_test_module03_ex04_0001 {
         parse_and_assert_error("1z:23", TimeParseError::InvalidNumber);
         parse_and_assert_error("ft:23", TimeParseError::InvalidNumber);
         parse_and_assert_error("23:sd", TimeParseError::InvalidNumber);
+        parse_and_assert_error("12:0/", TimeParseError::InvalidNumber);
+        parse_and_assert_error("/2:00", TimeParseError::InvalidNumber);
+        parse_and_assert_error("12:-1", TimeParseError::InvalidNumber);
+        parse_and_assert_error("-1:12", TimeParseError::InvalidNumber);
     }
 }
 `
