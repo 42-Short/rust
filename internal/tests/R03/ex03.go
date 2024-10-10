@@ -34,7 +34,7 @@ mod shortinette_rust_test_module03_ex03_0001 {
 
     #[test]
     fn obvious() {
-        assert_eq!(u32::forty_two(), 42;
+        assert_eq!(u32::forty_two(), 42);
 
         String::forty_two();
     }
