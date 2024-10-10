@@ -75,7 +75,7 @@ allowed dependencies:
     ftkit
 
 allowed symbols:
-    <[T]>::len  std::println  ftkit::random_number
+    <[T]>::{len, is_empty}  std::println  ftkit::random_number
 ```
 
 Create a **function** that randomly chooses a value among an input slice. If the provided list is
