@@ -33,10 +33,11 @@ mod shortinette_rust_test_module03_ex04_0001 {
     }
 
     fn parse_and_test_time(hours: u32, minutes: u32) {
-        let time: Time = format!("{hours:0>2}:{minutes:0>2}").parse().unwrap();
+        let raw = format!("{hours:0>2}:{minutes:0>2}");
+        let time: Time = raw.parse().expect(format!("Failed to parse {raw}"));
 
-        assert_eq!(time.hours, hours);
-        assert_eq!(time.minutes, minutes);
+        assert_eq!(time.hours, hours, "Invalid hours for time {raw}");
+        assert_eq!(time.minutes, minutes, "Invalid minutes for time {raw}");
     }
 
     #[test]
@@ -59,7 +60,8 @@ mod shortinette_rust_test_module03_ex04_0001 {
                     if minute == 1 { "minute" } else { "minutes" }
                 );
 
-                let time: Time = format!("{hour:0>2}:{minute:0>2}").parse().unwrap();
+                let raw = format!("{hour:0>2}:{minute:0>2}");
+                let time: Time = raw.parse().expect(format!("Failed to parse {raw}"));
                 assert_eq!(time.to_string(), expected);
             }
         }
@@ -83,7 +85,7 @@ mod shortinette_rust_test_module03_ex04_0001 {
 
     #[test]
     fn missing_colon() {
-        let err = "2331".parse::<Time>().unwrap_err();
+        let err = "2331".parse::<Time>().expect_err("Parsing 2331 should fail");
         match err {
             TimeParseError::MissingColon | TimeParseError::InvalidLength => {}
             TimeParseError::InvalidNumber => {
@@ -102,7 +104,7 @@ mod shortinette_rust_test_module03_ex04_0001 {
         parse_and_assert_error("23:231", TimeParseError::InvalidLength);
         parse_and_assert_error("123:23", TimeParseError::InvalidLength);
 
-        let err = "".parse::<Time>().unwrap_err();
+        let err = "".parse::<Time>().expect_err("Parsing an empty string should fail");
         match err {
             TimeParseError::MissingColon | TimeParseError::InvalidLength => {}
             TimeParseError::InvalidNumber => {
@@ -110,7 +112,7 @@ mod shortinette_rust_test_module03_ex04_0001 {
             }
         }
 
-        let err = "2".parse::<Time>().unwrap_err();
+        let err = "2".parse::<Time>().expect_err("Parsing 2 should fail");
         match err {
             TimeParseError::MissingColon | TimeParseError::InvalidLength => {}
             TimeParseError::InvalidNumber => {
@@ -118,7 +120,7 @@ mod shortinette_rust_test_module03_ex04_0001 {
             }
         }
 
-        let err = "23".parse::<Time>().unwrap_err();
+        let err = "23".parse::<Time>().expect_err("Parsing 23 should fail");
         match err {
             TimeParseError::MissingColon | TimeParseError::InvalidLength => {}
             TimeParseError::InvalidNumber => {
