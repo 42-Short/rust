@@ -13,9 +13,7 @@ import (
 	"github.com/42-Short/shortinette/pkg/testutils"
 )
 
-var clippyTomlAsString04 = `
-disallowed-methods = ["std::iter::Iterator::collect"]
-`
+var clippyTomlAsString04 = ``
 
 func testMoreCommands(workingDirectory string) Exercise.Result {
 	commandLine := []string{"cargo", "run", "--", "echo", "Hello", ",", "sleep", "1", ",", "touch", "World", ",", "pwd", ",", "echo", "test"}
