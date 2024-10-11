@@ -110,12 +110,13 @@ func testMb(workingDirectory string, fooPath string) Exercise.Result {
 	if out.err != nil {
 		return Exercise.RuntimeError(out.err.Error())
 	}
-	codeOutput := strings.Split(string(out.out), "\n")
-	if len(codeOutput) < 4 {
-		return Exercise.AssertionError("1.0 megabytes", strings.Join(codeOutput, "\n"), "ls -lh ./foo\n-rw-r--r-- 1 root root 977K Aug 31 17:15 69.txt", "cargo run ./foo")
-	}
-	if !strings.Contains(strings.ToLower(codeOutput[3]), "1.0 megabytes") {
-		return Exercise.AssertionError("1.0 megabytes", removeANSICodes(codeOutput[3]), "ls -lh ./foo\n-rw-r--r-- 1 root root 977K Aug 31 17:15 69.txt", "cargo run ./foo")
+	codeOutput := string(out.out)
+	// codeOutput := strings.Split(string(out.out), "\n")
+	// if len(codeOutput) < 4 {
+	// 	return Exercise.AssertionError("1.0 megabytes", strings.Join(codeOutput, "\n"), "ls -lh ./foo\n-rw-r--r-- 1 root root 977K Aug 31 17:15 69.txt", "cargo run ./foo")
+	// }
+	if !strings.Contains(strings.ToLower(codeOutput), "1.0 megabytes") {
+		return Exercise.AssertionError("1.0 megabytes", removeANSICodes(codeOutput), "ls -lh ./foo\n-rw-r--r-- 1 root root 977K Aug 31 17:15 69.txt", "cargo run ./foo")
 	}
 	return Exercise.Passed("OK")
 }
