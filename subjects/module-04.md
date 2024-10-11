@@ -186,7 +186,7 @@ turn-in directory:
     ex02/
 
 files to turn in:
-    std/main.rs  Cargo.toml
+    src/main.rs  Cargo.toml
 
 allowed symbols:
     std::fs::{metadata, Metadata, read_dir, DirEntry, ReadDir}
@@ -220,7 +220,7 @@ turn-in directory:
     ex03/
 
 files to turn in:
-    std/main.rs  Cargo.toml
+    src/main.rs  Cargo.toml
 
 allowed symbols:
     std::env::args
@@ -257,7 +257,7 @@ turn-in directory:
     ex04/
 
 files to turn in:
-    std/main.rs  Cargo.toml
+    src/main.rs  Cargo.toml
 
 allowed symbols:
     std::env::args  std::iter::*
@@ -394,7 +394,7 @@ turn-in directory:
     ex07/
 
 files to turn in:
-    std/main.rs src/*.rs  Cargo.toml
+    src/main.rs Cargo.toml
 
 allowed dependencies:
     rug(v1.19.0)
