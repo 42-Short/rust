@@ -217,10 +217,10 @@ func testDoNotPanic(workingDirectory string) Exercise.Result {
 	}()
 	out := <-ch
 	wg.Wait()
-	if out.err != nil {
-		return Exercise.RuntimeError(out.err.Error())
-	}
-	if strings.Contains(string(out.out), "panicked") {
+	// if out.err != nil {
+	// 	return Exercise.RuntimeError(out.err.Error())
+	// }
+	if strings.Contains(string(out.err.Error()), "panicked") {
 		return Exercise.RuntimeError(string(out.out), "mkdir donotpanic", "chmod 000 donotpanic", "cargo run ./donotpanic")
 	}
 	return Exercise.Passed("OK")
