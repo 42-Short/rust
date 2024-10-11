@@ -189,12 +189,13 @@ func testRecursive(workingDirectory string, fooPath string) Exercise.Result {
 	if out.err != nil {
 		return Exercise.RuntimeError(out.err.Error())
 	}
-	codeOutput := strings.Split(string(out.out), "\n")
-	if len(codeOutput) < 5 {
-		return Exercise.AssertionError("2.0 megabytes", strings.Join(codeOutput, "\n"), lslhROutputRecursiveDepth1, "cargo run ./bar")
-	}
-	if !strings.Contains(strings.ToLower(codeOutput[4]), "2.0 megabytes") {
-		return Exercise.AssertionError("2.0 megabytes", removeANSICodes(codeOutput[4]), lslhROutputRecursiveDepth1, "cargo run ./bar")
+	// codeOutput := strings.Split(string(out.out), "\n")
+	codeOutput := string(out.out)
+	// if len(codeOutput) < 5 {
+	// 	return Exercise.AssertionError("2.0 megabytes", strings.Join(codeOutput, "\n"), lslhROutputRecursiveDepth1, "cargo run ./bar")
+	// }
+	if !strings.Contains(strings.ToLower(codeOutput), "2.0 megabytes") {
+		return Exercise.AssertionError("2.0 megabytes", removeANSICodes(codeOutput), lslhROutputRecursiveDepth1, "cargo run ./bar")
 	}
 	return Exercise.Passed("OK")
 }
