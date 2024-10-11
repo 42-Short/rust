@@ -16,7 +16,7 @@ disallowed-methods = ["std::process::Command::exec"]
 `
 
 func testInputFileBadPermissions(workingDirectory string) Exercise.Result {
-	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "chmod -R 777 target && touch donotpanic && chmod 000 donotpanic"}); err != nil {
+	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "chmod -R 777 ../target && touch donotpanic && chmod 000 donotpanic"}); err != nil {
 		return Exercise.InternalError(err.Error())
 	}
 	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "su -c 'echo donotpanic | cargo run -- cat'"}); err != nil {
