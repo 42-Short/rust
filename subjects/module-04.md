@@ -310,7 +310,7 @@ files to turn in:
 
 allowed symbols:
     std::env::args
-    std::net::{TcpStream, SocketAddr}
+    std::net::{TcpStream, SocketAddr, ToSocketAddrs}
     std::io::{Write, Read, stdout}
 ```
 
