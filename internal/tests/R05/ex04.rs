@@ -1,4 +1,4 @@
-[cfg(test)]
+#[cfg(test)]
 mod shortinette_rust_test_module05_ex04_0001 {
     use std::{collections::HashSet, thread};
 
