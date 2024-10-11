@@ -1,4 +1,4 @@
-[cfg(test)]
+#[cfg(test)]
 mod shortinette_rust_test_module05_ex02_0001 {
     use std::thread;
 
@@ -33,19 +33,19 @@ mod shortinette_rust_test_module05_ex02_0001 {
         }
 
         {
-            let err = Error::WriteError;
+            let err = Error::WriteFail;
             err.make_last();
             match Error::last() {
-                Error::WriteError => (),
+                Error::WriteFail => (),
                 _ => panic!("Error::make_last() did not set the value correctly"),
             }
         }
 
         {
-            let err = Error::ReadError;
+            let err = Error::ReadFail;
             err.make_last();
             match Error::last() {
-                Error::ReadError => (),
+                Error::ReadFail => (),
                 _ => panic!("Error::make_last() did not set the value correctly"),
             }
         }
@@ -62,10 +62,10 @@ mod shortinette_rust_test_module05_ex02_0001 {
                 _ => panic!("Error::make_last() should not affect values across threads."),
             }
 
-            let err = Error::ReadError;
+            let err = Error::ReadFail;
             err.make_last();
             match Error::last() {
-                Error::ReadError => (),
+                Error::ReadFail => (),
                 _ => panic!("Error::make_last() did not set the value correctly"),
             }
         });

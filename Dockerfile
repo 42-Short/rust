@@ -16,6 +16,9 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 # Install Cargo fuzz
 RUN cargo install cargo-fuzz
 
+# Install Epic Nextest
+RUN cargo install cargo-nextest --locked
+
 # Ensure required Rust libraries are cached
 WORKDIR /app
 RUN cargo new dummy_project
@@ -43,9 +46,14 @@ RUN echo 'export PATH=$PATH:/root/.cargo/bin' >> /etc/profile.d/rust_path.sh
 RUN apt-get install -y valgrind
 RUN /root/.cargo/bin/cargo install cargo-valgrind
 
+# Install 'strace' for syscall tracking
+RUN apt-get install -y strace
+
+COPY ./go.mod ./go.sum /app
+RUN --mount=type=cache,target=/root/.cache/go-mod go mod download
+
 COPY ./internal /app/internal
-COPY ./go.mod /app/go.mod
-COPY ./go.sum /app/go.sum
 COPY ./main.go /app/main.go
 
-RUN go build .
+RUN --mount=type=cache,target=/root/.cache/go-build \
+    go build .

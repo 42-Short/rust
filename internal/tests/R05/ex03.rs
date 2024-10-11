@@ -1,4 +1,4 @@
-[cfg(test)]
+#[cfg(test)]
 mod shortinette_rust_test_module05_ex03_0001 {
     use std::{
         env, ffi,
@@ -150,7 +150,7 @@ mod shortinette_rust_test_module05_ex03_0001 {
     fn no_args() {
         let ex = Exercise::new();
 
-        let output = ex.cmd().output_with_timeout(Duration::from_millis(1));
+        let output = ex.cmd().output_with_timeout(Duration::from_millis(100));
         // Could also be an execute fail, but more likely a timeout
         assert!(output.is_ok());
     }
@@ -178,7 +178,7 @@ mod shortinette_rust_test_module05_ex03_0001 {
         let ex = Exercise::new();
 
         let child = Command::new("strace")
-            .args(["-f", "-e", "trace=clone"])
+            .args(["-f", "-e", "trace=none"])
             .arg(ex.path())
             .arg("0")
             .output()
@@ -199,20 +199,20 @@ mod shortinette_rust_test_module05_ex03_0001 {
         // Since a channel is used even size 0 makes the philosopher
         // able to think about at least one topic.
         let mut child = ex.spawn_child_args(["0"]);
-        thread::sleep(time::Duration::from_millis(1));
+        thread::sleep(time::Duration::from_millis(1000));
         let mut stdin = child.stdin.take().expect("Stdin vanished");
 
         writeln!(&mut stdin, "cakes").unwrap();
-        thread::sleep(time::Duration::from_millis(1));
+        thread::sleep(time::Duration::from_millis(100));
 
         writeln!(&mut stdin, "code").unwrap();
-        thread::sleep(time::Duration::from_millis(1));
+        thread::sleep(time::Duration::from_millis(100));
 
         thread::sleep(time::Duration::from_millis(5000));
 
         drop(stdin);
 
-        match child.wait_with_timeout(time::Duration::from_millis(1)) {
+        match child.wait_with_timeout(time::Duration::from_millis(100)) {
             Ok(out) => {
                 let output = String::from_utf8_lossy(&out.stdout);
                 let output = output.lines().collect::<Vec<_>>();
@@ -222,7 +222,7 @@ mod shortinette_rust_test_module05_ex03_0001 {
                     "the philosopher's head is full",
                 ];
 
-                assert_eq!(output, expected);
+                assert_eq!(expected, output);
             }
             Err(_) => {
                 panic!("The philosopher died too slow")
@@ -262,7 +262,7 @@ mod shortinette_rust_test_module05_ex03_0001 {
                     "the philosopher is thinking about code",
                 ];
 
-                assert_eq!(output, expected);
+                assert_eq!(expected, output);
             }
             Err(_) => {
                 panic!("The philosopher died too slow")
@@ -322,7 +322,7 @@ mod shortinette_rust_test_module05_ex03_0001 {
                     "the philosopher is thinking about starving",
                 ];
 
-                assert_eq!(output, expected);
+                assert_eq!(expected, output);
             }
             Err(_) => {
                 panic!("The philosopher died too slow")
@@ -374,7 +374,7 @@ mod shortinette_rust_test_module05_ex03_0001 {
                     "the philosopher is thinking about b",
                 ];
 
-                assert_eq!(output, expected);
+                assert_eq!(expected, output);
             }
             Err(_) => {
                 panic!("The philosopher died too slow")

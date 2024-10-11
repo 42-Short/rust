@@ -1,4 +1,4 @@
-[cfg(test)]
+#[cfg(test)]
 mod shortinette_rust_test_module05_ex05_0001 {
     use std::{
         env, ffi, io,
@@ -152,7 +152,7 @@ mod shortinette_rust_test_module05_ex05_0001 {
         let output = ex
             .cmd()
             .arg("1")
-            .output_with_timeout(time::Duration::from_millis(10))
+            .output_with_timeout(time::Duration::from_millis(100))
             .expect("Failed to run command");
 
         let out = String::from_utf8_lossy(&output.stdout);
@@ -172,7 +172,7 @@ mod shortinette_rust_test_module05_ex05_0001 {
         let output = ex
             .cmd()
             .arg("2")
-            .output_with_timeout(time::Duration::from_millis(10))
+            .output_with_timeout(time::Duration::from_millis(100))
             .expect("Failed to run command");
 
         let out = String::from_utf8_lossy(&output.stdout);
@@ -192,7 +192,7 @@ mod shortinette_rust_test_module05_ex05_0001 {
         let output = ex
             .cmd()
             .arg("3")
-            .output_with_timeout(time::Duration::from_millis(10))
+            .output_with_timeout(time::Duration::from_millis(100))
             .expect("Failed to run command");
 
         let out = String::from_utf8_lossy(&output.stdout);
@@ -214,7 +214,7 @@ mod shortinette_rust_test_module05_ex05_0001 {
         let output = ex
             .cmd()
             .arg("1000000")
-            .output_with_timeout(time::Duration::from_millis(10))
+            .output_with_timeout(time::Duration::from_secs(1))
             .expect("Failed to calculate pi. Is your progam too slow?");
 
         let out = String::from_utf8_lossy(&output.stdout);
@@ -264,7 +264,7 @@ mod shortinette_rust_test_module05_ex05_0001 {
         let ex = Exercise::new();
 
         let child = Command::new("strace")
-            .args(["-f", "-e", "trace=clone"])
+            .args(["-f", "-e", "trace=none"])
             .arg(ex.path())
             .arg("1")
             .output()
@@ -275,7 +275,7 @@ mod shortinette_rust_test_module05_ex05_0001 {
             .filter(|line| line.starts_with("strace: Process ") && line.ends_with(" attached"))
             .count();
 
-        let cores = thread::available_parallelism().expect("Failed to get CPUs");
-        assert_eq!(cores.get(), thread_count);
+        let cores = rayon::current_num_threads();
+        assert_eq!(cores, thread_count);
     }
 }

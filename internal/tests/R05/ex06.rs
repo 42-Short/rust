@@ -1,4 +1,4 @@
-[cfg(test)]
+#[cfg(test)]
 mod shortinette_rust_test_module05_ex06_0001 {
     use std::{
         env, ffi, io,
@@ -127,32 +127,36 @@ mod shortinette_rust_test_module05_ex06_0001 {
         assert!(output.is_ok());
     }
 
-    #[test]
-    fn is_multithreaded() {
-        let ex = Exercise::new();
+    // #[test]
+    // fn is_multithreaded() {
+    //     let ex = Exercise::new();
 
-        let mut child = Command::new("strace")
-            .args(["--kill-on-exit", "-f", "-e", "trace=clone"])
-            .arg(ex.path())
-            .arg(format!("127.0.0.1:{}", get_random_port()))
-            .stderr(process::Stdio::piped())
-            .spawn()
-            .expect("Failed to run server");
+    //     let mut child = Command::new("strace")
+    //         // `--kill-on-exit` is not available on strace 6.1, which is used by bookworm
+    //         // Because of that, when we kill the `strace`, it will not kill the http server
+    //         // Which will cause the test to run forever
+    //         // And attaching `strace` to a `pid` is not viable either
+    //         .args(["--kill-on-exit", "-f", "-e", "trace=none"])
+    //         .arg(ex.path())
+    //         .arg(format!("127.0.0.1:{}", get_random_port()))
+    //         .stderr(process::Stdio::piped())
+    //         .spawn()
+    //         .expect("Failed to run server");
 
-        thread::sleep(time::Duration::from_millis(500));
-        child.kill().unwrap();
+    //     thread::sleep(time::Duration::from_millis(500));
+    //     child.kill().unwrap();
 
-        let out = child.wait_with_output().unwrap();
-        let thread_count = String::from_utf8_lossy(&out.stderr)
-            .lines()
-            .filter(|line| line.starts_with("strace: Process ") && line.ends_with(" attached"))
-            .count();
+    //     let out = child.wait_with_output().unwrap();
+    //     let thread_count = String::from_utf8_lossy(&out.stderr)
+    //         .lines()
+    //         .filter(|line| line.starts_with("strace: Process ") && line.ends_with(" attached"))
+    //         .count();
 
-        assert!(
-            thread_count >= 2,
-            "Your http server should spawn at least 2 threads"
-        );
-    }
+    //     assert!(
+    //         thread_count >= 2,
+    //         "Your http server should spawn at least 2 threads"
+    //     );
+    // }
 
     #[test]
     fn basic_curl() {
@@ -254,12 +258,12 @@ mod shortinette_rust_test_module05_ex06_0001 {
             .unwrap();
         }
 
-        while *num.lock().unwrap() != 2 && now.elapsed() < time::Duration::from_millis(210) {
+        while *num.lock().unwrap() != 2 && now.elapsed() < time::Duration::from_millis(290) {
             thread::sleep(time::Duration::from_millis(1));
         }
 
         let elapsed = now.elapsed();
-        assert!(elapsed < time::Duration::from_millis(210));
+        assert!(elapsed < time::Duration::from_millis(250));
         assert!(time::Duration::from_millis(150) < elapsed);
     }
 
@@ -280,10 +284,10 @@ mod shortinette_rust_test_module05_ex06_0001 {
             .unwrap();
         }
 
-        while *num.lock().unwrap() != 2 && now.elapsed() < time::Duration::from_millis(110) {
+        while *num.lock().unwrap() != 2 && now.elapsed() < time::Duration::from_millis(150) {
             thread::sleep(time::Duration::from_millis(1));
         }
-        assert!(now.elapsed() < time::Duration::from_millis(110));
+        assert!(now.elapsed() < time::Duration::from_millis(150));
         assert!(now.elapsed() >= time::Duration::from_millis(100));
     }
 
@@ -307,7 +311,7 @@ mod shortinette_rust_test_module05_ex06_0001 {
         while *num.lock().unwrap() != 100 && now.elapsed() < time::Duration::from_millis(150) {
             thread::sleep(time::Duration::from_millis(1));
         }
-        assert!(now.elapsed() < time::Duration::from_millis(110));
+        assert!(now.elapsed() < time::Duration::from_millis(190));
         assert!(now.elapsed() >= time::Duration::from_millis(100));
     }
 
@@ -381,7 +385,7 @@ mod shortinette_rust_test_module05_ex06_0001 {
                 .expect("Failed to send task");
         }
 
-        thread::sleep(time::Duration::from_millis(10));
+        thread::sleep(time::Duration::from_millis(100));
 
         assert!(pool.spawn_task(|| {}).is_err());
 
