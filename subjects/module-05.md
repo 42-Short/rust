@@ -173,8 +173,8 @@ enum Error {
     Success,
     FileNotFound,
     IsDirectory,
-    WriteError,
-    ReadError,
+    WriteFail,
+    ReadFail,
 }
 
 impl Error {

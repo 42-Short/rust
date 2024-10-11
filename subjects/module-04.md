@@ -348,7 +348,7 @@ files to turn in:
 
 allowed symbols:
     std::env::args
-    std::io::read
+    std::fs::read
     std::str::{from_utf8, Utf8Error}
 ```
 
