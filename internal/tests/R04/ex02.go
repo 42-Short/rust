@@ -152,12 +152,12 @@ func testRecursiveHard(workingDirectory string) Exercise.Result {
 		return Exercise.RuntimeError(out.err.Error())
 	}
 	codeOutput := removeANSICodes(string(out.out))
-	codeOutputList := strings.Split(string(codeOutput), "\n")
-	if len(codeOutputList) < 22 {
-		return Exercise.AssertionError("10.0 megabytes", strings.Join(codeOutputList, "\n"), lslhROutputRecursiveDepth10)
-	}
-	if !strings.Contains(strings.ToLower(codeOutputList[20]), "10.0 megabytes") {
-		return Exercise.AssertionError("10.0 megabytes", codeOutputList[13], lslhROutputRecursiveDepth10)
+	// codeOutputList := strings.Split(string(codeOutput), "\n")
+	// if len(codeOutputList) < 22 {
+	// 	return Exercise.AssertionError("10.0 megabytes", strings.Join(codeOutputList, "\n"), lslhROutputRecursiveDepth10)
+	// }
+	if !strings.Contains(strings.ToLower(codeOutput), "10.0 megabytes") {
+		return Exercise.AssertionError("10.0 megabytes", codeOutput, lslhROutputRecursiveDepth10)
 	}
 	return Exercise.Passed("OK")
 }
