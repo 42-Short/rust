@@ -200,7 +200,7 @@ func testRecursive(workingDirectory string, fooPath string) Exercise.Result {
 }
 
 func testDoNotPanic(workingDirectory string) Exercise.Result {
-	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "chmod -R 777 target && mkdir donotpanic && chmod 000 donotpanic"}); err != nil {
+	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "chmod -R 777 ../target && mkdir donotpanic && chmod 000 donotpanic"}); err != nil {
 		return Exercise.InternalError(err.Error())
 	}
 	var wg sync.WaitGroup
