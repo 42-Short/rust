@@ -15,7 +15,7 @@ disallowed-methods = ["std::io::copy", "std::fs::write", "core::option::Option::
 `
 
 func testRedirectionBadPermissionTargetFile(workingDirectory string) Exercise.Result {
-	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "chmod -R 777 target && touch foo.txt && chmod 000 foo.txt"}); err != nil {
+	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "chmod -R 777 ../target && touch foo.txt && chmod 000 foo.txt"}); err != nil {
 		return Exercise.InternalError(err.Error())
 	}
 	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "su -c 'echo donotpanic | cargo run -- foo.txt' student"}); err != nil {
@@ -27,7 +27,7 @@ func testRedirectionBadPermissionTargetFile(workingDirectory string) Exercise.Re
 }
 
 func testRedirectionBadPermissionTargetDir(workingDirectory string) Exercise.Result {
-	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "chmod -R 777 target && mkdir foo && chmod 000 foo"}); err != nil {
+	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "chmod -R 777 ../target && mkdir foo && chmod 000 foo"}); err != nil {
 		return Exercise.InternalError(err.Error())
 	}
 	if _, err := testutils.RunCommandLine(workingDirectory, "sh", []string{"-c", "su -c 'echo donotpanic | cargo run -- foo/foo.txt' student"}); err != nil {
