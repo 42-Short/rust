@@ -226,7 +226,7 @@ allowed symbols:
     std::env::args
     std::process::Command
     std::os::unix::process::CommandExt
-    std::io::stdin
+    std::io::{Read, stdin}
     std::vec::Vector
     std::iter::*
 ```
