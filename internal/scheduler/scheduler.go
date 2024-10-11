@@ -1,7 +1,6 @@
 package scheduler
 
 import (
-	"fmt"
 	"sort"
 	"time"
 
@@ -25,9 +24,7 @@ func Schedule(short Short.Short, startTime time.Time, moduleDuration time.Durati
 	for _, moduleName := range moduleList {
 		module := short.Modules[moduleName]
 
-		if err = short.StartModule(moduleName); err != nil {
-			return fmt.Errorf("error starting module %s: %v", moduleName, err)
-		}
+		short.StartModule(moduleName)
 
 		now := time.Now()
 		if now.Before(desiredSwitchTime) {
@@ -39,9 +36,7 @@ func Schedule(short Short.Short, startTime time.Time, moduleDuration time.Durati
 
 		logger.Info.Printf("Grading module %s", moduleName)
 
-		if err = Short.EndModule(module, *config); err != nil {
-			return fmt.Errorf("error ending module %s: %v", moduleName, err)
-		}
+		Short.EndModule(module, *config)
 
 		desiredSwitchTime = desiredSwitchTime.Add(24 * time.Hour)
 	}

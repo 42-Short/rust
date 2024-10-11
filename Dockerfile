@@ -49,11 +49,13 @@ RUN /root/.cargo/bin/cargo install cargo-valgrind
 # Install 'strace' for syscall tracking
 RUN apt-get install -y strace
 
-COPY ./go.mod ./go.sum /app
+WORKDIR /app
+
+COPY ./go.mod ./go.sum .
 RUN --mount=type=cache,target=/root/.cache/go-mod go mod download
 
-COPY ./internal /app/internal
-COPY ./main.go /app/main.go
+COPY ./internal internal
+COPY ./main.go main.go
 
-RUN --mount=type=cache,target=/root/.cache/go-build \
-    go build .
+ENV GOCACHE=/root/.cache/go-build
+RUN --mount=type=cache,target="/root/.cache/go-build" go build -o tester .

@@ -3,7 +3,7 @@ module rust-piscine
 go 1.22.5
 
 require (
-	github.com/42-Short/shortinette v0.6.6
+	github.com/42-Short/shortinette v0.5.7-0.20241011184702-684bc422068d
 	github.com/joho/godotenv v1.5.1
 	github.com/pelletier/go-toml/v2 v2.2.2
 )
