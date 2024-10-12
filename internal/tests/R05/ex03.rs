@@ -186,7 +186,7 @@ mod shortinette_rust_test_module05_ex03_0001 {
 
         let thread_count = String::from_utf8_lossy(&child.stderr)
             .lines()
-            .filter(|line| line.starts_with("strace: Process ") && line.ends_with(" attached"))
+            .filter(|line| line.contains("strace: Process ") && line.ends_with(" attached"))
             .count();
 
         assert_eq!(1, thread_count);

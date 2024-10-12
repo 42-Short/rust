@@ -272,7 +272,7 @@ mod shortinette_rust_test_module05_ex05_0001 {
 
         let thread_count = String::from_utf8_lossy(&child.stderr)
             .lines()
-            .filter(|line| line.starts_with("strace: Process ") && line.ends_with(" attached"))
+            .filter(|line| line.contains("strace: Process ") && line.ends_with(" attached"))
             .count();
 
         let cores = rayon::current_num_threads();
