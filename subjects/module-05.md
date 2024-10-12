@@ -269,15 +269,15 @@ fn main()
     let b = Unique::new();
     let c = Unique::new();
 
-    assert_eq!("{a:?}");
-    assert_eq!("{b:?}");
-    assert_eq!("{c:?}");
+    println!("{a:?}");
+    println!("{b:?}");
+    println!("{c:?}");
 
     let d = a.clone();
     let e = c.clone();
 
-    assert_eq!("{d:?}");
-    assert_eq!("{e:?}");
+    println!("{d:?}");
+    println!("{e:?}");
 }
 ```
 
