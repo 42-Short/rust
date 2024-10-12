@@ -87,7 +87,7 @@ let b = Cell::new("DEF".into());
 
 swap_string(&a, &b);
 
-assert_eq!(a.into_inner(), "ABC");
+assert_eq!(a.into_inner(), "DEF");
 assert_eq!(b.into_inner(), "ABC");
 ```
 
