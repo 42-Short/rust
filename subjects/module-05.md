@@ -101,7 +101,7 @@ files to turn in:
     src/main.rs  Cargo.toml
 
 allowed symbols:
-    std::sync::Mutex
+    std::sync::{Arc,Mutex}
     std::thread::spawn
     std::io::Write
     std::vec::Vec::into_boxed_slice
