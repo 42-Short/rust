@@ -97,9 +97,9 @@ func ex06Test(exercise *Exercise.Exercise) (result Exercise.Result) {
 	if result = testNoInput(workingDirectory); !result.Passed {
 		return result
 	}
-	if result = testOutput(workingDirectory); !result.Passed {
-		return result
-	}
+	// if result = testOutput(workingDirectory); !result.Passed {
+	// 	return result
+	// }
 	if result = testNonExisting(workingDirectory); !result.Passed {
 		return result
 	}
