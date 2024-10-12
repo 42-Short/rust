@@ -242,13 +242,13 @@ mod shortinette_rust_test_module05_ex03_0001 {
         let mut stdin = child.stdin.take().expect("Stdin vanished");
 
         writeln!(&mut stdin, "cakes").unwrap();
-        thread::sleep(time::Duration::from_millis(1));
+        thread::sleep(time::Duration::from_millis(100));
 
         writeln!(&mut stdin, "code").unwrap();
-        thread::sleep(time::Duration::from_millis(1));
+        thread::sleep(time::Duration::from_millis(100));
 
         writeln!(&mut stdin, "42").unwrap();
-        thread::sleep(time::Duration::from_millis(1));
+        thread::sleep(time::Duration::from_millis(100));
 
         thread::sleep(time::Duration::from_millis(5000));
 
