@@ -133,8 +133,6 @@ mod shortinette_rust_test_module05_ex01_0001 {
             .filter(|line| line.contains("strace: Process ") && line.ends_with(" attached"))
             .count();
 
-        dbg!(String::from_utf8_lossy(&child.stderr));
-
         assert_eq!(10, thread_count);
     }
 
