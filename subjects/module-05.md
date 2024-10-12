@@ -264,6 +264,7 @@ Example:
 
 ```rust
 fn main()
+{
     let a = Unique::new();
     let b = Unique::new();
     let c = Unique::new();
