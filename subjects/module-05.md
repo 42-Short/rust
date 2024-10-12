@@ -104,6 +104,7 @@ allowed symbols:
     std::sync::Mutex
     std::thread::spawn
     std::io::Write
+    std::vec::Vec::into_boxed_slice
 ```
 
 Create a `Logger` type.
