@@ -121,6 +121,7 @@ impl<W> Logger<W> {
 ```
 
  * `new` must create a new `Logger` with a buffer of size `threshold` and the given `W` instance.
+ * You are allowed to add additional fields to the `Logger` struct if you need them.
 
 In order to avoid performing too many `write` system calls, you should first write the messages
 to an internal `buffer`, and THEN, write everything to the given writer.
