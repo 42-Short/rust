@@ -133,7 +133,7 @@ impl<W: io::Write> Logger<W> {
 ```
 
  * `log` must try to write `message` to its internal buffer. When the buffer is full, everything
-   must be sent to the specified `io::Write` implementation. After thatm the buffer is cleared for
+   must be sent to the specified `io::Write` implementation. After that the buffer is cleared for
    new data to be added. A `\n` is automatically added at the end of the message.
  * `flush` must properly send the content of the buffer inconditionally and clears it.
 
