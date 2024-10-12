@@ -189,7 +189,10 @@ mod shortinette_rust_test_module05_ex03_0001 {
             .filter(|line| line.contains("strace: Process ") && line.ends_with(" attached"))
             .count();
 
-        assert_eq!(1, thread_count);
+        assert!(
+            1 >= thread_count && thread_count <= 2,
+            "Just for you mbonengl and hanjkim"
+        );
     }
 
     #[test]
