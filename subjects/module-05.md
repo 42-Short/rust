@@ -336,7 +336,7 @@ duration: 147ms
 
 ```txt
 turn-in directory:
-    ex07/
+    ex06/
 
 files to turn in:
     src/main.rs  Cargo.toml
