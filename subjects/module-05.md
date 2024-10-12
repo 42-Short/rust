@@ -228,7 +228,7 @@ the philosopher is thinking about b
 * Each time a word is entered, it is saved in the philosopher's brain.
 * If the brain is full, an error is displayed and the word is not added to the brain.
 * When a word is available in the brain, the philosopher thinks about it for 5 seconds.
-* The program never ends.
+* The program runs until it receives `EOF`.
 * The size of the philosopher's brain is provided in command-line arguments.
 
 ## Exercise 04: Atomical
