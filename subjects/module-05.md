@@ -310,6 +310,7 @@ allowed dependencies:
 allowed symbols:
     std::iter::* rayon::prelude::*
     std::println  std::env::args
+    std::time::Instant
 ```
 
 To finish with this module, let's look at some popular third-party crates!
