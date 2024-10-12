@@ -125,7 +125,6 @@ mod shortinette_rust_test_module05_ex01_0001 {
         let child = Command::new("strace")
             .args(["-f", "-e", "trace=clone"])
             .arg(ex.path())
-            .arg("1")
             .output_with_timeout(time::Duration::from_secs(1))
             .expect("Failed to execute exercise");
 
@@ -133,6 +132,8 @@ mod shortinette_rust_test_module05_ex01_0001 {
             .lines()
             .filter(|line| line.starts_with("strace: Process ") && line.ends_with(" attached"))
             .count();
+
+        dbg!(String::from_utf8_lossy(&child.stderr));
 
         assert_eq!(10, thread_count);
     }
