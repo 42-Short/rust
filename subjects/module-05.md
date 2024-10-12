@@ -122,20 +122,20 @@ impl<W> Logger<W> {
 
  * `new` must create a new `Logger` with a buffer of size `threshold` and the given `W` instance.
 
-In order to avoid perform too many `write` system calls, you want to first write stuff to an
-internal `buffer`, and THEN, write every thing to a file.
+In order to avoid performing too many `write` system calls, you should first write the messages
+to an internal `buffer`, and THEN, write everything to the given writer.
 
 ```rust
 impl<W: io::Write> Logger<W> {
     pub fn log(&mut self, message: &str) -> io::Result<()>;
-    pub fn flush(&mut self);
+    pub fn flush(&mut self) -> io::Result<()>;
 }
 ```
 
  * `log` must try to write `message` to its internal buffer. When the buffer is full, everything
    must be sent to the specified `io::Write` implementation. After that the buffer is cleared for
    new data to be added. A `\n` is automatically added at the end of the message.
- * `flush` must properly send the content of the buffer inconditionally and clears it.
+ * `flush` must properly send the content of the buffer and clears it.
 
 Create a `main` function spawning 10 threads. Each thread must try to write to the standard output
 using the same `Logger<Stdout>` 10 times.
@@ -185,7 +185,7 @@ impl Error {
 ```
 
  * `last` must return the calling thread's last `Error` instance. If `make_last` has never been
-   called yet, `Error::Success` is returned.
+   called before, `Error::Success` is returned.
  * `make_last` must set the calling thread's last `Error` instance.
 
 ## Exercise 03: A Philosopher's Tiny Brain
@@ -229,7 +229,7 @@ the philosopher is thinking about b
 * If the brain is full, an error is displayed and the word is not added to the brain.
 * When a word is available in the brain, the philosopher thinks about it for 5 seconds.
 * The program runs until it receives `EOF`.
-* The size of the philosopher's brain is provided in command-line arguments.
+* The size of the philosopher's brain is provided as a command-line argument.
 
 ## Exercise 04: Atomical
 
@@ -255,10 +255,10 @@ impl Unique {
 }
 ```
 
-* There can be no two `Unique` instance with the same identifier (`u32`).
+* There can be no two `Unique` instance with the same identifier (`u8`).
 * `new` must create a new, unique instance of `Unique`.
 * It must be possible to `Clone` a `Unique`, and the created `Unique` must still be unique.
-* Trying to create a `Unique` when no more IDs are available causes the function to panic.
+* Trying to create a `Unique` when no more identifiers are available causes the function to panic.
 
 Example:
 
@@ -304,6 +304,7 @@ files to turn in:
     src/main.rs  Cargo.toml
 
 allowed dependencies:
+    rand
     rayon
 
 allowed symbols:
@@ -311,10 +312,10 @@ allowed symbols:
     std::println  std::env::args
 ```
 
-To finish with this module, let's look at a popular third-party crate!
+To finish with this module, let's look at some popular third-party crates!
 
 First, let's create a single threaded **program** that uses [monte carlo's method](https://en.wikipedia.org/wiki/Monte_Carlo_method#Overview)
-to compute PI. The program takes a single argument: the number of sampled points.
+to compute PI. The program takes a single argument: the number of points to sample.
 
 Try to write this algorithm without a `for` loop. Instead, rely on chained iterators. This will
 make it easier for you in the second part of the exercise.
@@ -347,14 +348,14 @@ allowed symbols:
     std::thread::{spawn, JoinHandle}
     std::sync::mpsc::{Sender, Receiver, channel}
     std::sync::{Arc, RwLock}
-    std::net::{TcpListener, SocketAdd}
+    std::net::{TcpListener, SocketAddr}
     std::io::{Result, Error}
 ```
 
 Create a `ThreadPool` type.
 
 ```rust
-type Task = Box<dyn 'static + FnOnce()>;
+type Task = Box<dyn 'static + Send + FnOnce()>;
 
 struct ThreadPool {
     threads: Vec<JoinHandle<()>>,
@@ -364,20 +365,20 @@ struct ThreadPool {
 
 impl ThreadPool {
     fn new(thread_count: usize) -> Self;
-    fn spawn_task<F>(task: F)
+    fn spawn_task<F>(task: F) -> Result<(), /* ... */>
     where
         F: 'static + Send + FnOnce();
 }
 ```
 
  * The `new` function must create a new `ThreadPool` instance by spawning `thread_count` threads.
- * The `spawn_task` function must put a task into the task pool.
+ * The `spawn_task` function must send the task to a thread in the thread pool.
  * When a `ThreadPool` is dropped, its threads must stop. If any of the threads panicked, dropping
    the `ThreadPool` must panic too.
 
 When a thread is not executing a task, it waits until one is available and executes it.
 
-Let create a multithreaded HTTP server!
+Let's create a multithreaded HTTP server!
 
 * You **program** must listen on an address and port specified in command-line arguments:
 
@@ -445,6 +446,7 @@ impl<T> RendezVous<T> {
    second call, and the second call returns the value passed by the first call.
  * `try_wait` checks whether someone is waiting using `wait`. If so, the values are exchanged and
    `Ok(_)` is returned. Otherwise, the input value is returned in the `Err(_)`.
+ * `RendezVous` must be reusable, allowing multiple dates even after the first exchange.
  * A thread must never [spin](https://en.wikipedia.org/wiki/Busy_waiting) when waiting for
    something to happen!
 
