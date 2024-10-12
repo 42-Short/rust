@@ -235,7 +235,7 @@ the philosopher is thinking about b
 
 ```txt
 turn-in directory:
-    ex05/
+    ex04/
 
 files to turn in:
     src/lib.rs  Cargo.toml
