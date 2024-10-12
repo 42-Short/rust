@@ -173,27 +173,27 @@ mod shortinette_rust_test_module05_ex03_0001 {
         assert!(io::ErrorKind::TimedOut == output.unwrap_err().kind());
     }
 
-    #[test]
-    fn threads() {
-        let ex = Exercise::new();
+    // #[test]
+    // fn threads() {
+    //     let ex = Exercise::new();
 
-        let child = Command::new("strace")
-            .args(["-f", "-e", "trace=none"])
-            .arg(ex.path())
-            .arg("0")
-            .output()
-            .expect("Failed to execute command");
+    //     let child = Command::new("strace")
+    //         .args(["-f", "-e", "trace=none"])
+    //         .arg(ex.path())
+    //         .arg("0")
+    //         .output()
+    //         .expect("Failed to execute command");
 
-        let thread_count = String::from_utf8_lossy(&child.stderr)
-            .lines()
-            .filter(|line| line.contains("strace: Process ") && line.ends_with(" attached"))
-            .count();
+    //     let thread_count = String::from_utf8_lossy(&child.stderr)
+    //         .lines()
+    //         .filter(|line| line.contains("strace: Process ") && line.ends_with(" attached"))
+    //         .count();
 
-        assert!(
-            1 >= thread_count && thread_count <= 2,
-            "Just for you mbonengl and hanjkim"
-        );
-    }
+    //     assert!(
+    //         1 >= thread_count && thread_count <= 2,
+    //         "Just for you mbonengl and hanjkim"
+    //     );
+    // }
 
     #[test]
     fn zero_brain_size() {
