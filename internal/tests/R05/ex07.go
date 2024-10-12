@@ -4,6 +4,7 @@ import (
 	"os"
 	"path/filepath"
 	"rust-piscine/internal/alloweditems"
+	"time"
 
 	"github.com/42-Short/shortinette/pkg/logger"
 
@@ -27,7 +28,7 @@ func ex07Test(exercise *Exercise.Exercise) Exercise.Result {
 		return Exercise.InternalError(err.Error())
 	}
 
-	_, err = testutils.RunCommandLine(workingDirectory, "cargo", []string{"test", "--release", "shortinette_rust_test_module05_ex07_0001"})
+	_, err = testutils.RunCommandLine(workingDirectory, "cargo", []string{"test", "--release", "shortinette_rust_test_module05_ex07_0001"}, testutils.WithTimeout(time.Minute*1))
 	if err != nil {
 		return Exercise.RuntimeError(err.Error())
 	}
