@@ -240,7 +240,7 @@ let mut dst = [0u8; 14];
 // SAFETY:
 //  /* ... */
 unsafe { ft_strcpy(dst.as_mut_ptr(), s.as_ptr()) };
-assert_eq!(s, b"Hello, World\0");
+assert_eq!(&dst, b"Hello, World!\0");
 ```
 
 ## Exercise 01: Philospher's Stone
@@ -340,7 +340,7 @@ Create a type named `Carton<T>`, which must manage an allocation of a single `T`
 ```rust
 impl<T> Carton<T> {
     fn new(value: T) -> Self;
-    fn into_inner(this: Self) -> T;
+    fn into_inner(this: self) -> T;
 }
 ```
 
