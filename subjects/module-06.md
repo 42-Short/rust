@@ -340,7 +340,7 @@ Create a type named `Carton<T>`, which must manage an allocation of a single `T`
 ```rust
 impl<T> Carton<T> {
     fn new(value: T) -> Self;
-    fn into_inner(this: self) -> T;
+    fn into_inner(self) -> T;
 }
 ```
 
